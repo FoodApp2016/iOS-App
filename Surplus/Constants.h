@@ -13,5 +13,6 @@
 
 extern NSString *const kRestaurantListTableViewCellIdentifier;
 extern NSString *const kRestaurantListTableViewCellSegueIdentifier;
+extern NSString *const kRestaurantViewControllerOrderButtonSegueIdentifier;
 
 #endif /* Constants_h */

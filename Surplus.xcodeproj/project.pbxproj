@@ -19,6 +19,8 @@
 		EBA77D321D66443E00BA8CDB /* RestaurantListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBA77D301D66443E00BA8CDB /* RestaurantListTableViewCell.xib */; };
 		EBA77D351D6650E600BA8CDB /* Images in Resources */ = {isa = PBXBuildFile; fileRef = EBA77D341D6650E600BA8CDB /* Images */; };
 		EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */; };
+		EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */; };
+		EBEA8BB71D67CCD800757205 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB61D67CCD800757205 /* Order.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,10 @@
 		EBA77D341D6650E600BA8CDB /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
 		EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
+		EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmationTableViewController.h; sourceTree = "<group>"; };
+		EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmationTableViewController.m; sourceTree = "<group>"; };
+		EBEA8BB51D67CCD800757205 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		EBEA8BB61D67CCD800757205 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,8 @@
 				EBA77D271D6514A700BA8CDB /* RestaurantListTableViewController.m */,
 				EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */,
 				EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */,
+				EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */,
+				EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -115,6 +123,8 @@
 			children = (
 				EBA77D211D6509A500BA8CDB /* Restaurant.h */,
 				EBA77D221D6509A500BA8CDB /* Restaurant.m */,
+				EBEA8BB51D67CCD800757205 /* Order.h */,
+				EBEA8BB61D67CCD800757205 /* Order.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -201,11 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBEA8BB71D67CCD800757205 /* Order.m in Sources */,
 				EBA77D2A1D663D7600BA8CDB /* Constants.m in Sources */,
 				EBA77D231D6509A500BA8CDB /* Restaurant.m in Sources */,
 				EBA77D0F1D63FE8800BA8CDB /* AppDelegate.m in Sources */,
 				EBA77D281D6514A700BA8CDB /* RestaurantListTableViewController.m in Sources */,
 				EBA77D311D66443E00BA8CDB /* RestaurantListTableViewCell.m in Sources */,
+				EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */,
 				EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */,
 				EBA77D0C1D63FE8800BA8CDB /* main.m in Sources */,
 			);
@@ -322,6 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Surplus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Surplus.Surplus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -334,6 +347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Surplus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Surplus.Surplus;
 				PRODUCT_NAME = "$(TARGET_NAME)";

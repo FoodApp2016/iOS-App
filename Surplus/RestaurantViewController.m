@@ -7,6 +7,8 @@
 //
 
 #import "RestaurantViewController.h"
+#import "OrderConfirmationTableViewController.h"
+#import "Order.h"
 
 @interface RestaurantViewController ()
 
@@ -17,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftoversItem;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UIButton *phoneNumber;
+@property (weak, nonatomic) IBOutlet UITextField *quantityTextField;
 
 @end
 
@@ -36,6 +39,7 @@
     self.price.text = [NSString stringWithFormat:@"$%.2f", self.restaurant.price];
     [self.phoneNumber setTitle:self.restaurant.phoneNumber.stringValue
                       forState:UIControlStateNormal];
+    self.quantityTextField.keyboardType = UIKeyboardTypeNumberPad;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +51,13 @@
     
     int distances[] = {4.5, 3.7, 6.6};
     return distances[arc4random() % 3];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    double quantity = [self.quantityTextField.text intValue];
+    OrderConfirmationTableViewController *destinationViewController = segue.destinationViewController;
+    destinationViewController.order = [[Order alloc] initWithRestaurant:self.restaurant quantity:quantity];
 }
 
 /*

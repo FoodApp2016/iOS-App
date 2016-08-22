@@ -10,3 +10,4 @@
 
 NSString *const kRestaurantListTableViewCellIdentifier = @"restaurantListTableViewCellIdentifier";
 NSString *const kRestaurantListTableViewCellSegueIdentifier = @"restaurantListTableViewCellSegueIdentifier";
+NSString *const kRestaurantViewControllerOrderButtonSegueIdentifier = @"restaurantViewControllerOrderButtonSegueIdentifier";
