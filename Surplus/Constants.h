@@ -15,4 +15,7 @@ extern NSString *const kRestaurantListTableViewCellIdentifier;
 extern NSString *const kRestaurantListTableViewCellSegueIdentifier;
 extern NSString *const kRestaurantViewControllerOrderButtonSegueIdentifier;
 
+extern NSString *const kSurplusBaseUrl;
+extern NSString *const kSurplusGetAllRestaurantsPath;
+
 #endif /* Constants_h */

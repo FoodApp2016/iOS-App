@@ -11,6 +11,7 @@
 #import "Restaurant.h"
 #import "RestaurantListTableViewCell.h"
 #import "RestaurantViewController.h"
+#import "RequestHandler.h"
 
 @import Contacts;
 
@@ -53,11 +54,10 @@
     molinariDelicatessenAddress.state = @"CA";
     molinariDelicatessenAddress.postalCode = @"94133";
     molinariDelicatessenAddress.country = @"USA";
-    
+
     return @[
              @{
                 @"name": @"Joe's Buffet",
-                @"displayImage": [UIImage imageNamed:@"joesBuffetDisplayPicture.jpg"],
                 @"address": [joesBuffetAddress copy],
                 @"rating": [NSNumber numberWithDouble:4.5],
                 @"phoneNumber": [CNPhoneNumber phoneNumberWithStringValue:@"(707) 425-2317"],
@@ -69,7 +69,6 @@
              
              @{
                  @"name": @"Green Bar",
-                 @"displayImage": [UIImage imageNamed:@"greenBarDisplayPicture"],
                  @"address": [greenBarAddress copy],
                  @"rating": [NSNumber numberWithDouble:3.5],
                  @"phoneNumber": [CNPhoneNumber phoneNumberWithStringValue:@"(415) 693-9339"],
@@ -81,7 +80,6 @@
              
              @{
                  @"name": @"Molinari Delicatessen",
-                 @"displayImage": [UIImage imageNamed:@"molinariDelicatessenDisplayPicture.jpg"],
                  @"address": [molinariDelicatessenAddress copy],
                  @"rating": [NSNumber numberWithDouble:4.5],
                  @"phoneNumber": [CNPhoneNumber phoneNumberWithStringValue:@"(415) 421-2337"],
@@ -99,13 +97,34 @@
     UINib *nib = [UINib nibWithNibName:@"RestaurantListTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:kRestaurantListTableViewCellIdentifier];
     
-    NSMutableArray *restaurantList = [NSMutableArray new];
-
-    for (NSDictionary *restaurant in [self mockRestaurantData]) {
-        [restaurantList addObject:[[Restaurant alloc] initWithDict:restaurant]];
-    }
+    [[RequestHandler new] getAllRestaurants:^(NSError *error,
+                                              NSData *data) {
+        
+        if (error) {
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+            return;
+        }
+        
+        NSArray *restaurantsJson = [NSJSONSerialization JSONObjectWithData:data
+                                                                   options:NSJSONReadingMutableContainers error:nil];
+        NSMutableArray *restaurants = [NSMutableArray new];
+        
+        for (NSDictionary *restaurantJson in restaurantsJson) {
+            Restaurant *restaurant = [[Restaurant alloc] initWithJson:restaurantJson];
+            [restaurants addObject:restaurant];
+        }
+        
+        self.restaurantList = [restaurants copy];
+        [self.tableView reloadData];
+    }];
     
-    self.restaurantList = [restaurantList copy];
+//    NSMutableArray *restaurantList = [NSMutableArray new];
+//
+//    for (NSDictionary *restaurant in [self mockRestaurantData]) {
+//        [restaurantList addObject:[[Restaurant alloc] initWithDict:restaurant]];
+//    }
+//    
+//    self.restaurantList = [restaurantList copy];
 }
 
 - (void)didReceiveMemoryWarning {

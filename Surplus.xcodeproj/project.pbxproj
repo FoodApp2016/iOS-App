@@ -17,10 +17,13 @@
 		EBA77D2A1D663D7600BA8CDB /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA77D291D663D7600BA8CDB /* Constants.m */; };
 		EBA77D311D66443E00BA8CDB /* RestaurantListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA77D2F1D66443E00BA8CDB /* RestaurantListTableViewCell.m */; };
 		EBA77D321D66443E00BA8CDB /* RestaurantListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBA77D301D66443E00BA8CDB /* RestaurantListTableViewCell.xib */; };
-		EBA77D351D6650E600BA8CDB /* Images in Resources */ = {isa = PBXBuildFile; fileRef = EBA77D341D6650E600BA8CDB /* Images */; };
 		EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */; };
 		EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */; };
 		EBEA8BB71D67CCD800757205 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB61D67CCD800757205 /* Order.m */; };
+		EBEA8BBD1D6E50E600757205 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BBC1D6E50E600757205 /* FBSDKCoreKit.framework */; };
+		EBEA8BBF1D6E50F100757205 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BBE1D6E50F100757205 /* FBSDKLoginKit.framework */; };
+		EBEA8BC11D6E510A00757205 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BC01D6E510A00757205 /* FBSDKShareKit.framework */; };
+		EBEA8BC41D6E8D2F00757205 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,13 +44,17 @@
 		EBA77D2E1D66443E00BA8CDB /* RestaurantListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantListTableViewCell.h; sourceTree = "<group>"; };
 		EBA77D2F1D66443E00BA8CDB /* RestaurantListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantListTableViewCell.m; sourceTree = "<group>"; };
 		EBA77D301D66443E00BA8CDB /* RestaurantListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantListTableViewCell.xib; sourceTree = "<group>"; };
-		EBA77D341D6650E600BA8CDB /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
 		EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
 		EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmationTableViewController.h; sourceTree = "<group>"; };
 		EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmationTableViewController.m; sourceTree = "<group>"; };
 		EBEA8BB51D67CCD800757205 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		EBEA8BB61D67CCD800757205 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		EBEA8BBC1D6E50E600757205 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "FacebookSDKs-iOS-4.14.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		EBEA8BBE1D6E50F100757205 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-4.14.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		EBEA8BC01D6E510A00757205 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-4.14.0/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		EBEA8BC21D6E8D2F00757205 /* RequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestHandler.h; sourceTree = "<group>"; };
+		EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBEA8BBF1D6E50F100757205 /* FBSDKLoginKit.framework in Frameworks */,
+				EBEA8BBD1D6E50E600757205 /* FBSDKCoreKit.framework in Frameworks */,
+				EBEA8BC11D6E510A00757205 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,11 +95,13 @@
 				EBA77D251D65124E00BA8CDB /* Models */,
 				EBA77D331D66444B00BA8CDB /* Views */,
 				EBA77D241D65123400BA8CDB /* View Controllers */,
+				EBEA8BC51D6E8D3800757205 /* Utility */,
 				EBA77D131D63FE8800BA8CDB /* Main.storyboard */,
 				EBA77D161D63FE8800BA8CDB /* Assets.xcassets */,
 				EBA77D181D63FE8800BA8CDB /* LaunchScreen.storyboard */,
 				EBA77D1B1D63FE8800BA8CDB /* Info.plist */,
 				EBA77D0A1D63FE8800BA8CDB /* Supporting Files */,
+				EBEA8BBB1D6E50B500757205 /* Frameworks */,
 			);
 			path = Surplus;
 			sourceTree = "<group>";
@@ -97,7 +109,6 @@
 		EBA77D0A1D63FE8800BA8CDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EBA77D341D6650E600BA8CDB /* Images */,
 				EBA77D2B1D663DA900BA8CDB /* Constants.h */,
 				EBA77D291D663D7600BA8CDB /* Constants.m */,
 				EBA77D0B1D63FE8800BA8CDB /* main.m */,
@@ -137,6 +148,26 @@
 				EBA77D301D66443E00BA8CDB /* RestaurantListTableViewCell.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		EBEA8BBB1D6E50B500757205 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBEA8BC01D6E510A00757205 /* FBSDKShareKit.framework */,
+				EBEA8BBE1D6E50F100757205 /* FBSDKLoginKit.framework */,
+				EBEA8BBC1D6E50E600757205 /* FBSDKCoreKit.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		EBEA8BC51D6E8D3800757205 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				EBEA8BC21D6E8D2F00757205 /* RequestHandler.h */,
+				EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +227,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBA77D351D6650E600BA8CDB /* Images in Resources */,
 				EBA77D321D66443E00BA8CDB /* RestaurantListTableViewCell.xib in Resources */,
 				EBA77D1A1D63FE8800BA8CDB /* LaunchScreen.storyboard in Resources */,
 				EBA77D171D63FE8800BA8CDB /* Assets.xcassets in Resources */,
@@ -217,6 +247,7 @@
 				EBA77D0F1D63FE8800BA8CDB /* AppDelegate.m in Sources */,
 				EBA77D281D6514A700BA8CDB /* RestaurantListTableViewController.m in Sources */,
 				EBA77D311D66443E00BA8CDB /* RestaurantListTableViewCell.m in Sources */,
+				EBEA8BC41D6E8D2F00757205 /* RequestHandler.m in Sources */,
 				EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */,
 				EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */,
 				EBA77D0C1D63FE8800BA8CDB /* main.m in Sources */,
@@ -333,8 +364,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDKs-iOS-4.14.0",
+				);
 				INFOPLIST_FILE = Surplus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Surplus.Surplus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -346,8 +381,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDKs-iOS-4.14.0",
+				);
 				INFOPLIST_FILE = Surplus/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Surplus.Surplus;
 				PRODUCT_NAME = "$(TARGET_NAME)";

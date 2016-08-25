@@ -11,3 +11,6 @@
 NSString *const kRestaurantListTableViewCellIdentifier = @"restaurantListTableViewCellIdentifier";
 NSString *const kRestaurantListTableViewCellSegueIdentifier = @"restaurantListTableViewCellSegueIdentifier";
 NSString *const kRestaurantViewControllerOrderButtonSegueIdentifier = @"restaurantViewControllerOrderButtonSegueIdentifier";
+
+NSString *const kSurplusBaseUrl = @"https://surplus-stage.herokuapp.com";
+NSString *const kSurplusGetAllRestaurantsPath = @"/restaurants/all";

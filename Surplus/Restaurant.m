@@ -34,4 +34,18 @@
     return self;
 }
 
+- (id)initWithJson:(NSDictionary *)json {
+    
+    self = [super init];
+    
+    if (self) {
+        self.id_ = [json[@"id"] intValue];
+        self.name = json[@"name"];
+        self.address = json[@"address"];
+    }
+
+    
+    return self;
+}
+
 @end

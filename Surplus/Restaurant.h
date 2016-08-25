@@ -13,6 +13,7 @@
 
 @interface Restaurant : NSObject
 
+@property (nonatomic) int id_;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) UIImage *displayImage;
 @property (strong, nonatomic) CNPostalAddress *address;
@@ -25,5 +26,6 @@
 @property (nonatomic) double price;
 
 - (id)initWithDict:(NSDictionary *)dict;
+- (id)initWithJson:(NSDictionary *)json;
 
 @end
