@@ -13,7 +13,7 @@ NSString *const kRestaurantListTableViewCellSegueIdentifier = @"restaurantListTa
 NSString *const kRestaurantViewControllerOrderButtonSegueIdentifier = @"restaurantViewControllerOrderButtonSegueIdentifier";
 NSString *const kFacebookSignInButtonSegueIdentifier = @"facebookSignInButtonSegueIdentifier";
 
-NSString *const kSurplusBaseUrl = @"http://10.0.0.17:5000";
+NSString *const kSurplusBaseUrl = @"https://surplus-stage.herokuapp.com/";
     // @"https://surplus-stage.herokuapp.com";
 NSString *const kSurplusGetAllRestaurantsPath = @"/restaurants/all";
 NSString *const kSurplusGetStripeCustomerPath = @"/customers/stripe";
