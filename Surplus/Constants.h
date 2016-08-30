@@ -14,8 +14,20 @@
 extern NSString *const kRestaurantListTableViewCellIdentifier;
 extern NSString *const kRestaurantListTableViewCellSegueIdentifier;
 extern NSString *const kRestaurantViewControllerOrderButtonSegueIdentifier;
+extern NSString *const kFacebookSignInButtonSegueIdentifier;
 
 extern NSString *const kSurplusBaseUrl;
 extern NSString *const kSurplusGetAllRestaurantsPath;
+extern NSString *const kSurplusGetStripeCustomerPath;
+extern NSString *const kSurplusStripeCustomerAddNewPaymentMethodPath;
+extern NSString *const kSurplusStripeCustomerChangeDefaultPaymentMethodPath;
+extern NSString *const kSurplusStripeChargeCustomerPath;
+extern NSString *const kSurplusGetOrAddCustomerPath;
+
+extern NSString *const kStripePublishableKey;
+
+extern NSString *const kNSUserDefaultsCustomerKey;
+
+extern NSString *const kTestStripeId;
 
 #endif /* Constants_h */

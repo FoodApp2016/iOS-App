@@ -24,6 +24,13 @@
 		EBEA8BBF1D6E50F100757205 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BBE1D6E50F100757205 /* FBSDKLoginKit.framework */; };
 		EBEA8BC11D6E510A00757205 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BC01D6E510A00757205 /* FBSDKShareKit.framework */; };
 		EBEA8BC41D6E8D2F00757205 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */; };
+		EBEA8BCB1D70B95300757205 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BCA1D70B95300757205 /* Stripe.framework */; };
+		EBEA8BCD1D70B96900757205 /* Stripe.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BCC1D70B96900757205 /* Stripe.bundle */; };
+		EBEA8BD01D70F29C00757205 /* StripeAPIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BCF1D70F29C00757205 /* StripeAPIAdapter.m */; };
+		EBEA8BD31D70F34000757205 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BD21D70F34000757205 /* Customer.m */; };
+		EBEA8BDB1D74C41200757205 /* FacebookSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BDA1D74C41200757205 /* FacebookSignInViewController.m */; };
+		EBEA8BDE1D74C5AF00757205 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BDD1D74C5AF00757205 /* Info.plist */; };
+		EBEA8BE41D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BE31D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +41,7 @@
 		EBA77D141D63FE8800BA8CDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA77D161D63FE8800BA8CDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA77D191D63FE8800BA8CDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EBA77D1B1D63FE8800BA8CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBA77D1B1D63FE8800BA8CDB /* Info__.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info__.plist; sourceTree = "<group>"; };
 		EBA77D211D6509A500BA8CDB /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		EBA77D221D6509A500BA8CDB /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 		EBA77D261D6514A700BA8CDB /* RestaurantListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantListTableViewController.h; sourceTree = "<group>"; };
@@ -55,6 +62,17 @@
 		EBEA8BC01D6E510A00757205 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-4.14.0/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		EBEA8BC21D6E8D2F00757205 /* RequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestHandler.h; sourceTree = "<group>"; };
 		EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHandler.m; sourceTree = "<group>"; };
+		EBEA8BCA1D70B95300757205 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = "<group>"; };
+		EBEA8BCC1D70B96900757205 /* Stripe.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Stripe.bundle; path = Stripe.framework/Stripe.bundle; sourceTree = "<group>"; };
+		EBEA8BCE1D70F29C00757205 /* StripeAPIAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAPIAdapter.h; sourceTree = "<group>"; };
+		EBEA8BCF1D70F29C00757205 /* StripeAPIAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAPIAdapter.m; sourceTree = "<group>"; };
+		EBEA8BD11D70F34000757205 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
+		EBEA8BD21D70F34000757205 /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
+		EBEA8BDA1D74C41200757205 /* FacebookSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSignInViewController.m; sourceTree = "<group>"; };
+		EBEA8BDC1D74C43200757205 /* FacebookSignInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookSignInViewController.h; sourceTree = "<group>"; };
+		EBEA8BDD1D74C5AF00757205 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBEA8BE21D75455F00757205 /* NSUserDefaults+CustomObjectStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+CustomObjectStorage.h"; sourceTree = "<group>"; };
+		EBEA8BE31D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+CustomObjectStorage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +83,7 @@
 				EBEA8BBF1D6E50F100757205 /* FBSDKLoginKit.framework in Frameworks */,
 				EBEA8BBD1D6E50E600757205 /* FBSDKCoreKit.framework in Frameworks */,
 				EBEA8BC11D6E510A00757205 /* FBSDKShareKit.framework in Frameworks */,
+				EBEA8BCB1D70B95300757205 /* Stripe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +118,8 @@
 				EBA77D131D63FE8800BA8CDB /* Main.storyboard */,
 				EBA77D161D63FE8800BA8CDB /* Assets.xcassets */,
 				EBA77D181D63FE8800BA8CDB /* LaunchScreen.storyboard */,
-				EBA77D1B1D63FE8800BA8CDB /* Info.plist */,
+				EBA77D1B1D63FE8800BA8CDB /* Info__.plist */,
+				EBEA8BDD1D74C5AF00757205 /* Info.plist */,
 				EBA77D0A1D63FE8800BA8CDB /* Supporting Files */,
 				EBEA8BBB1D6E50B500757205 /* Frameworks */,
 			);
@@ -119,12 +139,14 @@
 		EBA77D241D65123400BA8CDB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EBEA8BDC1D74C43200757205 /* FacebookSignInViewController.h */,
+				EBEA8BDA1D74C41200757205 /* FacebookSignInViewController.m */,
+				EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */,
+				EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */,
 				EBA77D261D6514A700BA8CDB /* RestaurantListTableViewController.h */,
 				EBA77D271D6514A700BA8CDB /* RestaurantListTableViewController.m */,
 				EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */,
 				EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */,
-				EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */,
-				EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -132,10 +154,12 @@
 		EBA77D251D65124E00BA8CDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EBA77D211D6509A500BA8CDB /* Restaurant.h */,
-				EBA77D221D6509A500BA8CDB /* Restaurant.m */,
 				EBEA8BB51D67CCD800757205 /* Order.h */,
 				EBEA8BB61D67CCD800757205 /* Order.m */,
+				EBA77D211D6509A500BA8CDB /* Restaurant.h */,
+				EBA77D221D6509A500BA8CDB /* Restaurant.m */,
+				EBEA8BD11D70F34000757205 /* Customer.h */,
+				EBEA8BD21D70F34000757205 /* Customer.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -153,6 +177,8 @@
 		EBEA8BBB1D6E50B500757205 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBEA8BCC1D70B96900757205 /* Stripe.bundle */,
+				EBEA8BCA1D70B95300757205 /* Stripe.framework */,
 				EBEA8BC01D6E510A00757205 /* FBSDKShareKit.framework */,
 				EBEA8BBE1D6E50F100757205 /* FBSDKLoginKit.framework */,
 				EBEA8BBC1D6E50E600757205 /* FBSDKCoreKit.framework */,
@@ -166,6 +192,10 @@
 			children = (
 				EBEA8BC21D6E8D2F00757205 /* RequestHandler.h */,
 				EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */,
+				EBEA8BCE1D70F29C00757205 /* StripeAPIAdapter.h */,
+				EBEA8BCF1D70F29C00757205 /* StripeAPIAdapter.m */,
+				EBEA8BE21D75455F00757205 /* NSUserDefaults+CustomObjectStorage.h */,
+				EBEA8BE31D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -229,6 +259,8 @@
 			files = (
 				EBA77D321D66443E00BA8CDB /* RestaurantListTableViewCell.xib in Resources */,
 				EBA77D1A1D63FE8800BA8CDB /* LaunchScreen.storyboard in Resources */,
+				EBEA8BDE1D74C5AF00757205 /* Info.plist in Resources */,
+				EBEA8BCD1D70B96900757205 /* Stripe.bundle in Resources */,
 				EBA77D171D63FE8800BA8CDB /* Assets.xcassets in Resources */,
 				EBA77D151D63FE8800BA8CDB /* Main.storyboard in Resources */,
 			);
@@ -241,16 +273,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBEA8BDB1D74C41200757205 /* FacebookSignInViewController.m in Sources */,
 				EBEA8BB71D67CCD800757205 /* Order.m in Sources */,
 				EBA77D2A1D663D7600BA8CDB /* Constants.m in Sources */,
 				EBA77D231D6509A500BA8CDB /* Restaurant.m in Sources */,
 				EBA77D0F1D63FE8800BA8CDB /* AppDelegate.m in Sources */,
 				EBA77D281D6514A700BA8CDB /* RestaurantListTableViewController.m in Sources */,
 				EBA77D311D66443E00BA8CDB /* RestaurantListTableViewCell.m in Sources */,
+				EBEA8BD01D70F29C00757205 /* StripeAPIAdapter.m in Sources */,
+				EBEA8BD31D70F34000757205 /* Customer.m in Sources */,
 				EBEA8BC41D6E8D2F00757205 /* RequestHandler.m in Sources */,
 				EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */,
 				EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */,
 				EBA77D0C1D63FE8800BA8CDB /* main.m in Sources */,
+				EBEA8BE41D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +403,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-4.14.0",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Surplus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -384,6 +421,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-4.14.0",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Surplus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

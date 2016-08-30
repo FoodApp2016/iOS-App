@@ -7,6 +7,8 @@
 //
 
 #import "OrderConfirmationTableViewController.h"
+#import "StripeApiAdapter.h"
+#import "RequestHandler.h"
 
 @interface OrderConfirmationTableViewController ()
    
@@ -18,6 +20,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *tax;
 @property (weak, nonatomic) IBOutlet UILabel *total;
 @property (weak, nonatomic) IBOutlet UITableViewCell *orderCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *paymentMethodCell;
+@property (weak, nonatomic) IBOutlet UILabel *paymentMethod;
+
+@property (strong, nonatomic) STPPaymentContext *paymentContext;
+@property (weak, nonatomic) IBOutlet UILabel *orderCellLabel;
 
 @end
 
@@ -33,13 +40,15 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.restaurantName.text = self.order.restaurantName;
-    self.leftoversItem.text = self.order.leftoversItem;
+    self.leftoversItem.text = self.order.itemName;
     self.quantity.text = [NSString stringWithFormat:@"%d", self.order.quantity];
-    self.unitPrice.text = [NSString stringWithFormat:@"$%.2f", self.order.unitPrice];
+    self.unitPrice.text = [NSString stringWithFormat:@"$%.2f", (double) self.order.unitPrice / 100];
     self.subtotal.text =
-    [NSString stringWithFormat:@"$%.2f", self.order.quantity * self.order.unitPrice];
+    [NSString stringWithFormat:@"$%.2f", [self subtotalInDollars]];
     self.tax.text = @"$0.00";
     self.total.text = self.subtotal.text;
+    
+    self.orderCell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,10 +56,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)initializeWithPaymentAmount:(int)subtotal {
+    
+    StripeApiAdapter *apiAdapter = [StripeApiAdapter new];
+    self.paymentContext = [[STPPaymentContext alloc] initWithAPIAdapter:apiAdapter];
+    self.paymentContext.delegate = self;
+    self.paymentContext.hostViewController = self;
+    self.paymentContext.paymentAmount = subtotal;
+}
+
+- (double)subtotalInDollars {
+    
+    return self.paymentContext.paymentAmount / 100;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -63,7 +86,87 @@
     if (section == 2) {
         return 1;
     }
+    if (section == 3) {
+        return 1;
+    }
     return 0;
+}
+
+#pragma mark - STPPaymentContext delegate methods
+
+- (void)paymentContextDidChange:(STPPaymentContext *)paymentContext {
+    
+    NSString *paymentMethod = paymentContext.selectedPaymentMethod.label;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (paymentMethod) {
+            self.paymentMethod.text = paymentMethod;
+            self.orderCellLabel.textColor = [UIColor blackColor];
+            return;
+        }
+        
+        self.paymentMethod.text = @"Select Method";
+    });
+}
+
+- (void)paymentContext:(STPPaymentContext *)paymentContext
+didCreatePaymentResult:(nonnull STPPaymentResult *)paymentResult
+            completion:(nonnull STPErrorBlock)completion {
+    
+    [[RequestHandler new] chargeCustomerWithOrder:self.order
+                                           source:paymentResult.source.stripeID
+                                completionHandler:^(NSError *error,
+                                                    NSData *data) {
+        completion(error);
+    }];
+}
+
+- (void)paymentContext:(STPPaymentContext *)paymentContext
+   didFinishWithStatus:(STPPaymentStatus)status
+                 error:(nullable NSError *)error {
+    
+    if (status == STPPaymentStatusUserCancellation) {
+        return;
+    }
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success!"
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Ok"
+                                              style:UIAlertActionStyleCancel
+                                            handler:nil]];
+
+    if (status == STPPaymentStatusError) {
+        alert.title = @"Error...";
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.navigationController presentViewController:alert
+                                                animated:YES
+                                              completion:nil];
+    });
+
+    return;
+}
+
+- (void)paymentContext:(STPPaymentContext *)paymentContext
+didFailToLoadWithError:(nonnull NSError *)error {
+    
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 2) {
+        [self.paymentContext pushPaymentMethodsViewController];
+    }
+    
+    if (indexPath.section == 3) {
+        [self.paymentContext requestPayment];
+    }
 }
 
 /*

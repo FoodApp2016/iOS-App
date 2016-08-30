@@ -23,7 +23,7 @@
                 self.price = [dict[key] doubleValue];
             }
             else if ([key isEqual:@"pickupTime"]) {
-                self.pickupTime = [dict[key] doubleValue];
+                self.pickupTime = [NSDate date];
             }
             else {
                 [self setValue:dict[key] forKey:key];
@@ -42,8 +42,10 @@
         self.id_ = [json[@"id"] intValue];
         self.name = json[@"name"];
         self.address = json[@"address"];
+        self.leftoversItem = json[@"leftoversItem"];
+        self.price = [json[@"price"] intValue];
+        self.pickupTime = [NSDate date];
     }
-
     
     return self;
 }

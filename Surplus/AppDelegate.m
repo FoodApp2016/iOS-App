@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+
+@import Stripe;
 
 @interface AppDelegate ()
 
@@ -20,6 +23,7 @@
     
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:kStripePublishableKey];
 
     return YES;
 }

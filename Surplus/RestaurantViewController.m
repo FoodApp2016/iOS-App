@@ -36,7 +36,7 @@
                           [self calculateDistanceFromRestaurant:self.restaurant]];
     self.rating.text = [NSString stringWithFormat:@"%.1f", self.restaurant.rating];
     self.leftoversItem.text = self.restaurant.leftoversItem;
-    self.price.text = [NSString stringWithFormat:@"$%.2f", self.restaurant.price];
+    self.price.text = [NSString stringWithFormat:@"$%.2f", (double) self.restaurant.price / 100];
     [self.phoneNumber setTitle:self.restaurant.phoneNumber.stringValue
                       forState:UIControlStateNormal];
     self.quantityTextField.keyboardType = UIKeyboardTypeNumberPad;
@@ -58,6 +58,7 @@
     double quantity = [self.quantityTextField.text intValue];
     OrderConfirmationTableViewController *destinationViewController = segue.destinationViewController;
     destinationViewController.order = [[Order alloc] initWithRestaurant:self.restaurant quantity:quantity];
+    [destinationViewController initializeWithPaymentAmount:self.restaurant.price * quantity];
 }
 
 /*

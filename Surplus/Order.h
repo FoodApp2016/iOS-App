@@ -8,14 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "Restaurant.h"
+#import "Customer.h"
 
 @interface Order : NSObject
 
+@property (nonatomic) unsigned int customerId;
+@property (nonatomic) unsigned int restaurantId;
 @property (strong, nonatomic) NSString *restaurantName;
-@property (strong, nonatomic) NSString *leftoversItem;
+@property (strong, nonatomic) NSString *itemName;
 @property (nonatomic) unsigned int quantity;
-@property (nonatomic) double unitPrice;
+@property (nonatomic) unsigned int unitPrice;
+@property (nonatomic) unsigned int amount;
+@property (nonatomic) NSDate *pickupTime;
 
-- (id)initWithRestaurant:(Restaurant *)restaurant quantity:(unsigned int)quantity;
+- (id)initWithRestaurant:(Restaurant *)restaurant
+                quantity:(unsigned int)quantity;
+
+- (NSDictionary *)json;
 
 @end

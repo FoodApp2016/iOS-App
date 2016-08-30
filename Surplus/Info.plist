@@ -43,25 +43,40 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>CFBundleURLTypes</key>
-    <array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+                <string>fb1762314080718544</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+    <string>1762314080718544</string>
+	<key>FacebookDisplayName</key>
+	<string>Surplus</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSExceptionDomains</key>
         <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb1813560982207196</string>
-            </array>
+            <key>yourdomain.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
         </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>Surplus.Surplus</string>
-    <key>FacebookDisplayName</key>
-    <string>Surplus</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+    </dict>
 </dict>
 </plist>

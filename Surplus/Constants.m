@@ -11,6 +11,19 @@
 NSString *const kRestaurantListTableViewCellIdentifier = @"restaurantListTableViewCellIdentifier";
 NSString *const kRestaurantListTableViewCellSegueIdentifier = @"restaurantListTableViewCellSegueIdentifier";
 NSString *const kRestaurantViewControllerOrderButtonSegueIdentifier = @"restaurantViewControllerOrderButtonSegueIdentifier";
+NSString *const kFacebookSignInButtonSegueIdentifier = @"facebookSignInButtonSegueIdentifier";
 
-NSString *const kSurplusBaseUrl = @"https://surplus-stage.herokuapp.com";
+NSString *const kSurplusBaseUrl = @"http://10.0.0.17:5000";
+    // @"https://surplus-stage.herokuapp.com";
 NSString *const kSurplusGetAllRestaurantsPath = @"/restaurants/all";
+NSString *const kSurplusGetStripeCustomerPath = @"/customers/stripe";
+NSString *const kSurplusStripeCustomerAddNewPaymentMethodPath = @"/customers/stripe/newpaymentmethod";
+NSString *const kSurplusStripeCustomerChangeDefaultPaymentMethodPath = @"/customers/stripe/changedefaultpaymentmethod";
+NSString *const kSurplusStripeChargeCustomerPath = @"/customers/stripe/charge";
+NSString *const kSurplusGetOrAddCustomerPath = @"/customers/getoradd";
+
+NSString *const kStripePublishableKey = @"pk_test_WtOtIVWN2IMyqREQteqgUVC4";
+
+NSString *const kNSUserDefaultsCustomerKey = @"NSUserDefaultsCustomerKey";
+
+NSString *const kTestStripeId = @"cus_95vTF2ZS0o9bWw";

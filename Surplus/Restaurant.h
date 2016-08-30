@@ -20,10 +20,10 @@
 @property (nonatomic) double rating;
 @property (strong, nonatomic) CNPhoneNumber *phoneNumber;
 @property (strong, nonatomic) NSString *emailAddress;
-@property (nonatomic) NSTimeInterval pickupTime;
+@property (nonatomic) NSDate *pickupTime;
 @property (strong, nonatomic) NSString *leftoversItem;
 @property (strong, nonatomic) NSArray *categories;
-@property (nonatomic) double price;
+@property (nonatomic) unsigned int price;
 
 - (id)initWithDict:(NSDictionary *)dict;
 - (id)initWithJson:(NSDictionary *)json;

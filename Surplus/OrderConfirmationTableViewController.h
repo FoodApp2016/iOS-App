@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Order.h"
 
-@interface OrderConfirmationTableViewController : UITableViewController
+@import Stripe;
+
+@interface OrderConfirmationTableViewController: UITableViewController<STPPaymentContextDelegate>
 
 @property (strong, nonatomic) Order *order;
+
+- (void)initializeWithPaymentAmount:(int)subtotal;
 
 @end

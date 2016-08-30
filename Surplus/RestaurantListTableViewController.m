@@ -115,9 +115,12 @@
         }
         
         self.restaurantList = [restaurants copy];
-        [self.tableView reloadData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }];
-    
+//
 //    NSMutableArray *restaurantList = [NSMutableArray new];
 //
 //    for (NSDictionary *restaurant in [self mockRestaurantData]) {
@@ -159,7 +162,7 @@
                           [self calculateDistanceFromRestaurant:restaurant]];
     cell.rating.text = [NSString stringWithFormat:@"%.1f", restaurant.rating];
     cell.leftoversItem.text = restaurant.leftoversItem;
-    cell.price.text = [NSString stringWithFormat:@"$%.2f", restaurant.price];
+    cell.price.text = [NSString stringWithFormat:@"$%.2f", (double) restaurant.price / 100];
     [cell.phoneNumber setTitle:restaurant.phoneNumber.stringValue forState:UIControlStateNormal];
     
     return cell;
