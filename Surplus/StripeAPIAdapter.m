@@ -19,7 +19,6 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
     Customer *customer = [[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey];
-    NSLog(@"%@", customer.stripeId);
     
     [[RequestHandler new] getStripeCustomer:customer.stripeId
                           completionHandler:^(NSError *error,

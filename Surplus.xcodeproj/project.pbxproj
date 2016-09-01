@@ -31,6 +31,9 @@
 		EBEA8BDB1D74C41200757205 /* FacebookSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BDA1D74C41200757205 /* FacebookSignInViewController.m */; };
 		EBEA8BDE1D74C5AF00757205 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BDD1D74C5AF00757205 /* Info.plist */; };
 		EBEA8BE41D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BE31D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m */; };
+		EBEA8BEA1D756B6800757205 /* beef-fried-rice-2-edited.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BE91D756B6800757205 /* beef-fried-rice-2-edited.jpg */; };
+		EBEA8BEC1D759A9C00757205 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BEB1D75939E00757205 /* fontawesome-webfont.ttf */; };
+		EBEA8BEE1D75A0E400757205 /* forage-mock-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BED1D75A0E400757205 /* forage-mock-image.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +76,9 @@
 		EBEA8BDD1D74C5AF00757205 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBEA8BE21D75455F00757205 /* NSUserDefaults+CustomObjectStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+CustomObjectStorage.h"; sourceTree = "<group>"; };
 		EBEA8BE31D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+CustomObjectStorage.m"; sourceTree = "<group>"; };
+		EBEA8BE91D756B6800757205 /* beef-fried-rice-2-edited.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "beef-fried-rice-2-edited.jpg"; path = "../beef-fried-rice-2-edited.jpg"; sourceTree = "<group>"; };
+		EBEA8BEB1D75939E00757205 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		EBEA8BED1D75A0E400757205 /* forage-mock-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "forage-mock-image.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,9 @@
 		EBA77D0A1D63FE8800BA8CDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EBEA8BED1D75A0E400757205 /* forage-mock-image.jpg */,
+				EBEA8BE91D756B6800757205 /* beef-fried-rice-2-edited.jpg */,
+				EBEA8BEB1D75939E00757205 /* fontawesome-webfont.ttf */,
 				EBA77D2B1D663DA900BA8CDB /* Constants.h */,
 				EBA77D291D663D7600BA8CDB /* Constants.m */,
 				EBA77D0B1D63FE8800BA8CDB /* main.m */,
@@ -257,12 +266,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBEA8BEC1D759A9C00757205 /* fontawesome-webfont.ttf in Resources */,
 				EBA77D321D66443E00BA8CDB /* RestaurantListTableViewCell.xib in Resources */,
 				EBA77D1A1D63FE8800BA8CDB /* LaunchScreen.storyboard in Resources */,
 				EBEA8BDE1D74C5AF00757205 /* Info.plist in Resources */,
 				EBEA8BCD1D70B96900757205 /* Stripe.bundle in Resources */,
 				EBA77D171D63FE8800BA8CDB /* Assets.xcassets in Resources */,
 				EBA77D151D63FE8800BA8CDB /* Main.storyboard in Resources */,
+				EBEA8BEA1D756B6800757205 /* beef-fried-rice-2-edited.jpg in Resources */,
+				EBEA8BEE1D75A0E400757205 /* forage-mock-image.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

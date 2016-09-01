@@ -30,4 +30,6 @@ extern NSString *const kNSUserDefaultsCustomerKey;
 
 extern NSString *const kTestStripeId;
 
+extern NSString *const kFontAwesomeStar;
+
 #endif /* Constants_h */

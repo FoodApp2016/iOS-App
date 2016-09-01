@@ -17,24 +17,58 @@
 @interface FacebookSignInViewController ()
 
 @property (strong, nonatomic) FBSDKLoginButton *loginButton;
+@property (strong, nonatomic) UILabel *surplusLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
 
 @implementation FacebookSignInViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
-    self.loginButton = [FBSDKLoginButton new];
-    self.loginButton.delegate = self;
-    self.loginButton.center = self.view.center;
-    self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-    [self.view addSubview:self.loginButton];
+    [self createLoginButton];
+    [self createSurplusLabel];
+    
+    self.backgroundImageView.image = [UIImage imageNamed:@"beef-fried-rice-2-edited.jpg"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)createLoginButton {
+    
+    self.loginButton = [FBSDKLoginButton new];
+    self.loginButton.delegate = self;
+    self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+    
+    float x = self.view.center.x - self.loginButton.frame.size.width / 2;
+    float y = self.view.frame.size.height - self.loginButton.frame.size.height - 30;
+    [self.loginButton setFrame:CGRectMake(x,
+                                          y,
+                                          self.loginButton.frame.size.width,
+                                          self.loginButton.frame.size.height)];
+    [self.view addSubview:self.loginButton];
+}
+
+- (void)createSurplusLabel {
+    
+    self.surplusLabel = [UILabel new];
+    self.surplusLabel.text = @"SURPLUS";
+    self.surplusLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:36.];
+    self.surplusLabel.textColor = [UIColor whiteColor];
+    [self.surplusLabel sizeToFit];
+    
+    float x = self.view.center.x - self.surplusLabel.frame.size.width / 2;
+    float y = self.loginButton.frame.origin.y - self.surplusLabel.frame.size.height - 10;
+    [self.surplusLabel setFrame:CGRectMake(x,
+                                           y,
+                                           self.surplusLabel.frame.size.width,
+                                           self.surplusLabel.frame.size.height)];
+    [self.view addSubview:self.surplusLabel];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -74,6 +108,7 @@
             NSDictionary *customerDict = [NSJSONSerialization JSONObjectWithData:data
                                                                          options:0
                                                                            error:nil];
+            
             NSMutableDictionary *temp = [customerDict mutableCopy];
             temp[@"id_"] = temp[@"id"];
             [temp removeObjectForKey:@"id"];

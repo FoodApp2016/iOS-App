@@ -27,3 +27,5 @@ NSString *const kStripePublishableKey = @"pk_test_WtOtIVWN2IMyqREQteqgUVC4";
 NSString *const kNSUserDefaultsCustomerKey = @"NSUserDefaultsCustomerKey";
 
 NSString *const kTestStripeId = @"cus_95vTF2ZS0o9bWw";
+
+NSString *const kFontAwesomeStar = @"";

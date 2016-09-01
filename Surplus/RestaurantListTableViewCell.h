@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *distance;
 @property (weak, nonatomic) IBOutlet UILabel *rating;
 @property (weak, nonatomic) IBOutlet UILabel *leftoversItem;
-@property (weak, nonatomic) IBOutlet UILabel *price;
-@property (weak, nonatomic) IBOutlet UIButton *phoneNumber;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView_;
 
 @end

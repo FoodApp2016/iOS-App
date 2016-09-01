@@ -23,80 +23,17 @@
 
 @implementation RestaurantListTableViewController
 
-- (NSTimeInterval)stringToTimeInterval:(NSString *)string {
-    
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"HH:mm:ss";
-    NSDate *start = [dateFormatter dateFromString:@"00:00:00"];
-    NSDate *end = [dateFormatter dateFromString:string];
-    return [end timeIntervalSinceDate:start];
-}
-
-- (NSArray *)mockRestaurantData {
-    
-    CNMutablePostalAddress *joesBuffetAddress = [CNMutablePostalAddress new];
-    joesBuffetAddress.street = @"834 Texas St";
-    joesBuffetAddress.city = @"Fairfield";
-    joesBuffetAddress.state = @"CA";
-    joesBuffetAddress.postalCode = @"94533";
-    joesBuffetAddress.country = @"USA";
-    
-    CNMutablePostalAddress *greenBarAddress = [CNMutablePostalAddress new];
-    greenBarAddress.street = @"3 Embarcadero Ctr Lobby Level";
-    greenBarAddress.city = @"San Francisco";
-    greenBarAddress.state = @"CA";
-    greenBarAddress.postalCode = @"94111";
-    greenBarAddress.country = @"USA";
-    
-    CNMutablePostalAddress *molinariDelicatessenAddress = [CNMutablePostalAddress new];
-    molinariDelicatessenAddress.street = @"373 Columbus Ave";
-    molinariDelicatessenAddress.city = @"San Francisco";
-    molinariDelicatessenAddress.state = @"CA";
-    molinariDelicatessenAddress.postalCode = @"94133";
-    molinariDelicatessenAddress.country = @"USA";
-
-    return @[
-             @{
-                @"name": @"Joe's Buffet",
-                @"address": [joesBuffetAddress copy],
-                @"rating": [NSNumber numberWithDouble:4.5],
-                @"phoneNumber": [CNPhoneNumber phoneNumberWithStringValue:@"(707) 425-2317"],
-                @"pickupTime": [NSNumber numberWithDouble:[self stringToTimeInterval:@"21:30:00"]],
-                @"leftoversItem": @"Steak",
-                @"categories": @[@"Buffets", @"Sandwiches"],
-                @"price": [NSNumber numberWithDouble:5]
-              },
-             
-             @{
-                 @"name": @"Green Bar",
-                 @"address": [greenBarAddress copy],
-                 @"rating": [NSNumber numberWithDouble:3.5],
-                 @"phoneNumber": [CNPhoneNumber phoneNumberWithStringValue:@"(415) 693-9339"],
-                 @"pickupTime": [NSNumber numberWithDouble:[self stringToTimeInterval:@"20:00:00"]],
-                 @"leftoversItem": @"Spicy chicken sandwich",
-                 @"categories": @[@"American", @"Delis", @"Buffets"],
-                 @"price": [NSNumber numberWithDouble:5]
-              },
-             
-             @{
-                 @"name": @"Molinari Delicatessen",
-                 @"address": [molinariDelicatessenAddress copy],
-                 @"rating": [NSNumber numberWithDouble:4.5],
-                 @"phoneNumber": [CNPhoneNumber phoneNumberWithStringValue:@"(415) 421-2337"],
-                 @"pickupTime": [NSNumber numberWithDouble:[self stringToTimeInterval:@"22:15:00"]],
-                 @"leftoversItem": @"Renzo Special",
-                 @"categories": @[@"Delis"],
-                 @"price": [NSNumber numberWithDouble:5]
-              }
-    ];
-}
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"RestaurantListTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:kRestaurantListTableViewCellIdentifier];
     
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 4)];
+    self.tableView.tableHeaderView.backgroundColor = [self grayColor];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.backgroundColor = [self grayColor];
+
     [[RequestHandler new] getAllRestaurants:^(NSError *error,
                                               NSData *data) {
         
@@ -120,19 +57,15 @@
             [self.tableView reloadData];
         });
     }];
-//
-//    NSMutableArray *restaurantList = [NSMutableArray new];
-//
-//    for (NSDictionary *restaurant in [self mockRestaurantData]) {
-//        [restaurantList addObject:[[Restaurant alloc] initWithDict:restaurant]];
-//    }
-//    
-//    self.restaurantList = [restaurantList copy];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIColor *)grayColor {
+    return [UIColor colorWithRed:0.97227 green:0.979203 blue:1 alpha:1];
 }
 
 #pragma mark - Table view data source
@@ -146,7 +79,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 160;
+    return self.tableView.frame.size.width / 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -157,13 +90,16 @@
     Restaurant *restaurant = self.restaurantList[indexPath.row];
     
     cell.name.text = restaurant.name;
-    cell.displayImage.image = restaurant.displayImage;
     cell.distance.text = [NSString stringWithFormat:@"%.1f mi",
                           [self calculateDistanceFromRestaurant:restaurant]];
-    cell.rating.text = [NSString stringWithFormat:@"%.1f", restaurant.rating];
+    cell.rating.font = [UIFont fontWithName:@"FontAwesome" size:17.];
+    cell.rating.text = @"4";
     cell.leftoversItem.text = restaurant.leftoversItem;
-    cell.price.text = [NSString stringWithFormat:@"$%.2f", (double) restaurant.price / 100];
-    [cell.phoneNumber setTitle:restaurant.phoneNumber.stringValue forState:UIControlStateNormal];
+    
+    if (indexPath.row == 0) {
+        cell.displayImage.image = [UIImage imageNamed:@"forage-mock-image.jpg"];
+        cell.displayImage.contentMode = UIViewContentModeScaleAspectFill;
+    }
     
     return cell;
 }

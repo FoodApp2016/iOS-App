@@ -11,9 +11,7 @@
 @implementation NSUserDefaults (CustomObjectStorage)
 
 - (void)saveCustomer:(Customer *)customer key:(NSString *)key {
-    
-    NSLog(@"%@", customer.stripeId);
-    
+
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:customer];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:encodedObject forKey:key];

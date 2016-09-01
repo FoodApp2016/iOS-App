@@ -173,8 +173,6 @@
     NSMutableDictionary *postDataDict = [@{@"order": [order json]} mutableCopy];
     postDataDict[@"source"] = source;
     
-    NSLog(@"%@", postDataDict);
-    
     NSData *postData = [NSJSONSerialization dataWithJSONObject:postDataDict
                                                        options:0
                                                          error:nil];

@@ -11,8 +11,7 @@
 #import "RequestHandler.h"
 
 @interface OrderConfirmationTableViewController ()
-   
-@property (weak, nonatomic) IBOutlet UILabel *restaurantName;
+
 @property (weak, nonatomic) IBOutlet UILabel *leftoversItem;
 @property (weak, nonatomic) IBOutlet UILabel *quantity;
 @property (weak, nonatomic) IBOutlet UILabel *unitPrice;
@@ -31,15 +30,9 @@
 @implementation OrderConfirmationTableViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.restaurantName.text = self.order.restaurantName;
     self.leftoversItem.text = self.order.itemName;
     self.quantity.text = [NSString stringWithFormat:@"%d", self.order.quantity];
     self.unitPrice.text = [NSString stringWithFormat:@"$%.2f", (double) self.order.unitPrice / 100];
@@ -166,6 +159,26 @@ didFailToLoadWithError:(nonnull NSError *)error {
     
     if (indexPath.section == 3) {
         [self.paymentContext requestPayment];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Remove seperator inset
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    // Prevent the cell from inheriting the Table View's margin settings
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    // Explictly set your cell's layout margins
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
 
