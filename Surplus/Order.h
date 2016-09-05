@@ -19,7 +19,7 @@
 @property (nonatomic) unsigned int quantity;
 @property (nonatomic) unsigned int unitPrice;
 @property (nonatomic) unsigned int amount;
-@property (nonatomic) NSDate *pickupTime;
+@property (strong, nonatomic) NSDate *pickupTime;
 
 - (id)initWithRestaurant:(Restaurant *)restaurant
                 quantity:(unsigned int)quantity;

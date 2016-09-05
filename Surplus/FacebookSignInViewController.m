@@ -76,6 +76,7 @@
     [super viewDidAppear:animated];
     
     if ([FBSDKAccessToken currentAccessToken]) {
+        [self getOrCreateCustomer];
         [self performSegueWithIdentifier:kFacebookSignInButtonSegueIdentifier sender:nil];
     }
 }
@@ -89,6 +90,16 @@
         NSLog(@"%@", error);
         return;
     }
+
+    [self getOrCreateCustomer];
+    [self performSegueWithIdentifier:kFacebookSignInButtonSegueIdentifier sender:nil];
+}
+
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
+    
+}
+
+- (void)getOrCreateCustomer {
     
     [[[FBSDKGraphRequest alloc]
       initWithGraphPath:@"/me"
@@ -104,7 +115,7 @@
                                                facebookId:facebookId
                                         completionHandler:^(NSError *error,
                                                             NSData *data) {
-            
+                                            
             NSDictionary *customerDict = [NSJSONSerialization JSONObjectWithData:data
                                                                          options:0
                                                                            error:nil];
@@ -113,20 +124,13 @@
             temp[@"id_"] = temp[@"id"];
             [temp removeObjectForKey:@"id"];
             customerDict = [temp copy];
-                                            
+            
             Customer *customer = [[Customer alloc] initWithDict:customerDict];
             [[NSUserDefaults standardUserDefaults] saveCustomer:customer
                                                             key:kNSUserDefaultsCustomerKey];
         }];
     }];
-
-    [self performSegueWithIdentifier:kFacebookSignInButtonSegueIdentifier sender:nil];
 }
-
-- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
-    
-}
-
 
 /*
 #pragma mark - Navigation

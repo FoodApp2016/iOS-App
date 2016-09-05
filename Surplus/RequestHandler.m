@@ -8,6 +8,7 @@
 
 #import "RequestHandler.h"
 #import "Constants.h"
+#import "NSUserDefaults+CustomObjectStorage.h"
 
 @implementation RequestHandler
 
@@ -85,6 +86,8 @@
         completionHandler:(void (^)(NSError *, NSURLResponse *, NSData *))completionHandler {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey] name]);
     
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
