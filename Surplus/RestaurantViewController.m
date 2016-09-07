@@ -42,7 +42,9 @@
     self.price.text = [NSString stringWithFormat:@"$%.2f", (double) self.restaurant.price / 100];
     [self.phoneNumber setTitle:self.restaurant.phoneNumber.stringValue
                       forState:UIControlStateNormal];
-    self.quantityTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.quantityTextField.delegate = self;
+    
+    self.quantityStepper.value = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,13 +59,8 @@
     
 }
 
-- (IBAction)quantityTextFieldValueChanged:(id)sender {
-
-    if ([self.quantityTextField.text intValue] > self.quantityStepper.maximumValue) {
-        self.quantityTextField.text = [NSString stringWithFormat:@"%d", (int) self.quantityStepper.maximumValue];
-    }
-    
-    self.quantityStepper.value = [self.quantityTextField.text doubleValue];
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return NO;
 }
 
 - (IBAction)quantityStepperValueChanged:(id)sender {

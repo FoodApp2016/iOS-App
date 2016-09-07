@@ -26,9 +26,11 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
     UINib *nib = [UINib nibWithNibName:@"RestaurantListTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:kRestaurantListTableViewCellIdentifier];
     
+    self.navigationItem.leftBarButtonItem = nil;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 4)];
     self.tableView.tableHeaderView.backgroundColor = [self grayColor];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

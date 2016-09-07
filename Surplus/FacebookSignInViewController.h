@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-@interface FacebookSignInViewController : UIViewController <FBSDKLoginButtonDelegate>
+@interface FacebookSignInViewController : UIViewController<FBSDKLoginButtonDelegate>
 
 @end

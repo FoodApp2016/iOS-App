@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB1ACF071D7DE693004B5E19 /* ReceiptListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1ACF061D7DE693004B5E19 /* ReceiptListTableViewCell.m */; };
+		EB1ACF091D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1ACF081D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib */; };
+		EB1ACF0C1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1ACF0B1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.m */; };
+		EB311A3E1D7FD97F00901AB3 /* RestaurantLoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB311A3D1D7FD97F00901AB3 /* RestaurantLoginTableViewController.m */; };
+		EB311A411D7FDB4F00901AB3 /* RestaurantFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB311A401D7FDB4F00901AB3 /* RestaurantFormTableViewController.m */; };
+		EB311A441D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB311A431D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.m */; };
 		EBA77D0C1D63FE8800BA8CDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA77D0B1D63FE8800BA8CDB /* main.m */; };
 		EBA77D0F1D63FE8800BA8CDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA77D0E1D63FE8800BA8CDB /* AppDelegate.m */; };
 		EBA77D151D63FE8800BA8CDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA77D131D63FE8800BA8CDB /* Main.storyboard */; };
@@ -37,6 +43,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB1ACF051D7DE693004B5E19 /* ReceiptListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptListTableViewCell.h; sourceTree = "<group>"; };
+		EB1ACF061D7DE693004B5E19 /* ReceiptListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptListTableViewCell.m; sourceTree = "<group>"; };
+		EB1ACF081D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiptListTableViewCell.xib; sourceTree = "<group>"; };
+		EB1ACF0A1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantSignUpTableViewController.h; sourceTree = "<group>"; };
+		EB1ACF0B1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantSignUpTableViewController.m; sourceTree = "<group>"; };
+		EB311A3C1D7FD97F00901AB3 /* RestaurantLoginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantLoginTableViewController.h; sourceTree = "<group>"; };
+		EB311A3D1D7FD97F00901AB3 /* RestaurantLoginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantLoginTableViewController.m; sourceTree = "<group>"; };
+		EB311A3F1D7FDB4F00901AB3 /* RestaurantFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantFormTableViewController.h; sourceTree = "<group>"; };
+		EB311A401D7FDB4F00901AB3 /* RestaurantFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantFormTableViewController.m; sourceTree = "<group>"; };
+		EB311A421D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantCompleteRegistrationTableViewController.h; sourceTree = "<group>"; };
+		EB311A431D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantCompleteRegistrationTableViewController.m; sourceTree = "<group>"; };
 		EBA77D071D63FE8800BA8CDB /* Surplus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surplus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA77D0B1D63FE8800BA8CDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EBA77D0D1D63FE8800BA8CDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -156,6 +173,14 @@
 				EBA77D271D6514A700BA8CDB /* RestaurantListTableViewController.m */,
 				EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */,
 				EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */,
+				EB311A3F1D7FDB4F00901AB3 /* RestaurantFormTableViewController.h */,
+				EB311A401D7FDB4F00901AB3 /* RestaurantFormTableViewController.m */,
+				EB1ACF0A1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.h */,
+				EB1ACF0B1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.m */,
+				EB311A3C1D7FD97F00901AB3 /* RestaurantLoginTableViewController.h */,
+				EB311A3D1D7FD97F00901AB3 /* RestaurantLoginTableViewController.m */,
+				EB311A421D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.h */,
+				EB311A431D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -179,6 +204,9 @@
 				EBA77D2E1D66443E00BA8CDB /* RestaurantListTableViewCell.h */,
 				EBA77D2F1D66443E00BA8CDB /* RestaurantListTableViewCell.m */,
 				EBA77D301D66443E00BA8CDB /* RestaurantListTableViewCell.xib */,
+				EB1ACF051D7DE693004B5E19 /* ReceiptListTableViewCell.h */,
+				EB1ACF061D7DE693004B5E19 /* ReceiptListTableViewCell.m */,
+				EB1ACF081D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -273,6 +301,7 @@
 				EBEA8BDE1D74C5AF00757205 /* Info.plist in Resources */,
 				EBEA8BCD1D70B96900757205 /* Stripe.bundle in Resources */,
 				EBA77D171D63FE8800BA8CDB /* Assets.xcassets in Resources */,
+				EB1ACF091D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib in Resources */,
 				EBA77D151D63FE8800BA8CDB /* Main.storyboard in Resources */,
 				EBEA8BEA1D756B6800757205 /* beef-fried-rice-2-edited.jpg in Resources */,
 				EBEA8BEE1D75A0E400757205 /* forage-mock-image.jpg in Resources */,
@@ -288,18 +317,23 @@
 			files = (
 				EBEA8BDB1D74C41200757205 /* FacebookSignInViewController.m in Sources */,
 				EBEA8BB71D67CCD800757205 /* Order.m in Sources */,
+				EB311A411D7FDB4F00901AB3 /* RestaurantFormTableViewController.m in Sources */,
 				EBA77D2A1D663D7600BA8CDB /* Constants.m in Sources */,
 				EBA77D231D6509A500BA8CDB /* Restaurant.m in Sources */,
 				EBA77D0F1D63FE8800BA8CDB /* AppDelegate.m in Sources */,
 				EBA77D281D6514A700BA8CDB /* RestaurantListTableViewController.m in Sources */,
+				EB1ACF0C1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.m in Sources */,
 				EBA77D311D66443E00BA8CDB /* RestaurantListTableViewCell.m in Sources */,
 				EBEA8BD01D70F29C00757205 /* StripeAPIAdapter.m in Sources */,
 				EBEA8BD31D70F34000757205 /* Customer.m in Sources */,
+				EB311A3E1D7FD97F00901AB3 /* RestaurantLoginTableViewController.m in Sources */,
 				EBEA8BC41D6E8D2F00757205 /* RequestHandler.m in Sources */,
 				EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */,
 				EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */,
+				EB311A441D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.m in Sources */,
 				EBA77D0C1D63FE8800BA8CDB /* main.m in Sources */,
 				EBEA8BE41D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m in Sources */,
+				EB1ACF071D7DE693004B5E19 /* ReceiptListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
