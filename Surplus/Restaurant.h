@@ -17,7 +17,7 @@
 @property (nonatomic) int id_;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *stripeId;
-@property (strong, nonatomic) CNPostalAddress *address;
+@property (strong, nonatomic) NSString *address;
 @property (strong, nonatomic) CLLocation *location;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
