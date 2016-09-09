@@ -17,6 +17,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section;
 - (void)displayProcessingRegistrationAlertController;
-- (void)buttonPressed:(id)sender handler:(void(^)(void))handler;
+- (void)displayOrHideCompleteAllFieldsHeaderIfRequired;
 
 @end

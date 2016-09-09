@@ -7,13 +7,17 @@
 //
 
 #import "RestaurantSignUpTableViewController.h"
+#import "RequestHandler.h"
+#import "Restaurant.h"
+#import "NSUserDefaults+CustomObjectStorage.h"
+#import "Constants.h"
 
 @interface RestaurantSignUpTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *emailIdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *restaurantNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *restaurantAddressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *representativeNameTextField;
 @property (weak, nonatomic) IBOutlet UILabel *dateOfBirthLabel;
 @property (weak, nonatomic) IBOutlet UITableViewCell *datePickerCell;
@@ -35,7 +39,7 @@
     self.textFields = @[self.emailIdTextField,
                         self.passwordTextField,
                         self.restaurantNameTextField,
-                        self.restaurantAddressTextField,
+                        self.phoneNumberTextField,
                         self.representativeNameTextField];
     
     self.dateOfBirthLabel.text = [NSDateFormatter localizedStringFromDate:[NSDate date]
@@ -84,13 +88,48 @@
 
 - (IBAction)datePickerValueChanged:(id)sender {
     
-    self.dateOfBirthLabel.text = [NSDateFormatter localizedStringFromDate:self.datePicker.date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+    self.dateOfBirthLabel.text = [NSDateFormatter localizedStringFromDate:self.datePicker.date
+                                                                dateStyle:NSDateFormatterShortStyle
+                                                                timeStyle:NSDateFormatterNoStyle];
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
-    [super buttonPressed:sender
-                 handler:^() {
-        [self displayProcessingRegistrationAlertController];
+    
+    [super displayOrHideCompleteAllFieldsHeaderIfRequired];
+    
+    if (![self allFieldsAreComplete]) {
+        return;
+    }
+    
+    [[RequestHandler new] createNewRestaurantWithUsername:self.emailIdTextField.text
+                                                 password:self.passwordTextField.text
+                                                     name:self.restaurantNameTextField.text
+                                              phoneNumber:self.phoneNumberTextField.text
+                                        completionHandler:^(NSData *data,
+                                                            NSURLResponse *response,
+                                                            NSError *error) {
+                                            
+        if (error) {
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+            return;
+        }
+                                            
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                             options:0
+                                                               error:&error];
+        
+        if (error) {
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+            return;
+        }
+                                            
+        Restaurant *restaurant = [[Restaurant alloc] initWithJson:json];
+        [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
+                                                          key:kNSUserDefaultsRestaurantKey];
+                                            
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self displayProcessingRegistrationAlertController];
+        });
     }];
 }
 

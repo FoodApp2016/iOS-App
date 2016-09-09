@@ -10,20 +10,28 @@
 
 @import Contacts;
 @import UIKit;
+@import CoreLocation;
 
-@interface Restaurant : NSObject
+@interface Restaurant : NSObject<NSCoding>
 
 @property (nonatomic) int id_;
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) UIImage *displayImage;
+@property (strong, nonatomic) NSString *stripeId;
 @property (strong, nonatomic) CNPostalAddress *address;
-@property (nonatomic) double rating;
-@property (strong, nonatomic) CNPhoneNumber *phoneNumber;
-@property (strong, nonatomic) NSString *emailAddress;
-@property (nonatomic) NSDate *pickupTime;
+@property (strong, nonatomic) CLLocation *location;
+@property (strong, nonatomic) NSString *username;
+@property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *description_;
 @property (strong, nonatomic) NSString *leftoversItem;
-@property (strong, nonatomic) NSArray *categories;
 @property (nonatomic) unsigned int price;
+@property (nonatomic) NSDate *pickupTime;
+@property (nonatomic) BOOL isActivated;
+@property (strong, nonatomic) CNPhoneNumber *phoneNumber;
+@property (strong, nonatomic) NSString *representativeName;
+@property (strong, nonatomic) NSDate *representativeDateOfBirth;
+
+@property (strong, nonatomic) UIImage *displayImage;
+@property (nonatomic) double rating;
 
 - (id)initWithDict:(NSDictionary *)dict;
 - (id)initWithJson:(NSDictionary *)json;

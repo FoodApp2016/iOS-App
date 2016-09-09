@@ -66,21 +66,26 @@
     [self.navigationController presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)buttonPressed:(id)sender handler:(void(^)(void))handler {
+- (void)displayOrHideCompleteAllFieldsHeaderIfRequired {
     
     if (![self allFieldsAreComplete]) {
         self.shouldDisplayCompleteAllFieldsHeader = YES;
-        [self.tableView beginUpdates];
-        [self.tableView endUpdates];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView beginUpdates];
+            [self.tableView endUpdates];
+        });
+        
         return;
     }
     
     self.shouldDisplayCompleteAllFieldsHeader = NO;
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    [self.tableView reloadData];
     
-    handler();
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+        [self.tableView reloadData];
+    });
 }
 
 - (BOOL)allFieldsAreComplete {

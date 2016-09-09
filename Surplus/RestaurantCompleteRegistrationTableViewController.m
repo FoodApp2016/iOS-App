@@ -8,6 +8,9 @@
 
 #import "RestaurantCompleteRegistrationTableViewController.h"
 #import "Constants.h"
+#import "RequestHandler.h"
+#import "NSUserDefaults+CustomObjectStorage.h"
+#import "RequestHandler.h"
 
 @interface RestaurantCompleteRegistrationTableViewController ()
 
@@ -99,7 +102,7 @@
     }
 }
 
-- (void) imagePickerController:(UIImagePickerController *)picker
+- (void)imagePickerController:(UIImagePickerController *)picker
  didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
@@ -113,4 +116,59 @@
     [self.tableView endUpdates];
 }
 
+- (IBAction)nextButtonPressed:(id)sender {
+    
+    [super displayOrHideCompleteAllFieldsHeaderIfRequired];
+    
+    if (![self allFieldsAreComplete]) {
+        return;
+    }
+    
+    Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
+    NSString *profileImageString = [UIImagePNGRepresentation(self.profileImageView.image)
+                                    base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    [[RequestHandler new] submitAdditionalRestaurantInfo:@{@"description": self.descriptionTextView.text,
+                                                           @"profileImage": profileImageString,
+                                                           @"username": restaurant.username,
+                                                           @"password": restaurant.password}
+                                       completionHandler:^(NSData *data,
+                                                           NSURLResponse *response,
+                                                           NSError *error) {
+                                           
+        if (error) {
+           NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+           return;
+        }
+
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                            options:0
+                                                              error:&error];
+
+        if (error) {
+           NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+           return;
+        }
+
+        if (![json[@"success"] boolValue]) {
+           NSLog(@"%s %@", __PRETTY_FUNCTION__, json);
+           return;
+        }
+
+        restaurant.description_ = self.descriptionTextView.text;
+        restaurant.displayImage = self.profileImageView.image;
+
+        [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
+                                                     key:kNSUserDefaultsRestaurantKey];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:kCompleteProfileViewControllerDoneButtonSegueIdentifier sender:nil];
+        });
+    }];
+}
+
 @end
+
+
+
+

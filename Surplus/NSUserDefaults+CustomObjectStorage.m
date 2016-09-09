@@ -16,7 +16,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:encodedObject forKey:key];
     [defaults synchronize];
-    
 }
 
 - (Customer *)loadCustomerWithKey:(NSString *)key {
@@ -27,5 +26,20 @@
     return object;
 }
 
+- (void)saveRestaurant:(Restaurant *)restaurant key:(NSString *)key {
+    
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:restaurant];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:encodedObject forKey:key];
+    [defaults synchronize];
+}
+
+- (Restaurant *)loadRestaurantWithKey:(NSString *)key {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *encodedObject = [defaults objectForKey:key];
+    Restaurant *object = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    return object;
+}
 
 @end

@@ -7,6 +7,10 @@
 //
 
 #import "RestaurantLoginTableViewController.h"
+#import "RequestHandler.h"
+#import "NSUserDefaults+CustomObjectStorage.h"
+#import "Restaurant.h"
+#import "Constants.h"
 
 @interface RestaurantLoginTableViewController ()
 
@@ -40,13 +44,52 @@
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
-    [super buttonPressed:sender
-                 handler:^() {
-        [self displayProcessingRegistrationAlertController];
+    
+    [super displayOrHideCompleteAllFieldsHeaderIfRequired];
+    
+    if (![self allFieldsAreComplete]) {
+        return;
+    }
+    
+    [[RequestHandler new] signRestaurantIn:@{@"username":self.usernameTextField.text,
+                                             @"password":self.passwordTextField.text}
+                         completionHandler:^(NSData *data,
+                                             NSURLResponse *response,
+                                             NSError *error) {
+    
+         if (error) {
+             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+         }
+         
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                              options:0
+                                                                error:&error];
+         
+         if (error) {
+             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+         }
+         
+         if ([json[@"isActivated"] intValue]) {
+             
+             Restaurant *restaurant = [[Restaurant alloc] initWithJson:json];
+             [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
+                                                               key:kNSUserDefaultsRestaurantKey];
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [self performSegueWithIdentifier:kRestaurantLoginViewControllerLoginButtonSegueIdentifier
+                                           sender:nil];
+             });
+
+             return;
+         }
+                             
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self displayProcessingRegistrationAlertController];
+         });
     }];
 }
 - (IBAction)backButtonPressed:(id)sender {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -50,6 +50,27 @@
     }] resume];
 }
 
+- (void)makePostRequestWithUrlString:(NSString *)urlString
+                              params:(NSDictionary *)params
+                   completionHandler:(void(^)(NSData *, NSURLResponse *, NSError *))completionHandler {
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"POST";
+    request.URL = [NSURL URLWithString:urlString];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
+    
+    NSLog(@"%@", params);
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+                                     completionHandler:^(NSData * _Nullable data,
+                                                         NSURLResponse * _Nullable response,
+                                                         NSError * _Nullable error) {
+         completionHandler(data, response, error);
+     }] resume];
+}
+
 - (void)getAllRestaurants:(void (^)(NSError *, NSData *))completionHandler {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
@@ -187,6 +208,56 @@
                                                          NSError * _Nullable error) {
          completionHandler(error, data);
      }] resume];
+}
+
+- (void)createNewRestaurantWithUsername:(NSString *)username
+                               password:(NSString *)password
+                                   name:(NSString *)name
+                            phoneNumber:(NSString *)phoneNumber
+                      completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    NSDictionary *params = @{@"username": username,
+                             @"password": password,
+                             @"name": name,
+                             @"phoneNumber": phoneNumber};
+    
+    [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusAddRestaurantPath]
+                                params:params
+                     completionHandler:^(NSData *data,
+                                         NSURLResponse *response,
+                                         NSError *error) {
+        completionHandler(data, response, error);
+    }];
+}
+
+- (void)signRestaurantIn:(NSDictionary *)restaurantCredentials
+       completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusRestaurantSignInPath]
+                                params:restaurantCredentials
+                     completionHandler:^(NSData *data,
+                                         NSURLResponse *response,
+                                         NSError *error) {
+        completionHandler(data, response, error);
+    }];
+}
+
+- (void)submitAdditionalRestaurantInfo:(NSDictionary *)additionalInfo
+                     completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusSubmitAdditionalRestaurantInfoPath]
+                                params:additionalInfo
+                     completionHandler:^(NSData *data,
+                                         NSURLResponse *response,
+                                         NSError *error) {
+        completionHandler(data, response, error);
+    }];
 }
 
 @end

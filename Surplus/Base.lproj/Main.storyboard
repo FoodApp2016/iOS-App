@@ -753,10 +753,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHr-Zh-HIm">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHr-Zh-HIm">
                                                     <rect key="frame" x="15" y="11.5" width="570" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -822,7 +822,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FyQ-8f-yJj">
-                                                    <rect key="frame" x="8" y="-0.5" width="584" height="216.5"/>
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="216.5"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="494830176.33977801">
                                                         <!--2016-09-06 04:49:36 +0000-->
                                                     </date>
@@ -870,8 +870,8 @@
                         <outlet property="datePickerCell" destination="sur-cj-lkt" id="WHh-y7-POD"/>
                         <outlet property="emailIdTextField" destination="dTv-yT-Jh4" id="MJE-fM-hsZ"/>
                         <outlet property="passwordTextField" destination="Ce3-i0-3sL" id="sUG-3V-P8F"/>
+                        <outlet property="phoneNumberTextField" destination="lHr-Zh-HIm" id="Hei-jO-TLx"/>
                         <outlet property="representativeNameTextField" destination="dEg-dO-v6K" id="usb-EG-IhN"/>
-                        <outlet property="restaurantAddressTextField" destination="lHr-Zh-HIm" id="REX-mF-7kv"/>
                         <outlet property="restaurantNameTextField" destination="bHo-eM-a1b" id="fUY-0w-Dio"/>
                     </connections>
                 </tableViewController>
@@ -879,7 +879,7 @@
             </objects>
             <point key="canvasLocation" x="1133" y="-2214"/>
         </scene>
-        <!--Additional Info-->
+        <!--Complete Profile-->
         <scene sceneID="l13-Lh-Ypz">
             <objects>
                 <tableViewController id="XV1-1c-AHN" customClass="RestaurantCompleteRegistrationTableViewController" sceneMemberID="viewController">
@@ -986,10 +986,10 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Additional Info" id="47H-am-jVt">
+                    <navigationItem key="navigationItem" title="Complete Profile" id="47H-am-jVt">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="lZn-Vh-4Qa">
                             <connections>
-                                <segue destination="vis-07-QXO" kind="show" id="M3i-UD-9la"/>
+                                <action selector="nextButtonPressed:" destination="XV1-1c-AHN" id="8qT-49-q3C"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -999,11 +999,12 @@
                         <outlet property="descriptionTextView" destination="EmE-Zk-4A0" id="eIf-L4-R7A"/>
                         <outlet property="profileImageButton" destination="K3U-4g-rTd" id="sRT-uz-gPk"/>
                         <outlet property="profileImageView" destination="fd9-dz-0Pa" id="4xZ-pK-YCk"/>
+                        <segue destination="vis-07-QXO" kind="show" identifier="completeProfileViewControllerDoneButtonSegueIdentifier" id="Get-So-UJ7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw2-4g-sO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="-2214"/>
+            <point key="canvasLocation" x="1927" y="-2214"/>
         </scene>
         <!--Log In-->
         <scene sceneID="cbG-iW-RTs">
@@ -1078,7 +1079,7 @@
                             </barButtonItem>
                             <barButtonItem title="Test" id="CwR-hN-lt1">
                                 <connections>
-                                    <segue destination="XV1-1c-AHN" kind="show" id="0Fd-4h-yiS"/>
+                                    <segue destination="XV1-1c-AHN" kind="show" identifier="restaurantLoginViewControllerLoginButtonSegueIdentifier" id="0Fd-4h-yiS"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -1173,13 +1174,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="azY-kC-633"/>
-                    <navigationItem key="navigationItem" title="Item Details" id="aNc-1I-opg"/>
+                    <navigationItem key="navigationItem" title="Item Details" id="w3z-58-wl4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFO-ka-GO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4244" y="-2593"/>
         </scene>
-        <!--Item-->
+        <!--Orders-->
         <scene sceneID="5o6-fR-zr6">
             <objects>
                 <tableViewController id="Qnd-6Z-aYW" sceneMemberID="viewController">
@@ -1202,7 +1203,7 @@
                             <outlet property="delegate" destination="Qnd-6Z-aYW" id="8pq-NH-FfA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="cMn-jd-grW"/>
+                    <tabBarItem key="tabBarItem" title="Orders" id="cMn-jd-grW"/>
                     <navigationItem key="navigationItem" id="EgR-rm-rRA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YV-9C-zD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1230,7 +1231,6 @@
         <!--List-->
         <scene sceneID="KWr-YD-NCj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eqe-XN-Qnx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bzg-78-ngz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" id="6zb-x1-1k1"/>
                     <toolbarItems/>
@@ -1243,6 +1243,7 @@
                         <segue destination="Yo5-cD-0L7" kind="relationship" relationship="rootViewController" id="sui-vK-Nge"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eqe-XN-Qnx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1421" y="-636"/>
         </scene>
