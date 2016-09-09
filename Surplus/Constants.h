@@ -17,6 +17,8 @@ extern NSString *const kRestaurantViewControllerOrderButtonSegueIdentifier;
 extern NSString *const kFacebookSignInButtonSegueIdentifier;
 extern NSString *const kRestaurantLoginViewControllerLoginButtonSegueIdentifier;
 extern NSString *const kCompleteProfileViewControllerDoneButtonSegueIdentifier;
+extern NSString *const kRestaurantUpdateItemTableViewControllerIdentifier;
+extern NSString *const kFacebookSignInViewControllerIdentifier;
 
 extern NSString *const kSurplusBaseUrl;
 extern NSString *const kSurplusGetAllRestaurantsPath;

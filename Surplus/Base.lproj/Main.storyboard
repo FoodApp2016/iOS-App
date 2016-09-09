@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5P8-92-I1y">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -592,7 +593,7 @@
         <!--Facebook Sign In View Controller-->
         <scene sceneID="q7s-uw-tqU">
             <objects>
-                <viewController id="5P8-92-I1y" customClass="FacebookSignInViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="facebookSignInViewControllerIdentifier" id="5P8-92-I1y" customClass="FacebookSignInViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mgp-gk-UrU"/>
                         <viewControllerLayoutGuide type="bottom" id="Y9C-yl-31S"/>
@@ -660,6 +661,7 @@
         <scene sceneID="Ruq-gO-wN4">
             <objects>
                 <tabBarController id="VFZ-eM-PIX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vaQ-pa-oIL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vuq-c6-PVj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -669,6 +671,7 @@
                         <segue destination="bzg-78-ngz" kind="relationship" relationship="viewControllers" id="bcI-rz-KH3"/>
                         <segue destination="B6I-AZ-5Z0" kind="relationship" relationship="viewControllers" id="Osm-TO-9Tu"/>
                         <segue destination="BWb-UT-uop" kind="relationship" relationship="viewControllers" id="u55-S2-XuV"/>
+                        <segue destination="y4I-CJ-ixt" kind="relationship" relationship="viewControllers" id="tEC-YY-NDS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fD-DP-X6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1097,7 +1100,7 @@
         <!--Item Details-->
         <scene sceneID="Cq9-me-fkf">
             <objects>
-                <tableViewController id="gfg-C5-duV" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="restaurantUpdateItemTableViewControllerIdentifier" id="gfg-C5-duV" customClass="RestaurantUpdateItemTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="I5c-9A-Pyd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1174,7 +1177,14 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="azY-kC-633"/>
-                    <navigationItem key="navigationItem" title="Item Details" id="w3z-58-wl4"/>
+                    <navigationItem key="navigationItem" title="Item Details" id="w3z-58-wl4">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="LwN-9H-nLg"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftoversItemTextField" destination="oBN-aK-hzs" id="fYH-jq-b0U"/>
+                        <outlet property="priceTextField" destination="5V1-1u-3ch" id="b2t-lr-p51"/>
+                        <outlet property="quantityAvailableTextField" destination="NXm-88-vJZ" id="eBu-ax-Mgm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFO-ka-GO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1208,7 +1218,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YV-9C-zD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5056" y="-1848"/>
+            <point key="canvasLocation" x="4244" y="-1830"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="87H-Wx-EsQ">
@@ -1278,7 +1288,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="q9f-eB-ale" kind="relationship" relationship="rootViewController" id="gyq-z9-4rA"/>
+                        <segue destination="q9f-eB-ale" kind="relationship" relationship="rootViewController" id="2pD-b8-9mZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePr-wr-xc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1295,7 +1305,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ILe-Nu-7QW">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ILe-Nu-7QW" id="mo1-e2-2XO">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1313,6 +1323,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qo-g0-acJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1421" y="1531"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="d0r-mw-KVY">
+            <objects>
+                <tableViewController id="RJo-3P-Ydp" customClass="CustomerSettingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="wYq-VW-mvw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="RUE-Id-BZz">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="D2A-54-ABh">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D2A-54-ABh" id="6VJ-iK-7Zl">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4x-0R-duO">
+                                                    <rect key="frame" x="8" y="11" width="54" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="q4x-0R-duO" firstAttribute="centerY" secondItem="6VJ-iK-7Zl" secondAttribute="centerY" id="0rY-eq-BWd"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="q4x-0R-duO" secondAttribute="leading" id="ZDF-Lo-J53"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="RJo-3P-Ydp" id="1In-ui-hIa"/>
+                            <outlet property="delegate" destination="RJo-3P-Ydp" id="Cz5-gB-m4f"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="hT3-G8-mz4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fhH-eS-BLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2233" y="2300"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="L9U-zA-M1g">
@@ -1350,12 +1405,31 @@
             </objects>
             <point key="canvasLocation" x="321" y="-2214"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="zpp-u0-ua3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y4I-CJ-ixt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" id="DEy-aH-Fgo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KJ2-Lo-TI8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RJo-3P-Ydp" kind="relationship" relationship="rootViewController" id="Zwh-Ki-YM9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f9M-SR-CjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1421" y="2300"/>
+        </scene>
     </scenes>
     <resources>
         <image name="beef-fried-rice-2-edited.jpg" width="600" height="885"/>
         <image name="forage-mock-image.jpg" width="1000" height="665"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GHV-vL-obP"/>
+        <segue reference="2pD-b8-9mZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -160,6 +160,8 @@
 
         [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
                                                      key:kNSUserDefaultsRestaurantKey];
+                                           
+                                           NSLog(@"here");
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self performSegueWithIdentifier:kCompleteProfileViewControllerDoneButtonSegueIdentifier sender:nil];

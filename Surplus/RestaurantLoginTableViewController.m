@@ -11,6 +11,7 @@
 #import "NSUserDefaults+CustomObjectStorage.h"
 #import "Restaurant.h"
 #import "Constants.h"
+#import "RestaurantUpdateItemTableViewController.h"
 
 @interface RestaurantLoginTableViewController ()
 
@@ -68,12 +69,27 @@
          if (error) {
              NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
          }
+                             
+                             NSLog(@"%@", json);
          
          if ([json[@"isActivated"] intValue]) {
              
              Restaurant *restaurant = [[Restaurant alloc] initWithJson:json];
              [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
                                                                key:kNSUserDefaultsRestaurantKey];
+             
+             if (![restaurant.description_ isEqual:@""]) {
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     
+                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                     RestaurantUpdateItemTableViewController *viewController =
+                     [storyboard instantiateViewControllerWithIdentifier:kRestaurantUpdateItemTableViewControllerIdentifier];
+                     [self.navigationController pushViewController:viewController animated:YES];
+                 });
+                 
+                 return;
+             }
              
              dispatch_async(dispatch_get_main_queue(), ^{
                  [self performSegueWithIdentifier:kRestaurantLoginViewControllerLoginButtonSegueIdentifier
