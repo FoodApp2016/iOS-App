@@ -15,8 +15,8 @@ NSString *const kFacebookSignInButtonSegueIdentifier = @"facebookSignInButtonSeg
 NSString *const kRestaurantLoginViewControllerLoginButtonSegueIdentifier = @"restaurantLoginViewControllerLoginButtonSegueIdentifier";
 NSString *const kCompleteProfileViewControllerDoneButtonSegueIdentifier = @"completeProfileViewControllerDoneButtonSegueIdentifier";
 
-NSString *const kSurplusBaseUrl = @"http://0.0.0.0:5000";
-    // @"https://surplus-stage.herokuapp.com";
+NSString *const kSurplusBaseUrl = // @"http://0.0.0.0:5000";
+    @"https://surplus-stage.herokuapp.com";
 NSString *const kSurplusGetAllRestaurantsPath = @"/restaurants/all";
 NSString *const kSurplusGetStripeCustomerPath = @"/customers/stripe";
 NSString *const kSurplusStripeCustomerAddNewPaymentMethodPath = @"/customers/stripe/newpaymentmethod";
