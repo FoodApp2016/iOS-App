@@ -90,20 +90,34 @@
 
 - (IBAction)profileImageButtonPressed:(id)sender {
     
-    if ([self.profileImageButton.titleLabel.text isEqual:kFontAwesomePlusSquare]) {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    NSString *buttonText = self.profileImageButton.titleLabel.text;
+    
+    if ([buttonText isEqual:kFontAwesomePlusSquare]) {
         [self.navigationController presentViewController:self.imagePickerController
                                                 animated:YES
                                               completion:nil];
         return;
     }
     
-    else {
-        [self.tableView setEditing:YES animated:YES];
+    else if ([buttonText isEqual:@"Edit"]) {
+        [self.profileImageButton setTitle:@"Done" forState:UIControlStateNormal];
     }
+    
+    else if ([buttonText isEqual:@"Done"]) {
+        [self.profileImageButton setTitle:@"Edit" forState:UIControlStateNormal];
+    }
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker
  didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     

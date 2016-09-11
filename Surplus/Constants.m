@@ -25,7 +25,7 @@ NSString *const kSurplusStripeCustomerAddNewPaymentMethodPath = @"/customers/str
 NSString *const kSurplusStripeCustomerChangeDefaultPaymentMethodPath = @"/customers/stripe/changedefaultpaymentmethod";
 NSString *const kSurplusStripeChargeCustomerPath = @"/customers/stripe/charge";
 NSString *const kSurplusGetOrAddCustomerPath = @"/customers/getoradd";
-NSString *const kSurplusAddRestaurantPath = @"/restaurants/create_new_restaurant";
+NSString *const kSurplusAddRestaurantPath = @"/restaurants/add_new_restaurant";
 NSString *const kSurplusRestaurantSignInPath = @"/restaurants/sign_in";
 NSString *const kSurplusSubmitAdditionalRestaurantInfoPath = @"/restaurants/submit_additional_info";
 
