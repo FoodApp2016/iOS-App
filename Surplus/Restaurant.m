@@ -38,7 +38,6 @@
     
     self = [super init];
     
-    
     if (self) {
         self.id_ = [json[@"id"] intValue];
         self.name = json[@"name"];
@@ -48,7 +47,7 @@
         self.description_ = json[@"description"];
         self.leftoversItem = json[@"leftoversItem"];
         self.price = [json[@"price"] intValue];
-        self.pickupTime = [NSDate date];
+        self.pickupTime = json[@"pickupTime"];
         self.isActivated = [json[@"isActivated"] boolValue];
         self.representativeName = json[@"representativeName"];
         self.representativeDateOfBirth = [NSDate date];

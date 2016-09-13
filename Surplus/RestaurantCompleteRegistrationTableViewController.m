@@ -139,11 +139,9 @@
     }
     
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
-    NSString *profileImageString = [UIImagePNGRepresentation(self.profileImageView.image)
-                                    base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
     [[RequestHandler new] submitAdditionalRestaurantInfo:@{@"description": self.descriptionTextView.text,
-                                                           @"profileImage": profileImageString,
+                                                           @"profileImage": UIImageJPEGRepresentation(self.profileImageView.image, 1),
                                                            @"username": restaurant.username,
                                                            @"password": restaurant.password}
                                        completionHandler:^(NSData *data,

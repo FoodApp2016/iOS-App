@@ -328,7 +328,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="208" id="8eU-i9-npE"/>
                                             <constraint firstAttribute="height" constant="206" id="aX1-2x-Jzx"/>
-                                            <constraint firstAttribute="width" secondItem="eoH-bD-CbM" secondAttribute="height" multiplier="2:1" constant="-1.5726872246696075" id="iAb-cd-Osv"/>
+                                            <constraint firstAttribute="width" secondItem="eoH-bD-CbM" secondAttribute="height" multiplier="2:1" constant="-2" id="iAb-cd-Osv"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -514,6 +514,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yYA-gB-Zy7"/>
                     <connections>
+                        <outlet property="descriptionHeightConstraint" destination="6Vo-Mk-Tkz" id="g4E-Ps-mpw"/>
                         <outlet property="description_" destination="5Qm-AI-ePu" id="eBx-TB-VBo"/>
                         <outlet property="displayImage" destination="eoH-bD-CbM" id="xKa-f6-84y"/>
                         <outlet property="distance" destination="RRX-bS-P7W" id="N20-qh-DhY"/>
@@ -1002,7 +1003,7 @@
                         <outlet property="descriptionTextView" destination="EmE-Zk-4A0" id="eIf-L4-R7A"/>
                         <outlet property="profileImageButton" destination="K3U-4g-rTd" id="sRT-uz-gPk"/>
                         <outlet property="profileImageView" destination="fd9-dz-0Pa" id="4xZ-pK-YCk"/>
-                        <segue destination="vis-07-QXO" kind="show" identifier="completeProfileViewControllerDoneButtonSegueIdentifier" id="Get-So-UJ7"/>
+                        <segue destination="vis-07-QXO" kind="showDetail" identifier="completeProfileViewControllerDoneButtonSegueIdentifier" action="showViewController:sender:" id="Get-So-UJ7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw2-4g-sO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1176,7 +1177,6 @@
                             <outlet property="delegate" destination="gfg-C5-duV" id="59p-eO-87n"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="azY-kC-633"/>
                     <navigationItem key="navigationItem" title="Item Details" id="w3z-58-wl4">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="LwN-9H-nLg"/>
                     </navigationItem>
@@ -1188,12 +1188,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFO-ka-GO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4244" y="-2593"/>
+            <point key="canvasLocation" x="5064" y="-2587"/>
         </scene>
-        <!--Orders-->
+        <!--Restaurant Orders Table View Controller-->
         <scene sceneID="5o6-fR-zr6">
             <objects>
-                <tableViewController id="Qnd-6Z-aYW" sceneMemberID="viewController">
+                <tableViewController id="Qnd-6Z-aYW" customClass="RestaurantOrdersTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QcE-Xn-de4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1213,25 +1213,24 @@
                             <outlet property="delegate" destination="Qnd-6Z-aYW" id="8pq-NH-FfA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Orders" id="cMn-jd-grW"/>
                     <navigationItem key="navigationItem" id="EgR-rm-rRA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YV-9C-zD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4244" y="-1830"/>
+            <point key="canvasLocation" x="5056" y="-1830"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="87H-Wx-EsQ">
             <objects>
-                <tabBarController id="vis-07-QXO" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="restaurantTabBarControllerItentifier" id="vis-07-QXO" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="3l2-2v-pnf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gfg-C5-duV" kind="relationship" relationship="viewControllers" id="R0Q-tH-JT2"/>
-                        <segue destination="Qnd-6Z-aYW" kind="relationship" relationship="viewControllers" id="ujZ-Ib-2PQ"/>
+                        <segue destination="wEg-X4-OCm" kind="relationship" relationship="viewControllers" id="R0Q-tH-JT2"/>
+                        <segue destination="KQm-Rs-AaJ" kind="relationship" relationship="viewControllers" id="ujZ-Ib-2PQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CiZ-Sp-SHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1423,6 +1422,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9M-SR-CjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1421" y="2300"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="NUa-VM-F5z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wEg-X4-OCm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="azY-kC-633"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2cE-hx-jcr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gfg-C5-duV" kind="relationship" relationship="rootViewController" id="16O-bg-Q8r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S8W-JZ-ctR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4252" y="-2587"/>
+        </scene>
+        <!--Orders-->
+        <scene sceneID="v44-ao-oq7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KQm-Rs-AaJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Orders" id="cMn-jd-grW"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rtd-EY-d8m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qnd-6Z-aYW" kind="relationship" relationship="rootViewController" id="YmH-uI-PJT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZo-uA-6ML" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4244" y="-1830"/>
         </scene>
     </scenes>
     <resources>

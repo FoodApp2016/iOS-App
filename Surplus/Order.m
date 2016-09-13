@@ -31,7 +31,32 @@
     self.quantity = quantity;
     self.unitPrice = restaurant.price;
     self.amount = quantity * self.unitPrice;
-    self.pickupTime = restaurant.pickupTime;
+    self.pickupTime = @"2007-01-01 10:00:00";
+    
+    return self;
+}
+
+- (id)initWithJson:(NSDictionary *)json {
+    
+    self = [super init];
+    
+    if (!self) {
+        return nil;
+    }
+    
+    self.restaurantId = (int)[json[@"restaurantId"] integerValue];
+    self.customerId = (int)[json[@"customerId"] integerValue];
+    self.itemName = json[@"itemName"];
+    self.quantity = (int)[json[@"quantity"] integerValue];
+    self.unitPrice = (int)[json[@"unitPrice"] integerValue];
+    self.amount = (int)[json[@"amount"] integerValue];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    self.timestamp = [dateFormatter dateFromString:json[@"timestamp"]];
+    
+    self.pickupTime = json[@"pickupTime"];
+    self.randToken = json[@"randToken"];
     
     return self;
 }
@@ -47,7 +72,7 @@
                            @"quantity": [NSString stringWithFormat:@"%d", self.quantity],
                            @"unitPrice": [NSString stringWithFormat:@"%d", self.unitPrice],
                            @"amount": [NSString stringWithFormat:@"%d", self.amount],
-                           @"pickupTime": [dateFormatter stringFromDate:self.pickupTime]};
+                           @"pickupTime": self.pickupTime};
     
     return dict;
 }

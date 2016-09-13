@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSString *description_;
 @property (strong, nonatomic) NSString *leftoversItem;
 @property (nonatomic) unsigned int price;
-@property (nonatomic) NSDate *pickupTime;
+@property (nonatomic) NSString *pickupTime;
 @property (nonatomic) BOOL isActivated;
 @property (strong, nonatomic) CNPhoneNumber *phoneNumber;
 @property (strong, nonatomic) NSString *representativeName;

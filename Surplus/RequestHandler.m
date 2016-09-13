@@ -75,17 +75,13 @@
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    NSMutableURLRequest *request = [NSMutableURLRequest new];
-    request.HTTPMethod = @"GET";
-    NSString *requestString = [kSurplusBaseUrl stringByAppendingString:kSurplusGetAllRestaurantsPath];
-    NSURL *url = [NSURL URLWithString:requestString];
-    
-    [[[NSURLSession sharedSession] dataTaskWithURL:url
-                                completionHandler:^(NSData * _Nullable data,
-                                                    NSURLResponse * _Nullable response,
-                                                    NSError * _Nullable error) {
+    [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusGetAllRestaurantsWithItemsPath]
+                                params:@{}
+                     completionHandler:^(NSData *data,
+                                         NSURLResponse *response,
+                                         NSError *error) {
         completionHandler(error, data);
-    }] resume];
+    }];
 }
 
 - (void)getOrCreateCustomerWithName:(NSString *)name
@@ -95,10 +91,11 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
     NSString *requestString = [kSurplusBaseUrl stringByAppendingString:kSurplusGetOrAddCustomerPath];
-    [self makeGetRequest:requestString
+    [self makePostRequestWithUrlString:requestString
                   params:@{@"name": name, @"facebookId": facebookId}
-       completionHandler:^(NSError *error,
-                           NSData *data) {
+       completionHandler:^(NSData *data,
+                           NSURLResponse *response,
+                           NSError *error) {
            completionHandler(error, data);
     }];
 }
@@ -251,13 +248,95 @@
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusSubmitAdditionalRestaurantInfoPath]
-                                params:additionalInfo
-                     completionHandler:^(NSData *data,
-                                         NSURLResponse *response,
-                                         NSError *error) {
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"POST";
+    request.URL = [NSURL URLWithString:[kSurplusBaseUrl stringByAppendingString:kSurplusSubmitAdditionalRestaurantInfoPath]];
+    
+    NSString *boundary = @"------VohpleBoundary4QuqLuM1cE5lMwCy";
+    request.HTTPMethod = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    
+    NSMutableData *body = [NSMutableData data];
+    
+    // file
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: attachment; name=\"userfile\"; filename=\".png\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:additionalInfo[@"profileImage"]]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"username\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[additionalInfo[@"username"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // another text parameter
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"password\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[additionalInfo[@"password"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // another text parameter
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"description\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[additionalInfo[@"description"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // close form
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // set request body
+    [request setHTTPBody:body];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+                                     completionHandler:^(NSData * _Nullable data,
+                                                         NSURLResponse * _Nullable response,
+                                                         NSError * _Nullable error) {
+                                         
+        completionHandler(data, response, error);
+    }] resume];
+}
+
+- (void)getAllOrdersForRestaurant:(int)restaurantId
+                completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusGetAllOrdersByRestaurantIdPath]
+                                params:@{@"restaurantId": [NSString stringWithFormat:@"%d", restaurantId]}
+                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
         completionHandler(data, response, error);
     }];
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

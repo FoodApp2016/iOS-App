@@ -83,9 +83,9 @@
                  dispatch_async(dispatch_get_main_queue(), ^{
                      
                      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                     RestaurantUpdateItemTableViewController *viewController =
-                     [storyboard instantiateViewControllerWithIdentifier:kRestaurantUpdateItemTableViewControllerIdentifier];
-                     [self.navigationController pushViewController:viewController animated:YES];
+                     UITabBarController *viewController =
+                     [storyboard instantiateViewControllerWithIdentifier:kRestaurantTabBarControllerItentifier];
+                     [self.navigationController presentViewController:viewController animated:YES completion:nil];
                  });
                  
                  return;

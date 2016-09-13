@@ -19,9 +19,11 @@ extern NSString *const kRestaurantLoginViewControllerLoginButtonSegueIdentifier;
 extern NSString *const kCompleteProfileViewControllerDoneButtonSegueIdentifier;
 extern NSString *const kRestaurantUpdateItemTableViewControllerIdentifier;
 extern NSString *const kFacebookSignInViewControllerIdentifier;
+extern NSString *const kRestaurantTabBarControllerItentifier;
 
 extern NSString *const kSurplusBaseUrl;
 extern NSString *const kSurplusGetAllRestaurantsPath;
+extern NSString *const kSurplusGetAllRestaurantsWithItemsPath;
 extern NSString *const kSurplusGetStripeCustomerPath;
 extern NSString *const kSurplusStripeCustomerAddNewPaymentMethodPath;
 extern NSString *const kSurplusStripeCustomerChangeDefaultPaymentMethodPath;
@@ -30,6 +32,7 @@ extern NSString *const kSurplusGetOrAddCustomerPath;
 extern NSString *const kSurplusAddRestaurantPath;
 extern NSString *const kSurplusRestaurantSignInPath;
 extern NSString *const kSurplusSubmitAdditionalRestaurantInfoPath;
+extern NSString *const kSurplusGetAllOrdersByRestaurantIdPath;
 
 extern NSString *const kStripePublishableKey;
 
