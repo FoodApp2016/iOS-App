@@ -18,8 +18,8 @@ NSString *const kRestaurantUpdateItemTableViewControllerIdentifier = @"restauran
 NSString *const kFacebookSignInViewControllerIdentifier = @"facebookSignInViewControllerIdentifier";
 NSString *const kRestaurantTabBarControllerItentifier = @"restaurantTabBarControllerItentifier";
 
-NSString *const kSurplusBaseUrl = // @"http://0.0.0.0:5000";
-                                  @"https://surplus-stage.herokuapp.com";
+NSString *const kSurplusBaseUrl = @"http://0.0.0.0:5000";
+                                  // @"https://surplus-stage.herokuapp.com";
 NSString *const kSurplusGetAllRestaurantsPath = @"/restaurants/all";
 NSString *const kSurplusGetAllRestaurantsWithItemsPath = @"/restaurants/get_all_restaurants_with_items";
 NSString *const kSurplusGetStripeCustomerPath = @"/customers/stripe";

@@ -9,6 +9,7 @@
 #import "Order.h"
 #import "Customer.h"
 #import "Constants.h"
+#import "NSUserDefaults+CustomObjectStorage.h"
 
 @implementation Order
 
@@ -21,8 +22,7 @@
         return nil;
     }
     
-    Customer *customer = [Customer new]; customer.id_ = 1;
-    [[NSUserDefaults standardUserDefaults] objectForKey:kNSUserDefaultsCustomerKey];
+    Customer *customer = [[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey];
     
     self.customerId = customer.id_;
     self.restaurantId = restaurant.id_;

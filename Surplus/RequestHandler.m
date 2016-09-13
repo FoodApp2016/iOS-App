@@ -191,6 +191,8 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
+    NSLog(@"%@", [order json]);
+    
     NSMutableDictionary *postDataDict = [@{@"order": [order json]} mutableCopy];
     postDataDict[@"source"] = source;
     
@@ -249,11 +251,12 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
     NSMutableURLRequest *request = [NSMutableURLRequest new];
-    request.HTTPMethod = @"POST";
     request.URL = [NSURL URLWithString:[kSurplusBaseUrl stringByAppendingString:kSurplusSubmitAdditionalRestaurantInfoPath]];
     
     NSString *boundary = @"------VohpleBoundary4QuqLuM1cE5lMwCy";
-    request.HTTPMethod = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
+    
+    request.HTTPMethod = @"POST";
     
     NSMutableData *body = [NSMutableData data];
     
