@@ -122,22 +122,22 @@ didCreatePaymentResult:(nonnull STPPaymentResult *)paymentResult
     if (status == STPPaymentStatusUserCancellation) {
         return;
     }
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success!"
-                                                                   message:nil
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Ok"
-                                              style:UIAlertActionStyleCancel
-                                            handler:nil]];
 
     if (status == STPPaymentStatusError) {
-        alert.title = @"Error...";
-    }
-
-    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error..."
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Ok"
+                                                  style:UIAlertActionStyleCancel
+                                                handler:nil]];
         [self.navigationController presentViewController:alert
                                                 animated:YES
                                               completion:nil];
+        return;
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tabBarController setSelectedIndex:2];
     });
 
     return;

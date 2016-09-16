@@ -51,6 +51,7 @@
         self.isActivated = [json[@"isActivated"] boolValue];
         self.representativeName = json[@"representativeName"];
         self.representativeDateOfBirth = [NSDate date];
+        self.quantityAvailable = [json[@"quantityAvailable"] intValue];
     }
     
     return self;
@@ -78,6 +79,7 @@
     self.isActivated = [coder decodeBoolForKey:@"isActivated"];
     self.representativeName = [coder decodeObjectForKey:@"representativeName"];
     self.representativeDateOfBirth = [coder decodeObjectForKey:@"representativeDateOfBirth"];
+    self.quantityAvailable = (int)[coder decodeIntegerForKey:@"quantityAvailable"];
     
     return self;
 }
@@ -98,6 +100,7 @@
     [coder encodeBool:self.isActivated forKey:@"isActivated"];
     [coder encodeObject:self.representativeName forKey:@"representativeName"];
     [coder encodeObject:self.representativeDateOfBirth forKey:@"representativeDateOfBirth"];
+    [coder encodeInteger:self.quantityAvailable forKey:@"quantityAvailable"];
 }
 
 @end

@@ -299,7 +299,7 @@
     }] resume];
 }
 
-- (void)getAllOrdersForRestaurant:(int)restaurantId
+- (void)getAllOrdersForRestaurant:(unsigned int)restaurantId
                 completionHandler:(completionHandler)completionHandler {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
@@ -308,6 +308,51 @@
                                 params:@{@"restaurantId": [NSString stringWithFormat:@"%d", restaurantId]}
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
+        completionHandler(data, response, error);
+    }];
+}
+
+- (void)getAllOrdersForCustomer:(unsigned int)customerId
+              completionHandler:(completionHandler)completionHandler {
+    
+    NSString *urlString = [kSurplusBaseUrl stringByAppendingString:kSurplusGetAllOrdersByCustomerIdPath];
+    
+    [self makePostRequestWithUrlString:urlString
+                                params:@{@"customerId": [NSString stringWithFormat:@"%d", customerId]}
+                                         completionHandler:^(NSData *data,
+                                                             NSURLResponse *response,
+                                                             NSError *error) {
+        completionHandler(data, response, error);
+    }];
+}
+
+- (void)updateItem:(NSDictionary *)itemDetails
+ completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    NSString *urlString = [kSurplusBaseUrl stringByAppendingString:kSurplusUpdateItemPath];
+    
+    [self makePostRequestWithUrlString:urlString
+                                params:itemDetails completionHandler:^(NSData *data,
+                                                                       NSURLResponse *response,
+                                                                       NSError *error) {
+        completionHandler(data, response, error);
+    }];
+}
+
+- (void)completeOrder:(unsigned int)orderId
+    completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    NSString *urlString = [kSurplusBaseUrl stringByAppendingString:kSurplusCompleteOrderPath];
+    
+    [self makePostRequestWithUrlString:urlString
+                                params:@{@"id": [NSString stringWithFormat:@"%d", orderId]}
+                     completionHandler:^(NSData *data,
+                                         NSURLResponse *response,
+                                         NSError *error) {
         completionHandler(data, response, error);
     }];
 }

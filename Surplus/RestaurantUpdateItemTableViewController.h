@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RestaurantFormTableViewController.h"
 
-@interface RestaurantUpdateItemTableViewController : UITableViewController
+@interface RestaurantUpdateItemTableViewController : RestaurantFormTableViewController
 
 @end

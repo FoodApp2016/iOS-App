@@ -84,7 +84,7 @@
                      
                      UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                      UITabBarController *viewController =
-                     [storyboard instantiateViewControllerWithIdentifier:kRestaurantTabBarControllerItentifier];
+                     [storyboard instantiateViewControllerWithIdentifier:kRestaurantTabBarControllerIdentifier];
                      [self.navigationController presentViewController:viewController animated:YES completion:nil];
                  });
                  

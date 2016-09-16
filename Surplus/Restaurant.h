@@ -29,6 +29,7 @@
 @property (strong, nonatomic) CNPhoneNumber *phoneNumber;
 @property (strong, nonatomic) NSString *representativeName;
 @property (strong, nonatomic) NSDate *representativeDateOfBirth;
+@property (nonatomic) int quantityAvailable;
 
 @property (strong, nonatomic) UIImage *displayImage;
 @property (nonatomic) double rating;

@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftoversItemLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quantityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView_;
 
 @end

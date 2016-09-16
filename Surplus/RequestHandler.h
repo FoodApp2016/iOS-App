@@ -46,6 +46,16 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
 - (void)submitAdditionalRestaurantInfo:(NSDictionary *)additionalInfo
                      completionHandler:(completionHandler)completionHandler;
 
-- (void)getAllOrdersForRestaurant:(int)restaurantId completionHandler:(completionHandler)completionHandler;
+- (void)getAllOrdersForRestaurant:(unsigned int)restaurantId
+                completionHandler:(completionHandler)completionHandler;
+
+- (void)updateItem:(NSDictionary *)itemDetails
+ completionHandler:(completionHandler)completionHandler;
+
+- (void)completeOrder:(unsigned int)orderId
+    completionHandler:(completionHandler)completionHandler;
+
+- (void)getAllOrdersForCustomer:(unsigned int)customerId
+              completionHandler:(completionHandler)completionHandler;
 
 @end

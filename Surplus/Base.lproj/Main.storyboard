@@ -530,38 +530,6 @@
             </objects>
             <point key="canvasLocation" x="3836" y="-636"/>
         </scene>
-        <!--Payment Info-->
-        <scene sceneID="RFu-ac-ir5">
-            <objects>
-                <viewController id="Xej-9C-sfx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="78Z-CE-Aa9"/>
-                        <viewControllerLayoutGuide type="bottom" id="UwB-yF-icW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mZT-ab-2t0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEx-4D-Zg9">
-                                <rect key="frame" x="267" y="285" width="67" height="30"/>
-                                <state key="normal" title="Complete"/>
-                                <connections>
-                                    <segue destination="q9f-eB-ale" kind="show" id="GHV-vL-obP"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="qEx-4D-Zg9" firstAttribute="centerX" secondItem="mZT-ab-2t0" secondAttribute="centerX" id="0Ms-pS-7Rp"/>
-                            <constraint firstItem="qEx-4D-Zg9" firstAttribute="centerY" secondItem="mZT-ab-2t0" secondAttribute="centerY" id="mQH-dN-VK7"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Payment Info" id="J9h-KL-Rcc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TIp-h4-e7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3024" y="779"/>
-        </scene>
         <!--Favorites-->
         <scene sceneID="ehR-sa-Nuj">
             <objects>
@@ -890,7 +858,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="8pv-y3-qSf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Please complete all fields." id="IPh-qg-lDE">
                                 <cells>
@@ -940,7 +908,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCb-oI-J83">
                                                     <rect key="frame" x="15" y="11" width="100" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3U-4g-rTd">
@@ -1017,7 +985,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Bag-6f-qBq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Please complete all fields." id="2pp-th-wU5">
                                 <cells>
@@ -1105,12 +1073,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="I5c-9A-Pyd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection id="jYw-gw-LXZ">
+                            <tableViewSection headerTitle="Please complete all fields." id="jYw-gw-LXZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="iQz-iR-xGM">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iQz-iR-xGM" id="mqA-ry-0Gg">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1130,7 +1098,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="NPt-2M-bDn">
-                                        <rect key="frame" x="0.0" y="143" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="157.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NPt-2M-bDn" id="mnW-kF-RTw">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1150,7 +1118,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="fHv-8R-GCF">
-                                        <rect key="frame" x="0.0" y="187" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="201.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fHv-8R-GCF" id="SAT-Kp-rjx">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -1178,12 +1146,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Item Details" id="w3z-58-wl4">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="LwN-9H-nLg"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="LwN-9H-nLg">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="gfg-C5-duV" id="cHt-Mr-Ca4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="leftoversItemTextField" destination="oBN-aK-hzs" id="fYH-jq-b0U"/>
                         <outlet property="priceTextField" destination="5V1-1u-3ch" id="b2t-lr-p51"/>
                         <outlet property="quantityAvailableTextField" destination="NXm-88-vJZ" id="eBu-ax-Mgm"/>
+                        <outlet property="saveButton" destination="LwN-9H-nLg" id="ShS-b9-e3o"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFO-ka-GO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1222,7 +1195,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="87H-Wx-EsQ">
             <objects>
-                <tabBarController storyboardIdentifier="restaurantTabBarControllerItentifier" id="vis-07-QXO" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="restaurantTabBarControllerIdentifier" id="vis-07-QXO" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="3l2-2v-pnf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1297,7 +1270,7 @@
         <!--Receipts-->
         <scene sceneID="NCL-GL-xaO">
             <objects>
-                <tableViewController id="q9f-eB-ale" sceneMemberID="viewController">
+                <tableViewController id="q9f-eB-ale" customClass="CustomerOrdersViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dBQ-6Z-Ngl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1330,7 +1303,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="wYq-VW-mvw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="RUE-Id-BZz">
                                 <cells>
@@ -1344,7 +1317,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4x-0R-duO">
                                                     <rect key="frame" x="8" y="11" width="54" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1466,7 +1439,4 @@
         <image name="beef-fried-rice-2-edited.jpg" width="600" height="885"/>
         <image name="forage-mock-image.jpg" width="1000" height="665"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="2pD-b8-9mZ"/>
-    </inferredMetricsTieBreakers>
 </document>

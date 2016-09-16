@@ -16,9 +16,12 @@ NSString *const kRestaurantLoginViewControllerLoginButtonSegueIdentifier = @"res
 NSString *const kCompleteProfileViewControllerDoneButtonSegueIdentifier = @"completeProfileViewControllerDoneButtonSegueIdentifier";
 NSString *const kRestaurantUpdateItemTableViewControllerIdentifier = @"restaurantUpdateItemTableViewControllerIdentifier";
 NSString *const kFacebookSignInViewControllerIdentifier = @"facebookSignInViewControllerIdentifier";
-NSString *const kRestaurantTabBarControllerItentifier = @"restaurantTabBarControllerItentifier";
+NSString *const kRestaurantTabBarControllerIdentifier = @"restaurantTabBarControllerIdentifier";
+NSString *const kReceiptListTableViewCellIdentifier = @"receiptListTableViewCellIdentifier";
+NSString *const kReuseIdentifier = @"reuseIdentifier";
 
-NSString *const kSurplusBaseUrl = // @"http://0.0.0.0:5000";
+
+NSString *const kSurplusBaseUrl = //@"http://0.0.0.0:5000";
                                   @"https://surplus-stage.herokuapp.com";
 NSString *const kSurplusGetAllRestaurantsPath = @"/restaurants/all";
 NSString *const kSurplusGetAllRestaurantsWithItemsPath = @"/restaurants/get_all_restaurants_with_items";
@@ -31,6 +34,9 @@ NSString *const kSurplusAddRestaurantPath = @"/restaurants/add_new_restaurant";
 NSString *const kSurplusRestaurantSignInPath = @"/restaurants/sign_in";
 NSString *const kSurplusSubmitAdditionalRestaurantInfoPath = @"/restaurants/submit_additional_info";
 NSString *const kSurplusGetAllOrdersByRestaurantIdPath = @"/orders/get_all_orders_by_restaurant_id";
+NSString *const kSurplusGetAllOrdersByCustomerIdPath = @"/orders/get_orders_by_customer_id";
+NSString *const kSurplusUpdateItemPath = @"/restaurants/update_item";
+NSString *const kSurplusCompleteOrderPath = @"/orders/order_completed";
 
 NSString *const kStripePublishableKey = @"pk_test_WtOtIVWN2IMyqREQteqgUVC4";
 

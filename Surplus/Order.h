@@ -12,6 +12,7 @@
 
 @interface Order : NSObject
 
+@property (nonatomic) unsigned int id_;
 @property (nonatomic) unsigned int customerId;
 @property (nonatomic) unsigned int restaurantId;
 @property (strong, nonatomic) NSString *restaurantName;
@@ -19,9 +20,10 @@
 @property (nonatomic) unsigned int quantity;
 @property (nonatomic) unsigned int unitPrice;
 @property (nonatomic) unsigned int amount;
-@property (strong, nonatomic) NSDate *timestamp;
+@property (strong, nonatomic) NSString *timestamp;
 @property (strong, nonatomic) NSString *pickupTime;
 @property (strong, nonatomic) NSString *randToken;
+@property (nonatomic) BOOL isCompleted;
 
 - (id)initWithRestaurant:(Restaurant *)restaurant
                 quantity:(unsigned int)quantity;

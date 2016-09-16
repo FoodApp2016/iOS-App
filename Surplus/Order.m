@@ -32,6 +32,7 @@
     self.unitPrice = restaurant.price;
     self.amount = quantity * self.unitPrice;
     self.pickupTime = @"2007-01-01 10:00:00";
+    self.isCompleted = NO;
     
     return self;
 }
@@ -44,6 +45,7 @@
         return nil;
     }
     
+    self.id_ = (int)[json[@"id"] intValue];
     self.restaurantId = (int)[json[@"restaurantId"] integerValue];
     self.customerId = (int)[json[@"customerId"] integerValue];
     self.itemName = json[@"itemName"];
@@ -53,10 +55,11 @@
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    self.timestamp = [dateFormatter dateFromString:json[@"timestamp"]];
+    self.timestamp = json[@"time_stamp"];
     
     self.pickupTime = json[@"pickupTime"];
     self.randToken = json[@"randToken"];
+    self.isCompleted = [json[@"isCompleted"] boolValue];
     
     return self;
 }

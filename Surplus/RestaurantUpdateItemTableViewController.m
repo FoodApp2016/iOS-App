@@ -7,12 +7,17 @@
 //
 
 #import "RestaurantUpdateItemTableViewController.h"
+#import "Restaurant.h"
+#import "NSUserDefaults+CustomObjectStorage.h"
+#import "Constants.h"
+#import "RequestHandler.h"
 
 @interface RestaurantUpdateItemTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *leftoversItemTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @property (weak, nonatomic) IBOutlet UITextField *quantityAvailableTextField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 @end
 
@@ -21,6 +26,16 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
+    
+    self.leftoversItemTextField.text = restaurant.leftoversItem ? restaurant.leftoversItem : @"";
+    self.priceTextField.text = restaurant.price > 0 ? [NSString stringWithFormat:@"%f", restaurant.price * 1. / 100] : @"";
+    self.quantityAvailableTextField.text = restaurant.quantityAvailable > 0 ? [NSString stringWithFormat:@"%d", restaurant.quantityAvailable] : @"";
+    
+    self.textFields = @[self.leftoversItemTextField,
+                        self.priceTextField,
+                        self.quantityAvailableTextField];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,12 +53,32 @@
     return 3;
 }
 
--(void)textFieldDidChange :(UITextField *)textField {
+- (int)frontEndPriceToPrice {
     
-    if (textField.text != nil) {
-
-    }
+    return (int)([self.priceTextField.text doubleValue] * 100);
 }
 
+- (IBAction)saveButtonPressed:(id)sender {
+    
+    [super displayOrHideCompleteAllFieldsHeaderIfRequired];
+    
+    if (![super allFieldsAreComplete]) {
+        return;
+    }
+    
+    Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
+    
+    [[RequestHandler new] updateItem:@{@"leftoversItem": self.leftoversItemTextField.text,
+                                       @"price": [NSString stringWithFormat:@"%d", [self frontEndPriceToPrice]],
+                                       @"quantityAvailable": self.quantityAvailableTextField.text,
+                                       @"username": restaurant.username,
+                                       @"password": restaurant.password}
+                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                       
+                       if (error) {
+                           NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+                       }
+    }];
+}
 
 @end

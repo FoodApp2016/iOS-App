@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrdersTableViewController.h"
 
-@interface RestaurantOrdersTableViewController : UITableViewController
+@interface RestaurantOrdersTableViewController : OrdersTableViewController
 
 @end
