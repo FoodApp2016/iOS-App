@@ -19,6 +19,7 @@ NSString *const kFacebookSignInViewControllerIdentifier = @"facebookSignInViewCo
 NSString *const kRestaurantTabBarControllerIdentifier = @"restaurantTabBarControllerIdentifier";
 NSString *const kReceiptListTableViewCellIdentifier = @"receiptListTableViewCellIdentifier";
 NSString *const kReuseIdentifier = @"reuseIdentifier";
+NSString *const kRestaurantSettingsIconButtonPressSegueIdentifier = @"restaurantSettingsIconButtonPressSegueIdentifier";
 
 
 NSString *const kSurplusBaseUrl = //@"http://0.0.0.0:5000";

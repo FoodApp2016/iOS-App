@@ -1,26 +1,30 @@
 //
-//  CustomerSettingsTableViewController.m
+//  RestaurantSettingsTableViewController.m
 //  Surplus
 //
-//  Created by Dhruv Manchala on 9/8/16.
+//  Created by Dhruv Manchala on 9/17/16.
 //  Copyright © 2016 Dhruv Manchala. All rights reserved.
 //
 
-#import "CustomerSettingsTableViewController.h"
+#import "RestaurantSettingsTableViewController.h"
 #import "NSUserDefaults+CustomObjectStorage.h"
 #import "Constants.h"
 #import "FacebookSignInViewController.h"
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-@interface CustomerSettingsTableViewController ()
+@interface RestaurantSettingsTableViewController ()
 
 @end
 
-@implementation CustomerSettingsTableViewController
+@implementation RestaurantSettingsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,10 +48,10 @@
     
     if (indexPath.row == 0) {
         [[NSUserDefaults standardUserDefaults] saveCustomer:nil key:kNSUserDefaultsCustomerKey];
-        [[FBSDKLoginManager new] logOut];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FacebookSignInViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:kFacebookSignInViewControllerIdentifier];
         [self presentViewController:viewController animated:YES completion:nil];
+
     }
 }
 

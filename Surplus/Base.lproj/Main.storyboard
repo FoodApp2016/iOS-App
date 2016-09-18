@@ -13,7 +13,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--List-->
+        <!--Surplus-->
         <scene sceneID="ujM-dQ-flm">
             <objects>
                 <tableViewController id="Yo5-cD-0L7" customClass="RestaurantListTableViewController" sceneMemberID="viewController">
@@ -54,7 +54,7 @@
                             <outlet property="delegate" destination="Yo5-cD-0L7" id="XVW-bC-xft"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="List" id="8fP-4H-7xV"/>
+                    <navigationItem key="navigationItem" title="Surplus" id="8fP-4H-7xV"/>
                     <connections>
                         <segue destination="QHl-Af-mT6" kind="show" identifier="restaurantListTableViewCellSegueIdentifier" id="JaR-6u-cL8"/>
                     </connections>
@@ -530,35 +530,6 @@
             </objects>
             <point key="canvasLocation" x="3836" y="-636"/>
         </scene>
-        <!--Favorites-->
-        <scene sceneID="ehR-sa-Nuj">
-            <objects>
-                <tableViewController id="euT-fc-s4g" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZVi-0k-y0T">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="IxA-5u-igu">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IxA-5u-igu" id="6Tn-00-NGX">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="euT-fc-s4g" id="n5b-Hb-LTb"/>
-                            <outlet property="delegate" destination="euT-fc-s4g" id="SEq-Je-5gJ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="FQr-sM-NAs"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eY2-Ph-HDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1421" y="779"/>
-        </scene>
         <!--Facebook Sign In View Controller-->
         <scene sceneID="q7s-uw-tqU">
             <objects>
@@ -638,7 +609,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="bzg-78-ngz" kind="relationship" relationship="viewControllers" id="bcI-rz-KH3"/>
-                        <segue destination="B6I-AZ-5Z0" kind="relationship" relationship="viewControllers" id="Osm-TO-9Tu"/>
                         <segue destination="BWb-UT-uop" kind="relationship" relationship="viewControllers" id="u55-S2-XuV"/>
                         <segue destination="y4I-CJ-ixt" kind="relationship" relationship="viewControllers" id="tEC-YY-NDS"/>
                     </connections>
@@ -1146,9 +1116,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Item Details" id="w3z-58-wl4">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="LwN-9H-nLg">
+                        <barButtonItem key="leftBarButtonItem" title="Save" id="LwN-9H-nLg">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="gfg-C5-duV" id="cHt-Mr-Ca4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="settingsIcon" id="0Pl-67-2pR">
+                            <connections>
+                                <segue destination="UAT-se-bOa" kind="show" identifier="restaurantSettingsIconButtonPressSegueIdentifier" id="HGb-CO-ktQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1163,7 +1138,51 @@
             </objects>
             <point key="canvasLocation" x="5064" y="-2587"/>
         </scene>
-        <!--Restaurant Orders Table View Controller-->
+        <!--Restaurant Settings Table View Controller-->
+        <scene sceneID="vxh-M1-fqm">
+            <objects>
+                <tableViewController id="UAT-se-bOa" customClass="RestaurantSettingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="yrq-cD-SSB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="PPi-OQ-p6o">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jGl-9Y-zK0">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGl-9Y-zK0" id="e2F-4B-QGR">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVb-rz-1dq">
+                                                    <rect key="frame" x="8" y="11" width="54" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iVb-rz-1dq" firstAttribute="centerY" secondItem="e2F-4B-QGR" secondAttribute="centerY" id="2xg-R9-0BL"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="iVb-rz-1dq" secondAttribute="leading" id="emk-Yu-Eek"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="UAT-se-bOa" id="nju-d8-umu"/>
+                            <outlet property="delegate" destination="UAT-se-bOa" id="gHh-fo-pdb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLj-Zk-fqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5975" y="-2214"/>
+        </scene>
+        <!--Orders-->
         <scene sceneID="5o6-fR-zr6">
             <objects>
                 <tableViewController id="Qnd-6Z-aYW" customClass="RestaurantOrdersTableViewController" sceneMemberID="viewController">
@@ -1186,7 +1205,13 @@
                             <outlet property="delegate" destination="Qnd-6Z-aYW" id="8pq-NH-FfA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="EgR-rm-rRA"/>
+                    <navigationItem key="navigationItem" title="Orders" id="EgR-rm-rRA">
+                        <barButtonItem key="rightBarButtonItem" image="settingsIcon" id="1vE-fT-44M">
+                            <connections>
+                                <segue destination="UAT-se-bOa" kind="show" id="u4T-VM-5di"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4YV-9C-zD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1210,11 +1235,11 @@
             </objects>
             <point key="canvasLocation" x="2656" y="-2214"/>
         </scene>
-        <!--List-->
+        <!--Find Food-->
         <scene sceneID="KWr-YD-NCj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bzg-78-ngz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="6zb-x1-1k1"/>
+                    <tabBarItem key="tabBarItem" title="Find Food" image="restaurantListTabBarIcon" id="6zb-x1-1k1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dBT-0j-IzD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1229,30 +1254,11 @@
             </objects>
             <point key="canvasLocation" x="1421" y="-636"/>
         </scene>
-        <!--Favorites-->
-        <scene sceneID="N6g-9C-Ctb">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B6I-AZ-5Z0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="8TQ-5t-nbA"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qb1-xl-ldr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="euT-fc-s4g" kind="relationship" relationship="rootViewController" id="jkd-k3-Cyj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Glz-36-e7w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="609" y="779"/>
-        </scene>
         <!--Receipts-->
         <scene sceneID="ozp-am-Eoo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BWb-UT-uop" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Receipts" id="PSR-s9-SWS"/>
+                    <tabBarItem key="tabBarItem" title="Receipts" image="receiptListTabBarIcon" id="PSR-s9-SWS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="51J-2g-dBt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1271,7 +1277,7 @@
         <scene sceneID="NCL-GL-xaO">
             <objects>
                 <tableViewController id="q9f-eB-ale" customClass="CustomerOrdersViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dBQ-6Z-Ngl">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dBQ-6Z-Ngl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1280,7 +1286,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ILe-Nu-7QW" id="mo1-e2-2XO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1400,7 +1406,7 @@
         <scene sceneID="NUa-VM-F5z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wEg-X4-OCm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="azY-kC-633"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="itemTabBarIcon" id="azY-kC-633"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2cE-hx-jcr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1419,7 +1425,7 @@
         <scene sceneID="v44-ao-oq7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KQm-Rs-AaJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Orders" id="cMn-jd-grW"/>
+                    <tabBarItem key="tabBarItem" title="Orders" image="receiptListTabBarIcon" id="cMn-jd-grW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rtd-EY-d8m">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1438,5 +1444,12 @@
     <resources>
         <image name="beef-fried-rice-2-edited.jpg" width="600" height="885"/>
         <image name="forage-mock-image.jpg" width="1000" height="665"/>
+        <image name="itemTabBarIcon" width="25" height="25"/>
+        <image name="receiptListTabBarIcon" width="25" height="25"/>
+        <image name="restaurantListTabBarIcon" width="25" height="25"/>
+        <image name="settingsIcon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="u4T-VM-5di"/>
+    </inferredMetricsTieBreakers>
 </document>

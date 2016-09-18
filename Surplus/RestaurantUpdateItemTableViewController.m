@@ -30,7 +30,7 @@
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
     
     self.leftoversItemTextField.text = restaurant.leftoversItem ? restaurant.leftoversItem : @"";
-    self.priceTextField.text = restaurant.price > 0 ? [NSString stringWithFormat:@"%f", restaurant.price * 1. / 100] : @"";
+    self.priceTextField.text = restaurant.price > 0 ? [NSString stringWithFormat:@"$%.2f", restaurant.price * 1. / 100] : @"";
     self.quantityAvailableTextField.text = restaurant.quantityAvailable > 0 ? [NSString stringWithFormat:@"%d", restaurant.quantityAvailable] : @"";
     
     self.textFields = @[self.leftoversItemTextField,

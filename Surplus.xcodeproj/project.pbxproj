@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EB1417D31D8BA85F00DAE042 /* OrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1417D21D8BA85F00DAE042 /* OrdersTableViewController.m */; };
 		EB1417D61D8BAB5400DAE042 /* CustomerOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1417D51D8BAB5400DAE042 /* CustomerOrdersViewController.m */; };
+		EB1417DC1D8E2CDA00DAE042 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1417DB1D8E2CDA00DAE042 /* ListTableViewCell.m */; };
 		EB1ACF071D7DE693004B5E19 /* ReceiptListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1ACF061D7DE693004B5E19 /* ReceiptListTableViewCell.m */; };
 		EB1ACF091D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1ACF081D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib */; };
 		EB1ACF0C1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1ACF0B1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.m */; };
@@ -28,6 +29,7 @@
 		EBD5E1C51D823B2B00B7BCCF /* RestaurantUpdateItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD5E1C41D823B2B00B7BCCF /* RestaurantUpdateItemTableViewController.m */; };
 		EBD5E1C81D82947600B7BCCF /* CustomerSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD5E1C71D82947600B7BCCF /* CustomerSettingsTableViewController.m */; };
 		EBD5E1CB1D8651A700B7BCCF /* RestaurantOrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD5E1CA1D8651A700B7BCCF /* RestaurantOrdersTableViewController.m */; };
+		EBE6F8CA1D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */; };
 		EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */; };
 		EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */; };
 		EBEA8BB71D67CCD800757205 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB61D67CCD800757205 /* Order.m */; };
@@ -52,6 +54,8 @@
 		EB1417D21D8BA85F00DAE042 /* OrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersTableViewController.m; sourceTree = "<group>"; };
 		EB1417D41D8BAB5400DAE042 /* CustomerOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerOrdersViewController.h; sourceTree = "<group>"; };
 		EB1417D51D8BAB5400DAE042 /* CustomerOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerOrdersViewController.m; sourceTree = "<group>"; };
+		EB1417DA1D8E2CDA00DAE042 /* ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
+		EB1417DB1D8E2CDA00DAE042 /* ListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
 		EB1ACF051D7DE693004B5E19 /* ReceiptListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptListTableViewCell.h; sourceTree = "<group>"; };
 		EB1ACF061D7DE693004B5E19 /* ReceiptListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptListTableViewCell.m; sourceTree = "<group>"; };
 		EB1ACF081D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiptListTableViewCell.xib; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		EBD5E1C71D82947600B7BCCF /* CustomerSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerSettingsTableViewController.m; sourceTree = "<group>"; };
 		EBD5E1C91D8651A700B7BCCF /* RestaurantOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantOrdersTableViewController.h; sourceTree = "<group>"; };
 		EBD5E1CA1D8651A700B7BCCF /* RestaurantOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantOrdersTableViewController.m; sourceTree = "<group>"; };
+		EBE6F8C81D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantSettingsTableViewController.h; sourceTree = "<group>"; };
+		EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantSettingsTableViewController.m; sourceTree = "<group>"; };
 		EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
 		EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
 		EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmationTableViewController.h; sourceTree = "<group>"; };
@@ -206,6 +212,8 @@
 				EB1417D21D8BA85F00DAE042 /* OrdersTableViewController.m */,
 				EB1417D41D8BAB5400DAE042 /* CustomerOrdersViewController.h */,
 				EB1417D51D8BAB5400DAE042 /* CustomerOrdersViewController.m */,
+				EBE6F8C81D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.h */,
+				EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -232,6 +240,8 @@
 				EB1ACF051D7DE693004B5E19 /* ReceiptListTableViewCell.h */,
 				EB1ACF061D7DE693004B5E19 /* ReceiptListTableViewCell.m */,
 				EB1ACF081D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib */,
+				EB1417DA1D8E2CDA00DAE042 /* ListTableViewCell.h */,
+				EB1417DB1D8E2CDA00DAE042 /* ListTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -363,7 +373,9 @@
 				EB311A441D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.m in Sources */,
 				EBA77D0C1D63FE8800BA8CDB /* main.m in Sources */,
 				EBEA8BE41D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m in Sources */,
+				EBE6F8CA1D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m in Sources */,
 				EB1ACF071D7DE693004B5E19 /* ReceiptListTableViewCell.m in Sources */,
+				EB1417DC1D8E2CDA00DAE042 /* ListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

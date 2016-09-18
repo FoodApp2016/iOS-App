@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListTableViewCell.h"
 
-@interface RestaurantListTableViewCell : UITableViewCell
+@interface RestaurantListTableViewCell : ListTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *displayImage;
 @property (weak, nonatomic) IBOutlet UILabel *name;

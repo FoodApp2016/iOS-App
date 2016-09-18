@@ -93,8 +93,12 @@
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    if(error) {
+    if (error) {
         NSLog(@"%@", error);
+        return;
+    }
+    
+    if (result.isCancelled) {
         return;
     }
 

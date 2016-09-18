@@ -20,9 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.orders = [NSMutableArray new];
-    self.names = [NSMutableArray new];
+    self.navigationItem.leftBarButtonItem = nil;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 4)];
+    self.tableView.tableHeaderView.backgroundColor = [self grayColor];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 4)];
+    self.tableView.tableFooterView.backgroundColor = [self grayColor];
+    self.tableView.backgroundColor = [self grayColor];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     [self.tableView registerNib:[UINib nibWithNibName:@"ReceiptListTableViewCell"
                                                bundle:nil]
          forCellReuseIdentifier:kReceiptListTableViewCellIdentifier];
@@ -31,6 +37,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIColor *)grayColor {
+    return [UIColor colorWithRed:0.97227 green:0.979203 blue:1 alpha:1];
 }
 
 - (void)populateOrdersCompletionHandlerWithData:(NSData *)data
@@ -50,7 +60,8 @@
         return;
     }
     
-    NSLog(@"order: %@", ordersJson);
+    self.orders = [NSMutableArray new];
+    self.names = [NSMutableArray new];
     
     for (NSDictionary *orderJson in ordersJson) {
         Order *order = [[Order alloc] initWithJson:orderJson];
@@ -75,7 +86,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 132;
+    return 124;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

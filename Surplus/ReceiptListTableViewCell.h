@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListTableViewCell.h"
 
-@interface ReceiptListTableViewCell : UITableViewCell
+@interface ReceiptListTableViewCell : ListTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *orderIdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
