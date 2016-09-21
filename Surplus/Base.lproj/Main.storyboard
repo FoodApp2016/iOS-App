@@ -863,7 +863,7 @@
                         <outlet property="descriptionTextView" destination="EmE-Zk-4A0" id="eIf-L4-R7A"/>
                         <outlet property="profileImageButton" destination="K3U-4g-rTd" id="sRT-uz-gPk"/>
                         <outlet property="profileImageView" destination="fd9-dz-0Pa" id="4xZ-pK-YCk"/>
-                        <segue destination="vis-07-QXO" kind="showDetail" identifier="completeProfileViewControllerDoneButtonSegueIdentifier" action="showViewController:sender:" id="Get-So-UJ7"/>
+                        <segue destination="vis-07-QXO" kind="show" identifier="completeProfileViewControllerDoneButtonSegueIdentifier" id="Get-So-UJ7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fw2-4g-sO8" userLabel="First Responder" sceneMemberID="firstResponder"/>

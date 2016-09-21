@@ -176,7 +176,10 @@
                                            NSLog(@"here");
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self performSegueWithIdentifier:kCompleteProfileViewControllerDoneButtonSegueIdentifier sender:nil];
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UITabBarController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"restaurantTabBarControllerIdentifier"];
+            [[UIApplication sharedApplication].keyWindow setRootViewController:rootViewController];
         });
     }];
 }
