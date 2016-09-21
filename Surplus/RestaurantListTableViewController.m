@@ -119,9 +119,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    RestaurantViewController *destinationViewController = segue.destinationViewController;
-    int row = (int) [self.tableView indexPathForSelectedRow].row;
-    destinationViewController.restaurant = self.restaurantList[row];
+    if ([segue.identifier isEqual:kRestaurantListTableViewCellSegueIdentifier]) {
+        RestaurantViewController *destinationViewController = segue.destinationViewController;
+        int row = (int) [self.tableView indexPathForSelectedRow].row;
+        destinationViewController.restaurant = self.restaurantList[row];
+    }
 }
 
 /*

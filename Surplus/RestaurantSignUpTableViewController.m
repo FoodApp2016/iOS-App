@@ -18,10 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *restaurantNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *representativeNameTextField;
-@property (weak, nonatomic) IBOutlet UILabel *dateOfBirthLabel;
-@property (weak, nonatomic) IBOutlet UITableViewCell *datePickerCell;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @property (nonatomic) BOOL shouldDisplayDatePicker;
 
@@ -39,12 +35,7 @@
     self.textFields = @[self.emailIdTextField,
                         self.passwordTextField,
                         self.restaurantNameTextField,
-                        self.phoneNumberTextField,
-                        self.representativeNameTextField];
-    
-    self.dateOfBirthLabel.text = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                                dateStyle:NSDateFormatterShortStyle
-                                                                timeStyle:NSDateFormatterNoStyle];
+                        self.phoneNumberTextField];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,39 +49,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.row == 6) {
-        
-        if (self.shouldDisplayDatePicker) {
-            return 216;
-        }
-        
-        return 0;
-    }
-    
-    return 44;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.row == 5) {
-        self.shouldDisplayDatePicker = !self.shouldDisplayDatePicker;
-        
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView reloadData];
-    }
-}
-
-- (IBAction)datePickerValueChanged:(id)sender {
-    
-    self.dateOfBirthLabel.text = [NSDateFormatter localizedStringFromDate:self.datePicker.date
-                                                                dateStyle:NSDateFormatterShortStyle
-                                                                timeStyle:NSDateFormatterNoStyle];
+    return 4;
 }
 
 - (IBAction)nextButtonPressed:(id)sender {
