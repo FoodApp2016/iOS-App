@@ -9,6 +9,7 @@
 #import "RestaurantViewController.h"
 #import "OrderConfirmationTableViewController.h"
 #import "Order.h"
+#import "RequestHandler.h"
 
 @interface RestaurantViewController ()
 
@@ -36,8 +37,6 @@
     
     self.name.text = self.restaurant.name;
     // self.displayImage.image =  self.restaurant.displayImage;
-    self.distance.text = [NSString stringWithFormat:@"%.1f mi",
-                          [self calculateDistanceFromRestaurant:self.restaurant]];
     self.rating.text = [NSString stringWithFormat:@"%.1f", self.restaurant.rating];
     self.leftoversItem.text = self.restaurant.leftoversItem;
     self.price.text = [NSString stringWithFormat:@"$%.2f", (double) self.restaurant.price / 100];
@@ -54,6 +53,7 @@
     
     self.quantityStepper.value = 1;
     self.quantityStepper.minimumValue = 1;
+    self.quantityStepper.maximumValue = self.restaurant.quantityAvailable;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +66,16 @@
     int distances[] = {4.5, 3.7, 6.6};
     return distances[arc4random() % 3];
 }
+//
+//- (void)populateRestaurant {
+//    
+//    [[RequestHandler new] getRestaurant:self.restaurant.id_
+//                      completionHandler:^(NSData *data,
+//                                          NSURLResponse *response,
+//                                          NSError *error) {
+//        
+//    }];
+//}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     return NO;

@@ -36,7 +36,17 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 4)];
     self.tableView.tableFooterView.backgroundColor = [self grayColor];
     self.tableView.backgroundColor = [self grayColor];
+}
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
     [[RequestHandler new] getAllRestaurants:^(NSError *error,
                                               NSData *data) {
         
@@ -60,11 +70,6 @@
             [self.tableView reloadData];
         });
     }];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (UIColor *)grayColor {
@@ -97,12 +102,19 @@
                           [self calculateDistanceFromRestaurant:restaurant]];
     cell.rating.font = [UIFont fontWithName:@"FontAwesome" size:17.];
     cell.rating.text = @"4";
+    cell.priceLabel.text =  [NSString stringWithFormat:@"$%.2f", (restaurant.price * 1.) / 100];
     cell.leftoversItem.text = restaurant.leftoversItem;
     
-    if (indexPath.row == 0) {
-        cell.displayImage.image = [UIImage imageNamed:@"forage-mock-image.jpg"];
-        cell.displayImage.contentMode = UIViewContentModeScaleAspectFill;
-    }
+    [[RequestHandler new] getImageForRestaurantId:restaurant.id_
+                                completionHandler:^(NSData *data,
+                                                    NSURLResponse *response,
+                                                    NSError *error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.displayImage.image = [UIImage imageWithData:data];
+            [self.tableView reloadData];
+        });
+    }];
     
     return cell;
 }

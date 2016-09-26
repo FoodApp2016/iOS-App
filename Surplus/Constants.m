@@ -21,7 +21,6 @@ NSString *const kReceiptListTableViewCellIdentifier = @"receiptListTableViewCell
 NSString *const kReuseIdentifier = @"reuseIdentifier";
 NSString *const kRestaurantSettingsIconButtonPressSegueIdentifier = @"restaurantSettingsIconButtonPressSegueIdentifier";
 
-
 NSString *const kSurplusBaseUrl = //@"http://0.0.0.0:5000";
                                   @"https://surplus-stage.herokuapp.com";
 NSString *const kSurplusGetAllRestaurantsPath = @"/restaurants/all";
@@ -38,6 +37,8 @@ NSString *const kSurplusGetAllOrdersByRestaurantIdPath = @"/orders/get_all_order
 NSString *const kSurplusGetAllOrdersByCustomerIdPath = @"/orders/get_orders_by_customer_id";
 NSString *const kSurplusUpdateItemPath = @"/restaurants/update_item";
 NSString *const kSurplusCompleteOrderPath = @"/orders/order_completed";
+NSString *const kSurplusGetRestaurantPath = @"/restaurants/get_restaurant";
+NSString *const kSurplusGetRestaurantImagePath = @"/static/images/";
 
 NSString *const kStripePublishableKey = @"pk_test_WtOtIVWN2IMyqREQteqgUVC4";
 

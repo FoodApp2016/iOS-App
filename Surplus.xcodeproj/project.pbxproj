@@ -30,6 +30,7 @@
 		EBD5E1C81D82947600B7BCCF /* CustomerSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD5E1C71D82947600B7BCCF /* CustomerSettingsTableViewController.m */; };
 		EBD5E1CB1D8651A700B7BCCF /* RestaurantOrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD5E1CA1D8651A700B7BCCF /* RestaurantOrdersTableViewController.m */; };
 		EBE6F8CA1D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */; };
+		EBE6F8CD1D95071F00DF3AF6 /* CustomerTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6F8CC1D95071F00DF3AF6 /* CustomerTabBarController.m */; };
 		EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */; };
 		EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */; };
 		EBEA8BB71D67CCD800757205 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB61D67CCD800757205 /* Order.m */; };
@@ -92,6 +93,8 @@
 		EBD5E1CA1D8651A700B7BCCF /* RestaurantOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantOrdersTableViewController.m; sourceTree = "<group>"; };
 		EBE6F8C81D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantSettingsTableViewController.h; sourceTree = "<group>"; };
 		EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantSettingsTableViewController.m; sourceTree = "<group>"; };
+		EBE6F8CB1D95071F00DF3AF6 /* CustomerTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerTabBarController.h; sourceTree = "<group>"; };
+		EBE6F8CC1D95071F00DF3AF6 /* CustomerTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerTabBarController.m; sourceTree = "<group>"; };
 		EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
 		EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
 		EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmationTableViewController.h; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				EB1417D51D8BAB5400DAE042 /* CustomerOrdersViewController.m */,
 				EBE6F8C81D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.h */,
 				EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */,
+				EBE6F8CB1D95071F00DF3AF6 /* CustomerTabBarController.h */,
+				EBE6F8CC1D95071F00DF3AF6 /* CustomerTabBarController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE6F8CD1D95071F00DF3AF6 /* CustomerTabBarController.m in Sources */,
 				EBEA8BDB1D74C41200757205 /* FacebookSignInViewController.m in Sources */,
 				EB1417D61D8BAB5400DAE042 /* CustomerOrdersViewController.m in Sources */,
 				EBEA8BB71D67CCD800757205 /* Order.m in Sources */,

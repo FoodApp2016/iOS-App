@@ -84,6 +84,19 @@
     }];
 }
 
+
+- (void)getRestaurant:(unsigned int)restaurantId
+    completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    NSString *urlString = [kSurplusBaseUrl stringByAppendingString:kSurplusGetRestaurantPath];
+    
+    [self makePostRequestWithUrlString:urlString
+                                params:@{@"id": [NSString stringWithFormat:@"%d", restaurantId]}
+                     completionHandler:completionHandler];
+}
+
 - (void)getOrCreateCustomerWithName:(NSString *)name
                          facebookId:(NSString *)facebookId
                   completionHandler:(void (^)(NSError *, NSData *))completionHandler {
@@ -311,10 +324,7 @@
     
     [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusGetAllOrdersByRestaurantIdPath]
                                 params:@{@"restaurantId": [NSString stringWithFormat:@"%d", restaurantId]}
-                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        completionHandler(data, response, error);
-    }];
+                     completionHandler:completionHandler];
 }
 
 - (void)getAllOrdersForCustomer:(unsigned int)customerId
@@ -324,11 +334,7 @@
     
     [self makePostRequestWithUrlString:urlString
                                 params:@{@"customerId": [NSString stringWithFormat:@"%d", customerId]}
-                                         completionHandler:^(NSData *data,
-                                                             NSURLResponse *response,
-                                                             NSError *error) {
-        completionHandler(data, response, error);
-    }];
+                                         completionHandler:completionHandler];
 }
 
 - (void)updateItem:(NSDictionary *)itemDetails
@@ -339,11 +345,8 @@
     NSString *urlString = [kSurplusBaseUrl stringByAppendingString:kSurplusUpdateItemPath];
     
     [self makePostRequestWithUrlString:urlString
-                                params:itemDetails completionHandler:^(NSData *data,
-                                                                       NSURLResponse *response,
-                                                                       NSError *error) {
-        completionHandler(data, response, error);
-    }];
+                                params:itemDetails
+                     completionHandler:completionHandler];
 }
 
 - (void)completeOrder:(unsigned int)orderId
@@ -355,10 +358,22 @@
     
     [self makePostRequestWithUrlString:urlString
                                 params:@{@"id": [NSString stringWithFormat:@"%d", orderId]}
-                     completionHandler:^(NSData *data,
-                                         NSURLResponse *response,
-                                         NSError *error) {
-        completionHandler(data, response, error);
+                     completionHandler:completionHandler];
+}
+
+- (void)getImageForRestaurantId:(unsigned int)restaurantId
+              completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%d.jpg",
+                           kSurplusBaseUrl,
+                           kSurplusGetRestaurantImagePath,
+                           restaurantId];
+    
+    [self makeGetRequest:urlString params:@{} completionHandler:^(NSError *error,
+                                                                  NSData *data) {
+        completionHandler(data, nil, error);
     }];
 }
 

@@ -15,6 +15,9 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
 
 - (void)getAllRestaurants:(void(^)(NSError *, NSData *))completionHandler;
 
+- (void)getRestaurant:(unsigned int)restaurantId
+    completionHandler:(completionHandler)completionHandler;
+
 - (void)getOrCreateCustomerWithName:(NSString *)name
                          facebookId:(NSString *)facebookId
                   completionHandler:(void(^)(NSError *, NSData *))completionHandler;
@@ -56,6 +59,9 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
     completionHandler:(completionHandler)completionHandler;
 
 - (void)getAllOrdersForCustomer:(unsigned int)customerId
+              completionHandler:(completionHandler)completionHandler;
+
+- (void)getImageForRestaurantId:(unsigned int)restaurantId
               completionHandler:(completionHandler)completionHandler;
 
 @end

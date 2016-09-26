@@ -82,6 +82,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NQ2-8T-DnS" firstAttribute="leading" secondItem="oxE-ZF-U7b" secondAttribute="trailing" constant="8" id="4an-CC-nMd"/>
                             <constraint firstItem="eaR-wO-WcU" firstAttribute="top" secondItem="kAb-wd-igY" secondAttribute="top" constant="8" id="6P3-zI-Fxg"/>
                             <constraint firstItem="voS-B5-ZkN" firstAttribute="leading" secondItem="kAb-wd-igY" secondAttribute="leading" constant="8" id="Ar0-xN-WKL"/>
                             <constraint firstItem="0pr-br-C2L" firstAttribute="leading" secondItem="kAb-wd-igY" secondAttribute="leading" constant="8" id="Biv-Vf-XU8"/>
@@ -105,7 +106,6 @@
                 </subviews>
                 <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="oxE-ZF-U7b" secondAttribute="trailing" constant="69" id="0JJ-Ft-ARM"/>
                     <constraint firstItem="voS-B5-ZkN" firstAttribute="centerX" secondItem="mJT-4t-5dB" secondAttribute="centerX" id="1b3-Pr-3rw"/>
                     <constraint firstAttribute="topMargin" secondItem="kAb-wd-igY" secondAttribute="top" constant="4" id="Jaf-a3-brG"/>
                     <constraint firstAttribute="bottomMargin" secondItem="kAb-wd-igY" secondAttribute="bottom" constant="-4" id="Jal-BE-BPx"/>

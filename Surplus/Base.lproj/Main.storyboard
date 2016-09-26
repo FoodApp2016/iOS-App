@@ -602,10 +602,10 @@
             </objects>
             <point key="canvasLocation" x="367" y="-798"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Customer Tab Bar Controller-->
         <scene sceneID="Ruq-gO-wN4">
             <objects>
-                <tabBarController id="VFZ-eM-PIX" sceneMemberID="viewController">
+                <tabBarController id="VFZ-eM-PIX" customClass="CustomerTabBarController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="vaQ-pa-oIL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vuq-c6-PVj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -1020,6 +1020,110 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="NXm-88-vJZ" secondAttribute="trailing" constant="7" id="Dl6-SI-Mlr"/>
                                                 <constraint firstItem="NXm-88-vJZ" firstAttribute="centerY" secondItem="SAT-Kp-rjx" secondAttribute="centerY" id="GK4-g1-We2"/>
                                                 <constraint firstItem="NXm-88-vJZ" firstAttribute="leading" secondItem="SAT-Kp-rjx" secondAttribute="leadingMargin" constant="7" id="hgG-gc-DwI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="xs8-RV-9h1">
+                                        <rect key="frame" x="0.0" y="245.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xs8-RV-9h1" id="5UL-2T-WDw">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Start Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLF-RS-yzx">
+                                                    <rect key="frame" x="15" y="11" width="136" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7r-ZA-7e6">
+                                                    <rect key="frame" x="519" y="11" width="73" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="y7r-ZA-7e6" secondAttribute="trailing" id="2WQ-fV-eTG"/>
+                                                <constraint firstItem="fLF-RS-yzx" firstAttribute="centerY" secondItem="5UL-2T-WDw" secondAttribute="centerY" id="5cP-iX-igF"/>
+                                                <constraint firstItem="y7r-ZA-7e6" firstAttribute="centerY" secondItem="5UL-2T-WDw" secondAttribute="centerY" id="VqG-9R-h9I"/>
+                                                <constraint firstItem="fLF-RS-yzx" firstAttribute="leading" secondItem="5UL-2T-WDw" secondAttribute="leadingMargin" constant="7" id="eV9-aD-d69"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="200" id="3z1-Zc-VR9">
+                                        <rect key="frame" x="0.0" y="289.5" width="600" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3z1-Zc-VR9" id="3ME-Lb-dhl">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="HEl-CF-SbP">
+                                                    <rect key="frame" x="8" y="-8" width="584" height="216"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="496553507.81094301">
+                                                        <!--2016-09-26 03:31:47 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="HEl-CF-SbP" secondAttribute="leading" id="85j-tj-3JI"/>
+                                                <constraint firstItem="HEl-CF-SbP" firstAttribute="centerY" secondItem="3ME-Lb-dhl" secondAttribute="centerY" id="8hV-RP-ayM"/>
+                                                <constraint firstItem="HEl-CF-SbP" firstAttribute="centerX" secondItem="3ME-Lb-dhl" secondAttribute="centerX" id="A5X-CX-37O"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HEl-CF-SbP" secondAttribute="trailing" id="Mxj-2W-mql"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="A5X-CX-37O"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="91T-Km-b1u">
+                                        <rect key="frame" x="0.0" y="489.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="91T-Km-b1u" id="HHD-Wm-XOy">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup End Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNk-0P-aUA">
+                                                    <rect key="frame" x="15" y="11" width="128" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxm-tj-6Vd">
+                                                    <rect key="frame" x="519" y="11" width="73" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bNk-0P-aUA" firstAttribute="leading" secondItem="HHD-Wm-XOy" secondAttribute="leadingMargin" constant="7" id="O3U-6f-fMz"/>
+                                                <constraint firstItem="Mxm-tj-6Vd" firstAttribute="centerY" secondItem="HHD-Wm-XOy" secondAttribute="centerY" id="q7w-Gr-hnI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Mxm-tj-6Vd" secondAttribute="trailing" id="uIp-fN-LgJ"/>
+                                                <constraint firstItem="bNk-0P-aUA" firstAttribute="centerY" secondItem="HHD-Wm-XOy" secondAttribute="centerY" id="wgo-bQ-J2j"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="200" id="xbd-cF-KyV">
+                                        <rect key="frame" x="0.0" y="533.5" width="600" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xbd-cF-KyV" id="odj-4j-k3I">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJk-vp-wLf">
+                                                    <rect key="frame" x="8" y="-8" width="584" height="216"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="496553577.04519802">
+                                                        <!--2016-09-26 03:32:57 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NJk-vp-wLf" secondAttribute="trailing" id="D3S-6N-SDj"/>
+                                                <constraint firstItem="NJk-vp-wLf" firstAttribute="centerY" secondItem="odj-4j-k3I" secondAttribute="centerY" id="OpY-Rb-5EZ"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="NJk-vp-wLf" secondAttribute="leading" id="vzm-sd-s9f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

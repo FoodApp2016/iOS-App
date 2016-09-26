@@ -137,7 +137,7 @@ didCreatePaymentResult:(nonnull STPPaymentResult *)paymentResult
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tabBarController setSelectedIndex:1];
+        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
     });
 
     return;

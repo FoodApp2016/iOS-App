@@ -39,6 +39,8 @@ extern NSString *const kSurplusGetAllOrdersByRestaurantIdPath;
 extern NSString *const kSurplusGetAllOrdersByCustomerIdPath;
 extern NSString *const kSurplusUpdateItemPath;
 extern NSString *const kSurplusCompleteOrderPath;
+extern NSString *const kSurplusGetRestaurantPath;
+extern NSString *const kSurplusGetRestaurantImagePath;
 
 extern NSString *const kStripePublishableKey;
 

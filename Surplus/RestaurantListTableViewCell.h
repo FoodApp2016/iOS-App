@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *rating;
 @property (weak, nonatomic) IBOutlet UILabel *leftoversItem;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView_;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @end
