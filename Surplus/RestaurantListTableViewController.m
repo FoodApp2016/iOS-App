@@ -45,6 +45,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     [super viewWillAppear:animated];
     
     [[RequestHandler new] getAllRestaurants:^(NSError *error,
@@ -105,11 +107,15 @@
     cell.priceLabel.text =  [NSString stringWithFormat:@"$%.2f", (restaurant.price * 1.) / 100];
     cell.leftoversItem.text = restaurant.leftoversItem;
     
+    if (cell.displayImage.image != nil) {
+        return cell;
+    }
+    
     [[RequestHandler new] getImageForRestaurantId:restaurant.id_
                                 completionHandler:^(NSData *data,
                                                     NSURLResponse *response,
                                                     NSError *error) {
-        
+                                    
         dispatch_async(dispatch_get_main_queue(), ^{
             cell.displayImage.image = [UIImage imageWithData:data];
             [self.tableView reloadData];

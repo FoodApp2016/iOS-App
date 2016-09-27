@@ -138,10 +138,11 @@
         return;
     }
     
+    
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
     
     [[RequestHandler new] submitAdditionalRestaurantInfo:@{@"description": self.descriptionTextView.text,
-                                                           @"profileImage": UIImageJPEGRepresentation(self.profileImageView.image, 1),
+                                                           @"profileImage": UIImageJPEGRepresentation(self.profileImageView.image, 0.2f),
                                                            @"username": restaurant.username,
                                                            @"password": restaurant.password}
                                        completionHandler:^(NSData *data,

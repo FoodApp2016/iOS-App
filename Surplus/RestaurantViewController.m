@@ -54,6 +54,18 @@
     self.quantityStepper.value = 1;
     self.quantityStepper.minimumValue = 1;
     self.quantityStepper.maximumValue = self.restaurant.quantityAvailable;
+    
+    self.displayImage.image = nil;
+    
+    [[RequestHandler new] getImageForRestaurantId:self.restaurant.id_
+                                completionHandler:^(NSData *data,
+                                                    NSURLResponse *response,
+                                                    NSError *error) {
+                            
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.displayImage.image = [UIImage imageWithData:data];
+        });
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

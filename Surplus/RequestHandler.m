@@ -46,6 +46,7 @@
                                  completionHandler:^(NSData * _Nullable data,
                                                      NSURLResponse * _Nullable response,
                                                      NSError * _Nullable error) {
+        
         completionHandler(error, data);
     }] resume];
 }
@@ -373,6 +374,7 @@
     
     [self makeGetRequest:urlString params:@{} completionHandler:^(NSError *error,
                                                                   NSData *data) {
+        
         completionHandler(data, nil, error);
     }];
 }

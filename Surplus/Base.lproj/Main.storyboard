@@ -1063,6 +1063,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="496553507.81094301">
                                                         <!--2016-09-26 03:31:47 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="pickupStartTimePickerValueChanged:" destination="gfg-C5-duV" eventType="valueChanged" id="ZPE-3E-br0"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -1113,11 +1116,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJk-vp-wLf">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJk-vp-wLf">
                                                     <rect key="frame" x="8" y="-8" width="584" height="216"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="496553577.04519802">
                                                         <!--2016-09-26 03:32:57 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="pickupEndTimePickerValueChanged:" destination="gfg-C5-duV" eventType="valueChanged" id="GZf-Rk-wWW"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -1149,6 +1155,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="leftoversItemTextField" destination="oBN-aK-hzs" id="fYH-jq-b0U"/>
+                        <outlet property="pickupEndTimeLabel" destination="Mxm-tj-6Vd" id="3xc-KE-aYo"/>
+                        <outlet property="pickupEndTimePicker" destination="NJk-vp-wLf" id="aqa-v0-8X3"/>
+                        <outlet property="pickupStartTimeLabel" destination="y7r-ZA-7e6" id="yAI-nW-RT5"/>
+                        <outlet property="pickupStartTimePicker" destination="HEl-CF-SbP" id="m8r-0W-wTs"/>
                         <outlet property="priceTextField" destination="5V1-1u-3ch" id="b2t-lr-p51"/>
                         <outlet property="quantityAvailableTextField" destination="NXm-88-vJZ" id="eBu-ax-Mgm"/>
                         <outlet property="saveButton" destination="LwN-9H-nLg" id="ShS-b9-e3o"/>

@@ -19,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *quantityAvailableTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+@property (weak, nonatomic) IBOutlet UIDatePicker *pickupStartTimePicker;
+@property (weak, nonatomic) IBOutlet UILabel *pickupStartTimeLabel;
+@property (weak, nonatomic) IBOutlet UIDatePicker *pickupEndTimePicker;
+@property (weak, nonatomic) IBOutlet UILabel *pickupEndTimeLabel;
 
 @property (nonatomic) BOOL pickupStartTimePickerActive;
 @property (nonatomic) BOOL pickupEndTimePickerActive;
@@ -142,6 +146,8 @@
     [[RequestHandler new] updateItem:@{@"leftoversItem": self.leftoversItemTextField.text,
                                        @"price": [NSString stringWithFormat:@"%d", [self frontEndPriceToPrice]],
                                        @"quantityAvailable": self.quantityAvailableTextField.text,
+                                       @"pickupStartTime": self.pickupStartTimeLabel.text,
+                                       @"pickupEndTime": self.pickupEndTimeLabel.text,
                                        @"username": restaurant.username,
                                        @"password": restaurant.password}
                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -154,22 +160,12 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     
-    CGPoint point = [gestureRecognizer locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-    
-    NSLog(@"%d", indexPath == nil);
-
-    return indexPath == nil;
+    return ![self tableViewContainsPoint:[touch locationInView:self.tableView]];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)tapRecognizer
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    
     CGPoint point = [tapRecognizer locationInView:self.tableView];
-    
-    NSLog(@"%f %f", point.x, point.y);
-    
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
     
     if (indexPath == nil) {
@@ -179,6 +175,22 @@
     }
 }
 
+- (BOOL)tableViewContainsPoint:(CGPoint)point {
+    
+    for (int i = 0; i < [self.tableView numberOfRowsInSection:0]; ++i) {
+        
+        NSIndexPath* indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        CGPoint topLeftCorner = cell.frame.origin;
+        
+        if (point.y >= topLeftCorner.y && point.y <= topLeftCorner.y + cell.frame.size.height) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
@@ -186,14 +198,34 @@
     if (indexPath.row == 3) {
         self.pickupStartTimePickerActive = !self.pickupStartTimePickerActive;
         self.pickupEndTimePickerActive = NO;
-        [self.tableView reloadData];
+        
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
     }
     
     if (indexPath.row == 5) {
         self.pickupEndTimePickerActive = !self.pickupEndTimePickerActive;
         self.pickupStartTimePickerActive = NO;
-        [self.tableView reloadData];
+        
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
     }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (IBAction)pickupStartTimePickerValueChanged:(id)sender {
+    
+    self.pickupStartTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.pickupStartTimePicker.date
+                                                                    dateStyle:NSDateFormatterNoStyle
+                                                                    timeStyle:NSDateFormatterShortStyle];
+}
+
+- (IBAction)pickupEndTimePickerValueChanged:(id)sender {
+    
+    self.pickupEndTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.pickupEndTimePicker.date
+                                                                  dateStyle:NSDateFormatterNoStyle
+                                                                  timeStyle:NSDateFormatterShortStyle];
 }
 
 @end
