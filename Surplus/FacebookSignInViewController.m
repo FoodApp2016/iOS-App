@@ -19,6 +19,8 @@
 @property (strong, nonatomic) FBSDKLoginButton *loginButton;
 @property (strong, nonatomic) UILabel *surplusLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) IBOutlet UIButton *businessLoginButton;
+@property (strong, nonatomic) IBOutlet UIButton *businessSignUpButton;
 
 @end
 
@@ -28,9 +30,11 @@
     
     [super viewDidLoad];
     
+    // Don't change order - the y position of each element depends on the ones before it
     [self createLoginButton];
     [self createSurplusLabel];
-    
+    [self configureBusinessButtons];
+
     self.backgroundImageView.image = [UIImage imageNamed:@"beef-fried-rice-2-edited.jpg"];
 }
 
@@ -53,7 +57,7 @@
     self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     
     float x = self.view.center.x - self.loginButton.frame.size.width / 2;
-    float y = self.view.frame.size.height - self.loginButton.frame.size.height - 30;
+    float y = self.view.frame.size.height - self.loginButton.frame.size.height - 100;
     [self.loginButton setFrame:CGRectMake(x,
                                           y,
                                           self.loginButton.frame.size.width,
@@ -70,12 +74,67 @@
     [self.surplusLabel sizeToFit];
     
     float x = self.view.center.x - self.surplusLabel.frame.size.width / 2;
-    float y = self.loginButton.frame.origin.y - self.surplusLabel.frame.size.height - 10;
+    float y = self.view.frame.origin.x + 50;
     [self.surplusLabel setFrame:CGRectMake(x,
                                            y,
                                            self.surplusLabel.frame.size.width,
                                            self.surplusLabel.frame.size.height)];
     [self.view addSubview:self.surplusLabel];
+}
+
+- (void)configureBusinessButtons {
+    
+    self.businessSignUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.businessSignUpButton setTitle:@"Business Sign Up" forState:UIControlStateNormal];
+    [self.businessSignUpButton addTarget:nil
+                                  action:@selector(segueToRestaurantSignUpViewController)
+                        forControlEvents:UIControlEventTouchUpInside];
+    [self configureBusinessButton:self.businessSignUpButton];
+    
+    float x = self.view.center.x - self.loginButton.frame.size.width / 2;
+    float y = self.loginButton.frame.origin.y + self.loginButton.frame.size.height + 8;
+    [self.businessSignUpButton setFrame:CGRectMake(x,
+                                                   y,
+                                                   self.loginButton.frame.size.width,
+                                                   self.loginButton.frame.size.height)];
+    [self.view addSubview:self.businessSignUpButton];
+    
+    self.businessLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.businessLoginButton setTitle:@"Business Login" forState:UIControlStateNormal];
+    [self.businessLoginButton addTarget:nil
+                                  action:@selector(segueToRestaurantLoginViewController)
+                        forControlEvents:UIControlEventTouchUpInside];
+    [self configureBusinessButton:self.businessLoginButton];
+    
+    x = self.view.center.x - self.loginButton.frame.size.width / 2;
+    y = self.businessSignUpButton.frame.origin.y + self.businessSignUpButton.frame.size.height + 8;
+    [self.businessLoginButton setFrame:CGRectMake(x,
+                                                  y,
+                                                  self.loginButton.frame.size.width,
+                                                  self.loginButton.frame.size.height)];
+    [self.view addSubview:self.businessLoginButton];
+    
+}
+
+- (void)segueToRestaurantLoginViewController {
+    
+    [self performSegueWithIdentifier:kFacebookSignInViewControllerBusinessLoginButtonSegueIdentifier sender:nil];
+}
+
+- (void)segueToRestaurantSignUpViewController {
+   
+    [self performSegueWithIdentifier:kFacebookSignInViewControllerBusinessSignUpButtonSegueIdentifier
+                              sender:nil];
+}
+
+- (void)configureBusinessButton:(UIButton *)button {
+    
+    button.titleLabel.font = [button.titleLabel.font fontWithSize:14];
+    button.layer.borderWidth = 1;
+    button.layer.borderColor = [[UIColor whiteColor] CGColor];
+    button.layer.cornerRadius = 3.5;
+    button.contentEdgeInsets = UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f);
+    [button sizeToFit];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

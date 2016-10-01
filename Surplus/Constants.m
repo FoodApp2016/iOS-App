@@ -20,6 +20,8 @@ NSString *const kRestaurantTabBarControllerIdentifier = @"restaurantTabBarContro
 NSString *const kReceiptListTableViewCellIdentifier = @"receiptListTableViewCellIdentifier";
 NSString *const kReuseIdentifier = @"reuseIdentifier";
 NSString *const kRestaurantSettingsIconButtonPressSegueIdentifier = @"restaurantSettingsIconButtonPressSegueIdentifier";
+NSString *const kFacebookSignInViewControllerBusinessSignUpButtonSegueIdentifier = @"facebookSignInViewControllerBusinessSignUpButtonSegueIdentifier";
+NSString *const kFacebookSignInViewControllerBusinessLoginButtonSegueIdentifier = @"facebookSignInViewControllerBusinessLoginButtonSegueIdentifier";
 
 NSString *const kSurplusBaseUrl = //@"http://0.0.0.0:5000";
                                   @"https://surplus-stage.herokuapp.com";

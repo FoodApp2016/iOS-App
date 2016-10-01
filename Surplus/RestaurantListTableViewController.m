@@ -59,6 +59,9 @@
         
         NSArray *restaurantsJson = [NSJSONSerialization JSONObjectWithData:data
                                                                    options:NSJSONReadingMutableContainers error:nil];
+        
+        NSLog(@"%@", restaurantsJson);
+        
         NSMutableArray *restaurants = [NSMutableArray new];
         
         for (NSDictionary *restaurantJson in restaurantsJson) {
@@ -106,6 +109,8 @@
     cell.rating.text = @"4";
     cell.priceLabel.text =  [NSString stringWithFormat:@"$%.2f", (restaurant.price * 1.) / 100];
     cell.leftoversItem.text = restaurant.leftoversItem;
+    cell.pickupStartTime.text = restaurant.pickupStartTime;
+    cell.pickupEndTime.text = restaurant.pickupEndTime;
     
     if (cell.displayImage.image != nil) {
         return cell;

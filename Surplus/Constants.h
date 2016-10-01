@@ -23,6 +23,8 @@ extern NSString *const kRestaurantTabBarControllerIdentifier;
 extern NSString *const kReceiptListTableViewCellIdentifier;
 extern NSString *const kReuseIdentifier;
 extern NSString *const kRestaurantSettingsIconButtonPressSegueIdentifier;
+extern NSString *const kFacebookSignInViewControllerBusinessSignUpButtonSegueIdentifier;
+extern NSString *const kFacebookSignInViewControllerBusinessLoginButtonSegueIdentifier;
 
 extern NSString *const kSurplusBaseUrl;
 extern NSString *const kSurplusGetAllRestaurantsPath;

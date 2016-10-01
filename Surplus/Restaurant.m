@@ -22,9 +22,6 @@
             else if ([key isEqual:@"price"]) {
                 self.price = [dict[key] doubleValue];
             }
-            else if ([key isEqual:@"pickupTime"]) {
-                self.pickupTime = [NSDate date];
-            }
             else {
                 [self setValue:dict[key] forKey:key];
             }
@@ -47,8 +44,11 @@
         self.description_ = json[@"description"];
         self.leftoversItem = json[@"leftoversItem"];
         self.price = [json[@"price"] intValue];
-        self.pickupTime = json[@"pickupTime"];
+        self.pickupStartTime = json[@"pickupStartTime"];
+        self.pickupEndTime = json[@"pickupEndTime"];
         self.isActivated = [json[@"isActivated"] boolValue];
+        self.phoneNumber = json[@"phoneNumber"];
+        self.address = json[@"addressLine1"];
         self.representativeName = json[@"representativeName"];
         self.representativeDateOfBirth = [NSDate date];
         self.quantityAvailable = [json[@"quantityAvailable"] intValue];
@@ -75,7 +75,8 @@
     self.description_ = [coder decodeObjectForKey:@"description_"];
     self.leftoversItem = [coder decodeObjectForKey:@"leftoversItem"];
     self.price = (int)[coder decodeIntegerForKey:@"price"];
-    self.pickupTime = [coder decodeObjectForKey:@"pickupTime"];
+    self.pickupStartTime = [coder decodeObjectForKey:@"pickupStartTime"];
+    self.pickupEndTime = [coder decodeObjectForKey:@"pickupEndTime"];
     self.isActivated = [coder decodeBoolForKey:@"isActivated"];
     self.representativeName = [coder decodeObjectForKey:@"representativeName"];
     self.representativeDateOfBirth = [coder decodeObjectForKey:@"representativeDateOfBirth"];
@@ -96,7 +97,8 @@
     [coder encodeObject:self.description_ forKey:@"description_"];
     [coder encodeObject:self.leftoversItem forKey:@"leftoversItem"];
     [coder encodeInteger:self.price forKey:@"price"];
-    [coder encodeObject:self.pickupTime forKey:@"pickupTime"];
+    [coder encodeObject:self.pickupStartTime forKey:@"pickupStartTime"];
+    [coder encodeObject:self.pickupEndTime forKey:@"pickupEndTime"];
     [coder encodeBool:self.isActivated forKey:@"isActivated"];
     [coder encodeObject:self.representativeName forKey:@"representativeName"];
     [coder encodeObject:self.representativeDateOfBirth forKey:@"representativeDateOfBirth"];

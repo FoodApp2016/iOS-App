@@ -35,28 +35,54 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wm2-x5-cIw">
-                                <rect key="frame" x="261" y="117" width="39" height="21"/>
+                                <rect key="frame" x="261.5" y="116.5" width="38.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLG-n5-kt8">
+                                <rect key="frame" x="246" y="133" width="54" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mD-By-jsS">
+                                <rect key="frame" x="232" y="133" width="6" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1u1-8C-kAZ">
+                                <rect key="frame" x="170" y="133" width="54" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="1u1-8C-kAZ" secondAttribute="bottom" constant="3.5" id="2aw-d7-PQL"/>
+                            <constraint firstAttribute="bottom" secondItem="QLG-n5-kt8" secondAttribute="bottom" constant="4" id="9JH-Fl-OM3"/>
                             <constraint firstItem="dFc-h7-3va" firstAttribute="height" secondItem="AzC-ZJ-5Yj" secondAttribute="height" multiplier="0.75" id="Cmc-o3-JEL"/>
+                            <constraint firstItem="1u1-8C-kAZ" firstAttribute="centerY" secondItem="5mD-By-jsS" secondAttribute="centerY" id="DCm-Ow-x4p"/>
                             <constraint firstItem="dFc-h7-3va" firstAttribute="width" secondItem="AzC-ZJ-5Yj" secondAttribute="width" id="F0U-e7-ldO"/>
+                            <constraint firstItem="5mD-By-jsS" firstAttribute="leading" secondItem="1u1-8C-kAZ" secondAttribute="trailing" constant="8" id="Iay-K8-lAt"/>
                             <constraint firstItem="Wm2-x5-cIw" firstAttribute="centerY" secondItem="toj-jf-Rm8" secondAttribute="centerY" id="KHe-NR-UFN"/>
+                            <constraint firstItem="QLG-n5-kt8" firstAttribute="leading" secondItem="5mD-By-jsS" secondAttribute="trailing" constant="8" id="M8H-BI-9VL"/>
                             <constraint firstItem="dFc-h7-3va" firstAttribute="top" secondItem="AzC-ZJ-5Yj" secondAttribute="top" id="TQo-Hu-er6"/>
                             <constraint firstAttribute="bottom" secondItem="QxF-2B-3tu" secondAttribute="bottom" constant="4" id="VgH-Ae-IqB"/>
+                            <constraint firstAttribute="trailing" secondItem="QLG-n5-kt8" secondAttribute="trailing" constant="4" id="bGy-6N-ALg"/>
                             <constraint firstItem="toj-jf-Rm8" firstAttribute="leading" secondItem="AzC-ZJ-5Yj" secondAttribute="leading" constant="4" id="bV4-bL-Y69"/>
                             <constraint firstItem="QxF-2B-3tu" firstAttribute="leading" secondItem="AzC-ZJ-5Yj" secondAttribute="leading" constant="4" id="eUL-q9-S01"/>
                             <constraint firstItem="dFc-h7-3va" firstAttribute="leading" secondItem="AzC-ZJ-5Yj" secondAttribute="leading" id="grQ-8O-Q81"/>
                             <constraint firstItem="toj-jf-Rm8" firstAttribute="top" secondItem="dFc-h7-3va" secondAttribute="bottom" constant="4" id="tFT-5N-SHz"/>
                             <constraint firstAttribute="trailing" secondItem="dFc-h7-3va" secondAttribute="trailing" id="ubL-Fr-XBI"/>
+                            <constraint firstItem="QLG-n5-kt8" firstAttribute="centerY" secondItem="5mD-By-jsS" secondAttribute="centerY" id="v8Q-Zm-A7d"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="ubL-Fr-XBI"/>
+                                <exclude reference="2aw-d7-PQL"/>
                             </mask>
                         </variation>
                     </view>
@@ -65,6 +91,7 @@
                 <constraints>
                     <constraint firstItem="AzC-ZJ-5Yj" firstAttribute="top" secondItem="jt1-6f-ciY" secondAttribute="topMargin" constant="-4" id="61x-0j-izn"/>
                     <constraint firstItem="AzC-ZJ-5Yj" firstAttribute="top" secondItem="jt1-6f-ciY" secondAttribute="topMargin" constant="4" id="6ZL-OO-Jld"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="QLG-n5-kt8" secondAttribute="trailing" constant="4" id="9cb-o9-AFc"/>
                     <constraint firstItem="AzC-ZJ-5Yj" firstAttribute="bottom" secondItem="jt1-6f-ciY" secondAttribute="bottomMargin" constant="4" id="CHn-hz-vOP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AzC-ZJ-5Yj" secondAttribute="trailing" id="E33-aT-Lxa"/>
                     <constraint firstAttribute="bottomMargin" secondItem="AzC-ZJ-5Yj" secondAttribute="bottom" constant="2" id="Qte-pZ-Itn"/>
@@ -89,6 +116,7 @@
                         <exclude reference="XQA-Hb-eGP"/>
                         <exclude reference="fh6-GV-4IE"/>
                         <exclude reference="fhO-nE-ZjV"/>
+                        <exclude reference="9cb-o9-AFc"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -97,6 +125,8 @@
                 <outlet property="displayImage" destination="dFc-h7-3va" id="pwV-oe-3q4"/>
                 <outlet property="leftoversItem" destination="QxF-2B-3tu" id="ZAF-78-8br"/>
                 <outlet property="name" destination="toj-jf-Rm8" id="8bQ-AH-3Br"/>
+                <outlet property="pickupEndTime" destination="QLG-n5-kt8" id="xmi-Wv-gBs"/>
+                <outlet property="pickupStartTime" destination="1u1-8C-kAZ" id="9BS-se-per"/>
                 <outlet property="priceLabel" destination="Wm2-x5-cIw" id="t5I-yy-OBM"/>
             </connections>
             <point key="canvasLocation" x="303" y="213"/>

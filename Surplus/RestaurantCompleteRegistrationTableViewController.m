@@ -122,6 +122,7 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
     self.profileImageView.image = (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.profileImageButton setTitle:@"Edit" forState:UIControlStateNormal];
     self.profileImageButton.titleLabel.font = [self.profileImageButton.titleLabel.font fontWithSize:17];
     [self.profileImageButton sizeToFit];

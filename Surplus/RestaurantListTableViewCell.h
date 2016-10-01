@@ -18,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftoversItem;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView_;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pickupStartTime;
+@property (weak, nonatomic) IBOutlet UILabel *pickupEndTime;
 
 @end

@@ -15,15 +15,14 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *displayImage;
 @property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *distance;
-@property (weak, nonatomic) IBOutlet UILabel *rating;
 @property (weak, nonatomic) IBOutlet UILabel *leftoversItem;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UIButton *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *quantityTextField;
 @property (weak, nonatomic) IBOutlet UITextView *description_;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionHeightConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *pickupTime;
+@property (weak, nonatomic) IBOutlet UILabel *pickupStartTime;
+@property (weak, nonatomic) IBOutlet UILabel *pickupEndTime;
 @property (weak, nonatomic) IBOutlet UIStepper *quantityStepper;
 @property (weak, nonatomic) IBOutlet UIButton *orderButton;
 
@@ -36,14 +35,13 @@
     [super viewDidLoad];
     
     self.name.text = self.restaurant.name;
-    // self.displayImage.image =  self.restaurant.displayImage;
-    self.rating.text = [NSString stringWithFormat:@"%.1f", self.restaurant.rating];
+    self.pickupStartTime.text = self.restaurant.pickupStartTime;
+    self.pickupEndTime.text = self.restaurant.pickupEndTime;
     self.leftoversItem.text = self.restaurant.leftoversItem;
     self.price.text = [NSString stringWithFormat:@"$%.2f", (double) self.restaurant.price / 100];
     
     self.description_.editable = YES;
     self.description_.text = self.restaurant.description_;
-//    self.description_.font = [self.description_.font fontWithSize:14];
     
     self.descriptionHeightConstraint.constant = [self.description_ sizeThatFits:CGSizeMake(self.description_.frame.size.width, CGFLOAT_MAX)].height + 20;
 
@@ -72,22 +70,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (double)calculateDistanceFromRestaurant:(Restaurant *)restaurant {
-    
-    int distances[] = {4.5, 3.7, 6.6};
-    return distances[arc4random() % 3];
-}
-//
-//- (void)populateRestaurant {
-//    
-//    [[RequestHandler new] getRestaurant:self.restaurant.id_
-//                      completionHandler:^(NSData *data,
-//                                          NSURLResponse *response,
-//                                          NSError *error) {
-//        
-//    }];
-//}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     return NO;
