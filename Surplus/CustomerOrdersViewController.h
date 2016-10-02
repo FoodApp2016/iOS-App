@@ -10,4 +10,6 @@
 
 @interface CustomerOrdersViewController : OrdersTableViewController
 
+@property (nonatomic) BOOL orderWasPlaced;
+
 @end

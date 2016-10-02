@@ -54,4 +54,6 @@ extern NSString *const kTestStripeId;
 extern NSString *const kFontAwesomeStar;
 extern NSString *const kFontAwesomePlusSquare;
 
+extern NSString *const kFeedbackEmailId;
+
 #endif /* Constants_h */

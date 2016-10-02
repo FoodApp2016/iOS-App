@@ -12,7 +12,9 @@
 #import "Constants.h"
 #import "RequestHandler.h"
 #import "Customer.h"
+#import "Restaurant.h"
 #import "NSUserDefaults+CustomObjectStorage.h"
+#import "RestaurantUpdateItemTableViewController.h"
 
 @interface FacebookSignInViewController ()
 
@@ -144,7 +146,24 @@
     if ([FBSDKAccessToken currentAccessToken]) {
         [self getOrCreateCustomer];
         [self performSegueWithIdentifier:kFacebookSignInButtonSegueIdentifier sender:nil];
+        return;
     }
+    
+    if ([self restaurantExists]) {
+        
+    }
+}
+
+- (void)segueToRestaurantDashboard {
+    
+}
+
+- (BOOL)restaurantExists {
+    
+    Restaurant *restaurant = [[NSUserDefaults standardUserDefaults]
+                              loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
+    
+    return restaurant != nil;
 }
 
 - (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result

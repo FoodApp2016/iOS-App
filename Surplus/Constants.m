@@ -51,3 +51,5 @@ NSString *const kTestStripeId = @"cus_95vTF2ZS0o9bWw";
 
 NSString *const kFontAwesomeStar = @"";
 NSString *const kFontAwesomePlusSquare = @"";
+
+NSString *const kFeedbackEmailId = @"jsunga16@students.claremontmckenna.edu";

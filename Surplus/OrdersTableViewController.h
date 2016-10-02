@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Order.h"
 
 @interface OrdersTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSMutableArray *orders;
+@property (strong, nonatomic) NSMutableArray<Order *> *orders;
 @property (strong, nonatomic) NSMutableArray *names;
 
 - (void)populateOrdersCompletionHandlerWithData:(NSData *)data

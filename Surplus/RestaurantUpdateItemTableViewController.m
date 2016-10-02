@@ -75,6 +75,8 @@
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
                                                              options:0
                                                                error:&error];
+                          
+        NSLog(@"%@", json);
 
         if (error) {
           NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
@@ -95,6 +97,8 @@
     self.leftoversItemTextField.text = restaurant.leftoversItem ? restaurant.leftoversItem : @"";
     self.priceTextField.text = restaurant.price > 0 ? [NSString stringWithFormat:@"$%.2f", restaurant.price * 1. / 100] : @"";
     self.quantityAvailableTextField.text = restaurant.quantityAvailable > 0 ? [NSString stringWithFormat:@"%d", restaurant.quantityAvailable] : @"";
+    self.pickupStartTimeLabel.text = restaurant.pickupStartTime;
+    self.pickupEndTimeLabel.text = restaurant.pickupEndTime;
 }
 
 #pragma mark - Table view data source
@@ -141,7 +145,23 @@
         return;
     }
     
+    if ([self.pickupStartTimeLabel isEqual:@""] || [self.pickupEndTimeLabel isEqual:@""]) {
+        [super displayCompleteAllFieldsHeader];
+        return;
+    }
+    else {
+        [super hideCompleteAllFieldsHeader];
+    }
+    
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
+    
+    NSLog(@"%@", @{@"leftoversItem": self.leftoversItemTextField.text,
+                   @"price": [NSString stringWithFormat:@"%d", [self frontEndPriceToPrice]],
+                   @"quantityAvailable": self.quantityAvailableTextField.text,
+                   @"pickupStartTime": self.pickupStartTimeLabel.text,
+                   @"pickupEndTime": self.pickupEndTimeLabel.text,
+                   @"username": restaurant.username,
+                   @"password": restaurant.password});
     
     [[RequestHandler new] updateItem:@{@"leftoversItem": self.leftoversItemTextField.text,
                                        @"price": [NSString stringWithFormat:@"%d", [self frontEndPriceToPrice]],
@@ -154,6 +174,7 @@
                        
        if (error) {
            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+           return;
        }
     }];
 }

@@ -9,6 +9,7 @@
 #import "OrderConfirmationTableViewController.h"
 #import "StripeApiAdapter.h"
 #import "RequestHandler.h"
+#import "CustomerOrdersViewController.h"
 
 @interface OrderConfirmationTableViewController ()
 
@@ -77,7 +78,7 @@
         return 3;
     }
     if (section == 2) {
-        return 1;
+        return 0;
     }
     if (section == 3) {
         return 1;
@@ -137,7 +138,11 @@ didCreatePaymentResult:(nonnull STPPaymentResult *)paymentResult
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
+        UINavigationController *navigationController = [self.tabBarController.viewControllers objectAtIndex:1];
+        CustomerOrdersViewController *customerOrdersViewController =
+            navigationController.topViewController;
+        customerOrdersViewController.orderWasPlaced = YES;
+        self.tabBarController.selectedViewController = navigationController;
     });
 
     return;
@@ -158,7 +163,19 @@ didFailToLoadWithError:(nonnull NSError *)error {
     }
     
     if (indexPath.section == 3) {
-        [self.paymentContext requestPayment];
+        
+        [[RequestHandler new] chargeCustomerWithOrder:self.order
+                                               source:nil
+                                    completionHandler:^(NSError *error,
+                                                        NSData *data) {
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            UINavigationController *navigationController = [self.tabBarController.viewControllers objectAtIndex:1];
+                                            CustomerOrdersViewController *customerOrdersViewController =
+                                            navigationController.topViewController;
+                                            customerOrdersViewController.orderWasPlaced = YES;
+                                            self.tabBarController.selectedViewController = navigationController;
+                                        });
+        }];
     }
 }
 

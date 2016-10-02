@@ -69,15 +69,24 @@
 - (void)displayOrHideCompleteAllFieldsHeaderIfRequired {
     
     if (![self allFieldsAreComplete]) {
-        self.shouldDisplayCompleteAllFieldsHeader = YES;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView beginUpdates];
-            [self.tableView endUpdates];
-        });
-        
+        [self displayCompleteAllFieldsHeader];
         return;
     }
+    
+    [self hideCompleteAllFieldsHeader];
+}
+
+- (void)displayCompleteAllFieldsHeader {
+    
+    self.shouldDisplayCompleteAllFieldsHeader = YES;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    });
+}
+
+- (void)hideCompleteAllFieldsHeader {
     
     self.shouldDisplayCompleteAllFieldsHeader = NO;
     

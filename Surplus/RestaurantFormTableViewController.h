@@ -18,5 +18,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section;
 - (void)displayProcessingRegistrationAlertController;
 - (void)displayOrHideCompleteAllFieldsHeaderIfRequired;
+- (void)displayCompleteAllFieldsHeader;
+- (void)hideCompleteAllFieldsHeader;
 
 @end

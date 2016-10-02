@@ -32,12 +32,12 @@
     [super viewDidLoad];
     
     self.name.text = self.restaurant.name;
-    self.pickupWindow.text = [NSString stringWithFormat:@"$%.2f  -  %@ to %@",
+    self.pickupWindow.text = [NSString stringWithFormat:@"$%.2f | %@ to %@",
                               self.restaurant.price * 1. / 100,
                               self.restaurant.pickupStartTime,
                               self.restaurant.pickupEndTime];
     
-    self.addressPhoneNumberTextView.text = [NSString stringWithFormat:@"%@ - %@",
+    self.addressPhoneNumberTextView.text = [NSString stringWithFormat:@"%@ | %@",
                                             self.restaurant.address,
                                             self.restaurant.phoneNumber];
     self.descriptionLabel.text = self.restaurant.description_;
