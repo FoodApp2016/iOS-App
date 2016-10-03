@@ -49,6 +49,11 @@
     self.quantity.text = [NSString stringWithFormat:@"%d", (int)self.quantityStepper.value];
     self.quantityStepper.minimumValue = self.quantityStepper.value;
     self.quantityStepper.maximumValue = self.restaurant.quantityAvailable;
+
+    if (self.restaurant.quantityAvailable == 0) {
+        self.orderButton.backgroundColor = [UIColor lightGrayColor];
+        [self.orderButton setEnabled:NO];
+    }
     
     self.displayImageView.image = nil;
    

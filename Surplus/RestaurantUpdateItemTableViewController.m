@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *leftoversItemTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+@property (nonatomic) int price;
 @property (weak, nonatomic) IBOutlet UITextField *quantityAvailableTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
@@ -99,6 +100,7 @@
 - (void)updateUIWithRestaurant:(Restaurant *)restaurant {
     
     self.leftoversItemTextField.text = restaurant.leftoversItem ? restaurant.leftoversItem : @"";
+    self.price = restaurant.price;
     self.priceTextField.text = restaurant.price > 0 ? [NSString stringWithFormat:@"$%.2f", restaurant.price * 1. / 100] : @"";
     self.quantityAvailableTextField.text = restaurant.quantityAvailable > 0 ? [NSString stringWithFormat:@"%d", restaurant.quantityAvailable] : @"";
     self.pickupStartTimeLabel.text = restaurant.pickupStartTime;
@@ -138,7 +140,8 @@
 
 - (int)frontEndPriceToPrice {
     
-    return (int)([self.priceTextField.text doubleValue] * 100);
+    NSString *string = [self.priceTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"$"]];
+    return (int)([string doubleValue] * 100);
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
