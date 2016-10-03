@@ -116,14 +116,9 @@
         return cell;
     }
     
-    [[RequestHandler new] getImageForRestaurantId:restaurant.id_
-                                completionHandler:^(NSData *data,
-                                                    NSURLResponse *response,
-                                                    NSError *error) {
-                                    
-        dispatch_async(dispatch_get_main_queue(), ^{
-            cell.displayImage.image = [UIImage imageWithData:data];
-            [self.tableView reloadData];
+    [[RequestHandler new] getImageForRestaurantId:restaurant.id_ completionHandler:^(UIImage *image) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            cell.displayImage.image = image;
         });
     }];
     

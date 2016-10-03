@@ -363,20 +363,33 @@
 }
 
 - (void)getImageForRestaurantId:(unsigned int)restaurantId
-              completionHandler:(completionHandler)completionHandler {
+              completionHandler:(void (^)(UIImage *))completionHandler {
     
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        NSURL *imageUrl = [[RequestHandler new] displayImageUrlForRestaurantId:restaurantId];
+        
+        UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+        
+        // Make a trivial (1x1) graphics context, and draw the image into it
+        UIGraphicsBeginImageContext(CGSizeMake(1,1));
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), image.CGImage);
+        UIGraphicsEndImageContext();
+        
+        // Now the image will have been loaded and decoded and is ready to rock for the main thread
+        completionHandler(image);
+    });
+}
+
+- (NSURL *)displayImageUrlForRestaurantId:(unsigned int)restaurantId {
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@%d.jpg",
                            kSurplusBaseUrl,
                            kSurplusGetRestaurantImagePath,
                            restaurantId];
     
-    [self makeGetRequest:urlString params:@{} completionHandler:^(NSError *error,
-                                                                  NSData *data) {
-        
-        completionHandler(data, nil, error);
-    }];
+    return [NSURL URLWithString:urlString];
 }
 
 @end

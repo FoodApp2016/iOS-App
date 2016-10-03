@@ -62,6 +62,8 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
               completionHandler:(completionHandler)completionHandler;
 
 - (void)getImageForRestaurantId:(unsigned int)restaurantId
-              completionHandler:(completionHandler)completionHandler;
+              completionHandler:(void (^)(UIImage *))completionHandler;
+
+- (NSURL *)displayImageUrlForRestaurantId:(unsigned int)restaurantId;
 
 @end

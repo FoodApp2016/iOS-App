@@ -44,6 +44,10 @@
                         self.priceTextField,
                         self.quantityAvailableTextField];
     
+    for (UITextField *textField in self.textFields) {
+        textField.delegate = self;
+    }
+    
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                 action:@selector(handleTap:)];
     self.tapGestureRecognizer.delegate = self;
@@ -196,7 +200,19 @@
     }
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    self.pickupStartTimePickerActive = NO;
+    self.pickupEndTimePickerActive = NO;
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    return YES;
+}
+
 - (BOOL)tableViewContainsPoint:(CGPoint)point {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     for (int i = 0; i < [self.tableView numberOfRowsInSection:0]; ++i) {
         
@@ -222,6 +238,10 @@
         
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        
+        return;
     }
     
     if (indexPath.row == 5) {
@@ -230,6 +250,10 @@
         
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        
+        return;
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];

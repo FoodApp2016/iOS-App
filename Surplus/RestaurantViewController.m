@@ -55,15 +55,15 @@
     
     self.displayImage.image = nil;
     
-    [[RequestHandler new] getImageForRestaurantId:self.restaurant.id_
-                                completionHandler:^(NSData *data,
-                                                    NSURLResponse *response,
-                                                    NSError *error) {
-                            
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.displayImage.image = [UIImage imageWithData:data];
-        });
-    }];
+//    [[RequestHandler new] getImageForRestaurantId:self.restaurant.id_
+//                                completionHandler:^(NSData *data,
+//                                                    NSURLResponse *response,
+//                                                    NSError *error) {
+//                            
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.displayImage.image = [UIImage imageWithData:data];
+//        });
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {

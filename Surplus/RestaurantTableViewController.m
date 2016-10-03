@@ -45,19 +45,16 @@
     
     self.quantity.delegate = self;
     
-    self.quantityStepper.value = 1;
-    self.quantityStepper.minimumValue = 1;
+    self.quantityStepper.value = self.restaurant.quantityAvailable == 0 ? 0 : 1;
+    self.quantity.text = [NSString stringWithFormat:@"%d", (int)self.quantityStepper.value];
+    self.quantityStepper.minimumValue = self.quantityStepper.value;
     self.quantityStepper.maximumValue = self.restaurant.quantityAvailable;
     
     self.displayImageView.image = nil;
-    
-    [[RequestHandler new] getImageForRestaurantId:self.restaurant.id_
-                                completionHandler:^(NSData *data,
-                                                    NSURLResponse *response,
-                                                    NSError *error) {
-                                    
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.displayImageView.image = [UIImage imageWithData:data];
+   
+    [[RequestHandler new] getImageForRestaurantId:self.restaurant.id_ completionHandler:^(UIImage *image) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            self.displayImageView.image = image;
         });
     }];
 }
