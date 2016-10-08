@@ -13,14 +13,13 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
 
 @interface RequestHandler : NSObject
 
-- (void)getAllRestaurants:(void(^)(NSError *, NSData *))completionHandler;
+- (void)getAllRestaurants:(completionHandler)completionHandler;
 
 - (void)getRestaurant:(unsigned int)restaurantId
     completionHandler:(completionHandler)completionHandler;
 
-- (void)getOrCreateCustomerWithName:(NSString *)name
-                         facebookId:(NSString *)facebookId
-                  completionHandler:(void(^)(NSError *, NSData *))completionHandler;
+- (void)getOrCreateCustomer:(NSDictionary *)params
+          completionHandler:(completionHandler)completionHandler;
 
 - (void)getStripeCustomer:(NSString *)customer
         completionHandler:(void(^)(NSError *, NSURLResponse *, NSData *))completionHandler;
@@ -37,11 +36,11 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
                         source:(NSString *)source
              completionHandler:(void(^)(NSError *, NSData *))completionHandler;
 
-- (void)createNewRestaurantWithUsername:(NSString *)username
-                               password:(NSString *)password
-                                   name:(NSString *)name
-                            phoneNumber:(NSString *)phoneNumber
-                      completionHandler:(completionHandler)completionHandler;
+- (void)chargeCustomerWithOrder:(Order *)order
+              completionHandler:(completionHandler)completionHandler;
+
+- (void)createNewRestaurant:(NSDictionary *)params
+          completionHandler:(completionHandler)completionHandler;
 
 - (void)signRestaurantIn:(NSDictionary *)restaurantCredentials
        completionHandler:(completionHandler)completionHandler;

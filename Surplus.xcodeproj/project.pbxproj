@@ -32,7 +32,6 @@
 		EBD5E1CB1D8651A700B7BCCF /* RestaurantOrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD5E1CA1D8651A700B7BCCF /* RestaurantOrdersTableViewController.m */; };
 		EBE6F8CA1D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */; };
 		EBE6F8CD1D95071F00DF3AF6 /* CustomerTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE6F8CC1D95071F00DF3AF6 /* CustomerTabBarController.m */; };
-		EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */; };
 		EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */; };
 		EBEA8BB71D67CCD800757205 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BB61D67CCD800757205 /* Order.m */; };
 		EBEA8BBD1D6E50E600757205 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BBC1D6E50E600757205 /* FBSDKCoreKit.framework */; };
@@ -49,9 +48,13 @@
 		EBEA8BEA1D756B6800757205 /* beef-fried-rice-2-edited.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BE91D756B6800757205 /* beef-fried-rice-2-edited.jpg */; };
 		EBEA8BEC1D759A9C00757205 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BEB1D75939E00757205 /* fontawesome-webfont.ttf */; };
 		EBEA8BEE1D75A0E400757205 /* forage-mock-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BED1D75A0E400757205 /* forage-mock-image.jpg */; };
+		F9DA34BC10509AC052D29AB8 /* libPods-Surplus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9E43E7FB13B9E78BB60330 /* libPods-Surplus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C51FC171EB762F77B78683E /* Pods-Surplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.debug.xcconfig"; sourceTree = "<group>"; };
+		DB9E43E7FB13B9E78BB60330 /* libPods-Surplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Surplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3D831485E771E065F44A16 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
 		EB1417D11D8BA85F00DAE042 /* OrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersTableViewController.h; sourceTree = "<group>"; };
 		EB1417D21D8BA85F00DAE042 /* OrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersTableViewController.m; sourceTree = "<group>"; };
 		EB1417D41D8BAB5400DAE042 /* CustomerOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerOrdersViewController.h; sourceTree = "<group>"; };
@@ -98,8 +101,6 @@
 		EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantSettingsTableViewController.m; sourceTree = "<group>"; };
 		EBE6F8CB1D95071F00DF3AF6 /* CustomerTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerTabBarController.h; sourceTree = "<group>"; };
 		EBE6F8CC1D95071F00DF3AF6 /* CustomerTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerTabBarController.m; sourceTree = "<group>"; };
-		EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
-		EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
 		EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmationTableViewController.h; sourceTree = "<group>"; };
 		EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmationTableViewController.m; sourceTree = "<group>"; };
 		EBEA8BB51D67CCD800757205 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
@@ -134,17 +135,37 @@
 				EBEA8BBD1D6E50E600757205 /* FBSDKCoreKit.framework in Frameworks */,
 				EBEA8BC11D6E510A00757205 /* FBSDKShareKit.framework in Frameworks */,
 				EBEA8BCB1D70B95300757205 /* Stripe.framework in Frameworks */,
+				F9DA34BC10509AC052D29AB8 /* libPods-Surplus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30E9AF13051CA06A3828B062 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C51FC171EB762F77B78683E /* Pods-Surplus.debug.xcconfig */,
+				DC3D831485E771E065F44A16 /* Pods-Surplus.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		398671BA66B31729EA0345A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB9E43E7FB13B9E78BB60330 /* libPods-Surplus.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EBA77CFE1D63FE8800BA8CDB = {
 			isa = PBXGroup;
 			children = (
 				EBA77D091D63FE8800BA8CDB /* Surplus */,
 				EBA77D081D63FE8800BA8CDB /* Products */,
+				30E9AF13051CA06A3828B062 /* Pods */,
+				398671BA66B31729EA0345A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,12 +215,12 @@
 			children = (
 				EBEA8BDC1D74C43200757205 /* FacebookSignInViewController.h */,
 				EBEA8BDA1D74C41200757205 /* FacebookSignInViewController.m */,
-				EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */,
-				EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */,
 				EBA77D261D6514A700BA8CDB /* RestaurantListTableViewController.h */,
 				EBA77D271D6514A700BA8CDB /* RestaurantListTableViewController.m */,
-				EBEA8BAF1D66AA7400757205 /* RestaurantViewController.h */,
-				EBEA8BB01D66AA7400757205 /* RestaurantViewController.m */,
+				EBB425551D9F69860032344B /* RestaurantTableViewController.h */,
+				EBB425561D9F69860032344B /* RestaurantTableViewController.m */,
+				EBEA8BB21D67C59E00757205 /* OrderConfirmationTableViewController.h */,
+				EBEA8BB31D67C59E00757205 /* OrderConfirmationTableViewController.m */,
 				EB311A3F1D7FDB4F00901AB3 /* RestaurantFormTableViewController.h */,
 				EB311A401D7FDB4F00901AB3 /* RestaurantFormTableViewController.m */,
 				EB1ACF0A1D7E7B0E004B5E19 /* RestaurantSignUpTableViewController.h */,
@@ -222,8 +243,6 @@
 				EBE6F8C91D8E39BB00DF3AF6 /* RestaurantSettingsTableViewController.m */,
 				EBE6F8CB1D95071F00DF3AF6 /* CustomerTabBarController.h */,
 				EBE6F8CC1D95071F00DF3AF6 /* CustomerTabBarController.m */,
-				EBB425551D9F69860032344B /* RestaurantTableViewController.h */,
-				EBB425561D9F69860032344B /* RestaurantTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -289,9 +308,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBA77D1E1D63FE8800BA8CDB /* Build configuration list for PBXNativeTarget "Surplus" */;
 			buildPhases = (
+				79427269AFDFE2B272FEFDB7 /* [CP] Check Pods Manifest.lock */,
 				EBA77D031D63FE8800BA8CDB /* Sources */,
 				EBA77D041D63FE8800BA8CDB /* Frameworks */,
 				EBA77D051D63FE8800BA8CDB /* Resources */,
+				ED9224F6A0540E88195C0A68 /* [CP] Embed Pods Frameworks */,
+				52781E9AFD8E0E9F78CFFD76 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,6 +377,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52781E9AFD8E0E9F78CFFD76 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surplus/Pods-Surplus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79427269AFDFE2B272FEFDB7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED9224F6A0540E88195C0A68 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surplus/Pods-Surplus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EBA77D031D63FE8800BA8CDB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -380,7 +450,6 @@
 				EBEA8BC41D6E8D2F00757205 /* RequestHandler.m in Sources */,
 				EBD5E1C81D82947600B7BCCF /* CustomerSettingsTableViewController.m in Sources */,
 				EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */,
-				EBEA8BB11D66AA7400757205 /* RestaurantViewController.m in Sources */,
 				EB311A441D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.m in Sources */,
 				EBA77D0C1D63FE8800BA8CDB /* main.m in Sources */,
 				EBEA8BE41D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m in Sources */,
@@ -499,6 +568,7 @@
 		};
 		EBA77D1F1D63FE8800BA8CDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C51FC171EB762F77B78683E /* Pods-Surplus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -520,6 +590,7 @@
 		};
 		EBA77D201D63FE8800BA8CDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC3D831485E771E065F44A16 /* Pods-Surplus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

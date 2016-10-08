@@ -52,16 +52,16 @@
 
 - (void)initializeWithPaymentAmount:(int)subtotal {
     
-    StripeApiAdapter *apiAdapter = [StripeApiAdapter new];
-    self.paymentContext = [[STPPaymentContext alloc] initWithAPIAdapter:apiAdapter];
-    self.paymentContext.delegate = self;
-    self.paymentContext.hostViewController = self;
-    self.paymentContext.paymentAmount = subtotal;
+//    StripeApiAdapter *apiAdapter = [StripeApiAdapter new];
+//    self.paymentContext = [[STPPaymentContext alloc] initWithAPIAdapter:apiAdapter];
+//    self.paymentContext.delegate = self;
+//    self.paymentContext.hostViewController = self;
+//    self.paymentContext.paymentAmount = subtotal;
 }
 
 - (double)subtotalInDollars {
     
-    return self.paymentContext.paymentAmount / 100;
+    return self.order.quantity * self.order.unitPrice / 100.0;
 }
 
 #pragma mark - Table view data source
@@ -165,16 +165,17 @@ didFailToLoadWithError:(nonnull NSError *)error {
     if (indexPath.section == 3) {
         
         [[RequestHandler new] chargeCustomerWithOrder:self.order
-                                               source:nil
-                                    completionHandler:^(NSError *error,
-                                                        NSData *data) {
-                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                            UINavigationController *navigationController = [self.tabBarController.viewControllers objectAtIndex:1];
-                                            CustomerOrdersViewController *customerOrdersViewController =
-                                            navigationController.topViewController;
-                                            customerOrdersViewController.orderWasPlaced = YES;
-                                            self.tabBarController.selectedViewController = navigationController;
-                                        });
+                                    completionHandler:^(NSData *data,
+                                                        NSURLResponse *response,
+                                                        NSError *error) {
+                                        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UINavigationController *navigationController = [self.tabBarController.viewControllers objectAtIndex:1];
+                CustomerOrdersViewController *customerOrdersViewController =
+                navigationController.topViewController;
+                customerOrdersViewController.orderWasPlaced = YES;
+                self.tabBarController.selectedViewController = navigationController;
+            });
         }];
     }
 }

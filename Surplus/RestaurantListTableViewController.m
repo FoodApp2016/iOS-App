@@ -49,8 +49,9 @@
     
     [super viewWillAppear:animated];
     
-    [[RequestHandler new] getAllRestaurants:^(NSError *error,
-                                              NSData *data) {
+    [[RequestHandler new] getAllRestaurants:^(NSData *data,
+                                              NSURLResponse *response,
+                                              NSError *error) {
         
         if (error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
@@ -103,8 +104,6 @@
     Restaurant *restaurant = self.restaurantList[indexPath.row];
     
     cell.name.text = restaurant.name;
-    cell.distance.text = [NSString stringWithFormat:@"%.1f mi",
-                          [self calculateDistanceFromRestaurant:restaurant]];
     cell.rating.font = [UIFont fontWithName:@"FontAwesome" size:17.];
     cell.rating.text = @"4";
     cell.priceLabel.text =  [NSString stringWithFormat:@"$%.2f", (restaurant.price * 1.) / 100];
@@ -123,12 +122,6 @@
     }];
     
     return cell;
-}
-
-- (double)calculateDistanceFromRestaurant:(Restaurant *)restaurant {
-    
-    int distances[] = {4.5, 3.7, 6.6};
-    return distances[arc4random() % 3];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

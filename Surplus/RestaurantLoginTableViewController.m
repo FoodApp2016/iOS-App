@@ -57,51 +57,51 @@
                          completionHandler:^(NSData *data,
                                              NSURLResponse *response,
                                              NSError *error) {
-    
-         if (error) {
-             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
-         }
-         
-         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
-                                                              options:0
-                                                                error:&error];
-         
-         if (error) {
-             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
-         }
                              
-                             NSLog(@"%@", json);
-         
-         if ([json[@"isActivated"] intValue]) {
-             
-             Restaurant *restaurant = [[Restaurant alloc] initWithJson:json];
-             [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
-                                                               key:kNSUserDefaultsRestaurantKey];
-             
-             if (![restaurant.description_ isEqual:@""]) {
-                 
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     
-                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                     UITabBarController *viewController =
-                     [storyboard instantiateViewControllerWithIdentifier:kRestaurantTabBarControllerIdentifier];
-                     [self.navigationController presentViewController:viewController animated:YES completion:nil];
-                 });
-                 
-                 return;
-             }
-             
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [self performSegueWithIdentifier:kRestaurantLoginViewControllerLoginButtonSegueIdentifier
-                                           sender:nil];
-             });
+        if (error) {
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+        }
 
-             return;
-         }
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                          options:0
+                                                            error:&error];
+
+        if (error) {
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+        }
                              
-         dispatch_async(dispatch_get_main_queue(), ^{
-             [self displayProcessingRegistrationAlertController];
-         });
+        NSLog(@"%@", json);
+     
+        if ([json[@"isActivated"] intValue]) {
+         
+            Restaurant *restaurant = [[Restaurant alloc] initWithJson:json];
+            [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
+                                                           key:kNSUserDefaultsRestaurantKey];
+
+            if (![restaurant.description_ isEqual:@""]) {
+             
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UITabBarController *viewController =
+                    [storyboard instantiateViewControllerWithIdentifier:kRestaurantTabBarControllerIdentifier];
+                    [self.navigationController presentViewController:viewController animated:YES completion:nil];
+                });
+                
+                return;
+            }
+         
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self performSegueWithIdentifier:kRestaurantLoginViewControllerLoginButtonSegueIdentifier
+                                          sender:nil];
+            });
+         
+            return;
+        }
+     
+        dispatch_async(dispatch_get_main_queue(), ^{
+         [self displayProcessingRegistrationAlertController];
+        });
     }];
 }
 

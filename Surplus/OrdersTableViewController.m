@@ -60,10 +60,14 @@
         return;
     }
     
+    if (ordersJson.count == 0) {
+        return;
+    }
+    
     self.orders = [NSMutableArray new];
     self.names = [NSMutableArray new];
     
-    for (NSDictionary *orderJson in ordersJson) {
+    for (NSDictionary *orderJson in [[ordersJson reverseObjectEnumerator] allObjects]) {
         Order *order = [[Order alloc] initWithJson:orderJson];
         [self.orders addObject:order];
         [self.names addObject:orderJson[@"name"]];

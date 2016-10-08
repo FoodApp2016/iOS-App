@@ -60,10 +60,10 @@
         return;
     }
     
-    [[RequestHandler new] createNewRestaurantWithUsername:self.emailIdTextField.text
-                                                 password:self.passwordTextField.text
-                                                     name:self.restaurantNameTextField.text
-                                              phoneNumber:self.phoneNumberTextField.text
+    [[RequestHandler new] createNewRestaurant:@{@"username": self.emailIdTextField.text,
+                                                @"password": self.passwordTextField.text,
+                                                @"name": self.restaurantNameTextField.text,
+                                                @"phoneNumber": self.phoneNumberTextField.text}
                                         completionHandler:^(NSData *data,
                                                             NSURLResponse *response,
                                                             NSError *error) {

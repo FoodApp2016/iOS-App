@@ -12,48 +12,9 @@
 
 @implementation RequestHandler
 
-- (NSString *)appendParams:(NSDictionary *)params toUrlString:(NSString *)urlString {
-    
-    NSMutableString *finalUrlString = [urlString mutableCopy];
-    [finalUrlString appendString:@"?"];
-    
-    NSArray *keys = [params allKeys];
-    
-    for (int i = 0; i < params.count; ++i) {
-        
-        [finalUrlString appendFormat:@"%@=%@", keys[i], params[keys[i]]];
-        
-        if (i < params.count - 1) {
-            [finalUrlString appendFormat:@"&"];
-        }
-    }
-    
-    return finalUrlString;
-}
-
-- (void)makeGetRequest:(NSString *)urlString
-                params:(NSDictionary *)params
-     completionHandler:(void (^)(NSError *, NSData *))completionHandler {
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest new];
-    request.HTTPMethod = @"GET";
-    urlString = [self appendParams:params toUrlString:urlString];
-    NSURL *url =
-    [NSURL URLWithString:[urlString stringByAddingPercentEncodingWithAllowedCharacters:
-                          [NSCharacterSet URLQueryAllowedCharacterSet]]];
-    
-    [[[NSURLSession sharedSession] dataTaskWithURL:url
-                                 completionHandler:^(NSData * _Nullable data,
-                                                     NSURLResponse * _Nullable response,
-                                                     NSError * _Nullable error) {
-        
-        completionHandler(error, data);
-    }] resume];
-}
-
 - (void)makePostRequestWithUrlString:(NSString *)urlString
                               params:(NSDictionary *)params
-                   completionHandler:(void(^)(NSData *, NSURLResponse *, NSError *))completionHandler {
+                   completionHandler:(completionHandler)completionHandler {
     
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"POST";
@@ -62,29 +23,18 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
     
-    NSLog(@"%@", params);
-    
     [[[NSURLSession sharedSession] dataTaskWithRequest:request
-                                     completionHandler:^(NSData * _Nullable data,
-                                                         NSURLResponse * _Nullable response,
-                                                         NSError * _Nullable error) {
-         completionHandler(data, response, error);
-     }] resume];
+                                     completionHandler:completionHandler] resume];
 }
 
-- (void)getAllRestaurants:(void (^)(NSError *, NSData *))completionHandler {
+- (void)getAllRestaurants:(completionHandler)completionHandler {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
     [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusGetAllRestaurantsWithItemsPath]
                                 params:@{}
-                     completionHandler:^(NSData *data,
-                                         NSURLResponse *response,
-                                         NSError *error) {
-        completionHandler(error, data);
-    }];
+                     completionHandler:completionHandler];
 }
-
 
 - (void)getRestaurant:(unsigned int)restaurantId
     completionHandler:(completionHandler)completionHandler {
@@ -98,41 +48,15 @@
                      completionHandler:completionHandler];
 }
 
-- (void)getOrCreateCustomerWithName:(NSString *)name
-                         facebookId:(NSString *)facebookId
-                  completionHandler:(void (^)(NSError *, NSData *))completionHandler {
+- (void)getOrCreateCustomer:(NSDictionary *)params
+          completionHandler:(completionHandler)completionHandler {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
     NSString *requestString = [kSurplusBaseUrl stringByAppendingString:kSurplusGetOrAddCustomerPath];
     [self makePostRequestWithUrlString:requestString
-                  params:@{@"name": name, @"facebookId": facebookId}
-       completionHandler:^(NSData *data,
-                           NSURLResponse *response,
-                           NSError *error) {
-           completionHandler(error, data);
-    }];
-}
-
-- (void)getStripeCustomer:(NSString *)stripeId
-        completionHandler:(void (^)(NSError *, NSURLResponse *, NSData *))completionHandler {
-    
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    
-    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey] name]);
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest new];
-    request.HTTPMethod = @"GET";
-    NSString *requestString = [kSurplusBaseUrl stringByAppendingString:kSurplusGetStripeCustomerPath];
-    requestString = [self appendParams:@{@"stripeId": stripeId} toUrlString:requestString];
-    NSURL *url = [NSURL URLWithString:requestString];
-    
-    [[[NSURLSession sharedSession] dataTaskWithURL:url
-                                 completionHandler:^(NSData * _Nullable data,
-                                                     NSURLResponse * _Nullable response,
-                                                     NSError * _Nullable error) {
-        completionHandler(error, response, data);
-    }] resume];
+                                params:params
+                     completionHandler:completionHandler];
 }
 
 - (void)attachNewPaymentMethodToCustomer:(NSString *)stripeId
@@ -205,8 +129,6 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    NSLog(@"%@", [order json]);
-    
     NSMutableDictionary *postDataDict = [@{@"order": [order json]} mutableCopy];
     postDataDict[@"source"] = source;
     
@@ -223,26 +145,24 @@
      }] resume];
 }
 
-- (void)createNewRestaurantWithUsername:(NSString *)username
-                               password:(NSString *)password
-                                   name:(NSString *)name
-                            phoneNumber:(NSString *)phoneNumber
-                      completionHandler:(completionHandler)completionHandler {
+- (void)chargeCustomerWithOrder:(Order *)order
+              completionHandler:(completionHandler)completionHandler {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    NSDictionary *params = @{@"username": username,
-                             @"password": password,
-                             @"name": name,
-                             @"phoneNumber": phoneNumber};
+    [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusStripeChargeCustomerPath]
+                                params:@{@"order": [order json]}
+                     completionHandler:completionHandler];
+}
+
+- (void)createNewRestaurant:(NSDictionary *)params
+          completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusAddRestaurantPath]
                                 params:params
-                     completionHandler:^(NSData *data,
-                                         NSURLResponse *response,
-                                         NSError *error) {
-        completionHandler(data, response, error);
-    }];
+                     completionHandler:completionHandler];
 }
 
 - (void)signRestaurantIn:(NSDictionary *)restaurantCredentials
@@ -252,11 +172,7 @@
     
     [self makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusRestaurantSignInPath]
                                 params:restaurantCredentials
-                     completionHandler:^(NSData *data,
-                                         NSURLResponse *response,
-                                         NSError *error) {
-        completionHandler(data, response, error);
-    }];
+                     completionHandler:completionHandler];
 }
 
 - (void)submitAdditionalRestaurantInfo:(NSDictionary *)additionalInfo
@@ -268,7 +184,8 @@
     request.URL = [NSURL URLWithString:[kSurplusBaseUrl stringByAppendingString:kSurplusSubmitAdditionalRestaurantInfoPath]];
     
     NSString *boundary = @"------VohpleBoundary4QuqLuM1cE5lMwCy";
-    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary]
+   forHTTPHeaderField:@"Content-Type"];
     
     request.HTTPMethod = @"POST";
     
@@ -307,15 +224,8 @@
     // set request body
     [request setHTTPBody:body];
     
-    
-    
     [[[NSURLSession sharedSession] dataTaskWithRequest:request
-                                     completionHandler:^(NSData * _Nullable data,
-                                                         NSURLResponse * _Nullable response,
-                                                         NSError * _Nullable error) {
-                                         
-        completionHandler(data, response, error);
-    }] resume];
+                                     completionHandler:completionHandler] resume];
 }
 
 - (void)getAllOrdersForRestaurant:(unsigned int)restaurantId
@@ -331,11 +241,13 @@
 - (void)getAllOrdersForCustomer:(unsigned int)customerId
               completionHandler:(completionHandler)completionHandler {
     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     NSString *urlString = [kSurplusBaseUrl stringByAppendingString:kSurplusGetAllOrdersByCustomerIdPath];
     
     [self makePostRequestWithUrlString:urlString
                                 params:@{@"customerId": [NSString stringWithFormat:@"%d", customerId]}
-                                         completionHandler:completionHandler];
+                     completionHandler:completionHandler];
 }
 
 - (void)updateItem:(NSDictionary *)itemDetails
@@ -364,6 +276,8 @@
 
 - (void)getImageForRestaurantId:(unsigned int)restaurantId
               completionHandler:(void (^)(UIImage *))completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         

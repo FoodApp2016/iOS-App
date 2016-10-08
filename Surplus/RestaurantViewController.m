@@ -54,16 +54,6 @@
     self.quantityStepper.maximumValue = self.restaurant.quantityAvailable;
     
     self.displayImage.image = nil;
-    
-//    [[RequestHandler new] getImageForRestaurantId:self.restaurant.id_
-//                                completionHandler:^(NSData *data,
-//                                                    NSURLResponse *response,
-//                                                    NSError *error) {
-//                            
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            self.displayImage.image = [UIImage imageWithData:data];
-//        });
-//    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,7 +74,7 @@
     double quantity = [self.quantityTextField.text intValue];
     OrderConfirmationTableViewController *destinationViewController = segue.destinationViewController;
     destinationViewController.order = [[Order alloc] initWithRestaurant:self.restaurant quantity:quantity];
-    [destinationViewController initializeWithPaymentAmount:self.restaurant.price * quantity];
+    // [destinationViewController initializeWithPaymentAmount:self.restaurant.price * quantity];
 }
 
 @end

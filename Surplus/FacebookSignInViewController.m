@@ -1,3 +1,5 @@
+
+
 //
 //  FacebookSignInViewController.m
 //  Surplus
@@ -30,6 +32,8 @@
 
 - (void)viewDidLoad {
     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     [super viewDidLoad];
     
     // Don't change order - the y position of each element depends on the ones before it
@@ -42,6 +46,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.hidden = YES;
@@ -53,6 +59,8 @@
 }
 
 - (void)createLoginButton {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     self.loginButton = [FBSDKLoginButton new];
     self.loginButton.delegate = self;
@@ -68,6 +76,8 @@
 }
 
 - (void)createSurplusLabel {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     self.surplusLabel = [UILabel new];
     self.surplusLabel.text = @"SURPLUS";
@@ -85,6 +95,8 @@
 }
 
 - (void)configureBusinessButtons {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     self.businessSignUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.businessSignUpButton setTitle:@"Business Sign Up" forState:UIControlStateNormal];
@@ -141,6 +153,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     [super viewDidAppear:animated];
     
     if ([FBSDKAccessToken currentAccessToken]) {
@@ -150,15 +164,25 @@
     }
     
     if ([self restaurantExists]) {
-        
+        [self segueToRestaurantDashboard];
     }
 }
 
 - (void)segueToRestaurantDashboard {
     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UITabBarController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"restaurantTabBarControllerIdentifier"];
+        [[UIApplication sharedApplication].keyWindow setRootViewController:rootViewController];
+    });
 }
 
 - (BOOL)restaurantExists {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults]
                               loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
@@ -172,7 +196,7 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
     if (error) {
-        NSLog(@"%@", error);
+        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
         return;
     }
     
@@ -181,14 +205,16 @@
     }
 
     [self getOrCreateCustomer];
-    [self performSegueWithIdentifier:kFacebookSignInButtonSegueIdentifier sender:nil];
 }
 
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (void)getOrCreateCustomer {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     [[[FBSDKGraphRequest alloc]
       initWithGraphPath:@"/me"
@@ -200,11 +226,11 @@
         NSString *name = result[@"name"];
         NSString *facebookId = result[@"id"];
         
-        [[RequestHandler new] getOrCreateCustomerWithName:name
-                                               facebookId:facebookId
-                                        completionHandler:^(NSError *error,
-                                                            NSData *data) {
-                                            
+        [[RequestHandler new] getOrCreateCustomer:@{@"name": name, @"facebookId": facebookId}
+                                completionHandler:^(NSData *data,
+                                                    NSURLResponse *response,
+                                                    NSError *error) {
+                                    
             NSDictionary *customerDict = [NSJSONSerialization JSONObjectWithData:data
                                                                          options:0
                                                                            error:nil];
@@ -217,11 +243,14 @@
             Customer *customer = [[Customer alloc] initWithDict:customerDict];
             [[NSUserDefaults standardUserDefaults] saveCustomer:customer
                                                             key:kNSUserDefaultsCustomerKey];
+            [self performSegueWithIdentifier:kFacebookSignInButtonSegueIdentifier sender:nil];
         }];
     }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
     self.navigationController.navigationBar.hidden = NO;
 }

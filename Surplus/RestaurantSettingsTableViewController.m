@@ -47,7 +47,7 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
     if (indexPath.section == 0 && indexPath.row == 0) {
-        [[NSUserDefaults standardUserDefaults] saveCustomer:nil key:kNSUserDefaultsCustomerKey];
+        [[NSUserDefaults standardUserDefaults] saveRestaurant:nil key:kNSUserDefaultsRestaurantKey];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FacebookSignInViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:kFacebookSignInViewControllerIdentifier];
         [self presentViewController:viewController animated:YES completion:nil];

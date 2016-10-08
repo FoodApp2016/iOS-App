@@ -7,7 +7,7 @@
 //
 
 #import "CustomerTabBarController.h"
-#import "RestaurantViewController.h"
+#import "RestaurantTableViewController.h"
 
 @interface CustomerTabBarController ()
 
@@ -34,7 +34,7 @@
     
     int index = (int)[tabBarController.viewControllers indexOfObject:viewController];
     
-    if (index == 0 && [tabBarController.viewControllers[0] isKindOfClass:[RestaurantViewController class]]) {
+    if (index == 0 && [tabBarController.viewControllers[0] isKindOfClass:[RestaurantTableViewController class]]) {
         UINavigationController *navigationController = tabBarController.viewControllers[0];
         [navigationController popToRootViewControllerAnimated:YES];
     }

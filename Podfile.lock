@@ -1,0 +1,12 @@
+PODS:
+  - RegExCategories (1.0)
+
+DEPENDENCIES:
+  - RegExCategories (~> 1.0)
+
+SPEC CHECKSUMS:
+  RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
+
+PODFILE CHECKSUM: e41fedc59b57853c4ec6905d8d553c276b084458
+
+COCOAPODS: 1.1.0.rc.2
