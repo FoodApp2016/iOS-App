@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.shouldDisplayCompleteAllFieldsHeader = NO;
+    self.shouldDisplayHeader = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +37,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    if (self.shouldDisplayCompleteAllFieldsHeader) {
+    if (self.shouldDisplayHeader) {
         return UITableViewAutomaticDimension;
     }
     
@@ -48,6 +48,7 @@
 
     UITableViewHeaderFooterView *header = view;
     header.textLabel.textAlignment = NSTextAlignmentCenter;
+    header.textLabel.text = self.headerText;
     header.textLabel.textColor = [UIColor redColor];
 }
 
@@ -59,8 +60,7 @@
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
                                                      style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * _Nonnull action) {
-                                                       [self.navigationController popViewControllerAnimated:YES];
-                                                   }];
+                                                       [self.navigationController dismissViewControllerAnimated:YES completion:nil];                                             }];
     [alertController addAction:action];
     
     [self.navigationController presentViewController:alertController animated:YES completion:nil];
@@ -73,12 +73,18 @@
         return;
     }
     
-    [self hideCompleteAllFieldsHeader];
+    [self hideHeader];
 }
 
 - (void)displayCompleteAllFieldsHeader {
     
-    self.shouldDisplayCompleteAllFieldsHeader = YES;
+    self.headerText = @"Please complete all fields.";
+    [self displayHeader];
+}
+
+- (void)displayHeader {
+    
+    self.shouldDisplayHeader = YES;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView beginUpdates];
@@ -86,9 +92,9 @@
     });
 }
 
-- (void)hideCompleteAllFieldsHeader {
+- (void)hideHeader {
     
-    self.shouldDisplayCompleteAllFieldsHeader = NO;
+    self.shouldDisplayHeader = NO;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView beginUpdates];

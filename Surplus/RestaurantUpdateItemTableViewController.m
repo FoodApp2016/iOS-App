@@ -176,7 +176,8 @@
         return;
     }
     else {
-        [super hideCompleteAllFieldsHeader];
+        [self hideKeyboardAndPicker];
+        [super hideHeader];
     }
     
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults]
@@ -213,10 +214,21 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
     
     if (indexPath == nil) {
-        [self.leftoversItemTextField endEditing:YES];
-        [self.priceTextField endEditing:YES];
-        [self.quantityAvailableTextField endEditing:YES];
+        [self hideKeyboardAndPicker];
     }
+}
+
+- (void)hideKeyboardAndPicker {
+    
+    [self.leftoversItemTextField endEditing:YES];
+    [self.priceTextField endEditing:YES];
+    [self.quantityAvailableTextField endEditing:YES];
+    
+    self.pickupStartTimePickerActive = NO;
+    self.pickupEndTimePickerActive = NO;
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
 }
 
 - (UIColor *)UITextFieldPlaceholderTextColor {
@@ -319,6 +331,10 @@
         self.pickupStartTimePickerActive = !self.pickupStartTimePickerActive;
         self.pickupEndTimePickerActive = NO;
         
+        [self.leftoversItemTextField endEditing:YES];
+        [self.priceTextField endEditing:YES];
+        [self.quantityAvailableTextField endEditing:YES];
+        
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
         
@@ -330,6 +346,10 @@
     if (indexPath.row == 5) {
         self.pickupEndTimePickerActive = !self.pickupEndTimePickerActive;
         self.pickupStartTimePickerActive = NO;
+        
+        [self.leftoversItemTextField endEditing:YES];
+        [self.priceTextField endEditing:YES];
+        [self.quantityAvailableTextField endEditing:YES];
         
         [self.tableView beginUpdates];
         [self.tableView endUpdates];

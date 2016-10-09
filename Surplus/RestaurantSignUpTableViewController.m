@@ -73,19 +73,13 @@
             return;
         }
                                             
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
-                                                             options:0
-                                                               error:&error];
+        [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         
         if (error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
             return;
         }
-                                            
-        Restaurant *restaurant = [[Restaurant alloc] initWithJson:json];
-        [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
-                                                          key:kNSUserDefaultsRestaurantKey];
-                                            
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [self displayProcessingRegistrationAlertController];
         });

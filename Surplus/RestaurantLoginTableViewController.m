@@ -13,6 +13,10 @@
 #import "Constants.h"
 #import "RestaurantUpdateItemTableViewController.h"
 
+NSString * const kIncorrectFormatErrorDescription =
+    @"The data couldn’t be read because it isn’t in the correct format.";
+NSString * const kInvalidCredentialsHeaderText = @"INVALID CREDENTIALS.";
+
 @interface RestaurantLoginTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -68,6 +72,11 @@
 
         if (error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+            if ([error.localizedDescription isEqual:kIncorrectFormatErrorDescription]) {
+                self.headerText = kInvalidCredentialsHeaderText;
+                [super displayHeader];
+                return;
+            }
         }
                              
         NSLog(@"%@", json);

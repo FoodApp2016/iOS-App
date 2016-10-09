@@ -187,6 +187,8 @@
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults]
                               loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
     
+    NSLog(@"%@ %@ %@ %@", restaurant.name, restaurant.username, restaurant.password, restaurant.phoneNumber);
+    
     return restaurant != nil;
 }
 

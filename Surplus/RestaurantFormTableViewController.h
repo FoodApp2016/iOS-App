@@ -10,7 +10,8 @@
 
 @interface RestaurantFormTableViewController : UITableViewController
 
-@property (nonatomic) BOOL shouldDisplayCompleteAllFieldsHeader;
+@property (nonatomic) BOOL shouldDisplayHeader;
+@property (nonatomic) NSString *headerText;
 @property (strong, nonatomic) NSArray *textFields;
 
 - (BOOL)allFieldsAreComplete;
@@ -19,6 +20,7 @@
 - (void)displayProcessingRegistrationAlertController;
 - (void)displayOrHideCompleteAllFieldsHeaderIfRequired;
 - (void)displayCompleteAllFieldsHeader;
-- (void)hideCompleteAllFieldsHeader;
+- (void)displayHeader;
+- (void)hideHeader;
 
 @end
