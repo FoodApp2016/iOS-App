@@ -1848,8 +1848,8 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HGb-CO-ktQ"/>
         <segue reference="1KW-jk-CE7"/>
+        <segue reference="HGb-CO-ktQ"/>
         <segue reference="N0J-mX-1Z0"/>
     </inferredMetricsTieBreakers>
 </document>
