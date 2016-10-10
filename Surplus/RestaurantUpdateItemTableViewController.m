@@ -70,6 +70,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateItemAlert{
+    UIAlertController *alertController =
+    [UIAlertController alertControllerWithTitle:@"Thank you!"
+                                        message:@"Your item has been updated!"
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+    
+    dispatch_async( dispatch_get_main_queue(), ^{
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
+}
+
+
+
 - (void)viewWillAppear:(BOOL)animated {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
@@ -196,7 +212,12 @@
            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
            return;
        }
-    }];
+    }
+    ];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateItemAlert];
+    });
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
@@ -217,6 +238,12 @@
         [self hideKeyboardAndPicker];
     }
 }
+
+
+
+
+
+
 
 - (void)hideKeyboardAndPicker {
     
@@ -379,6 +406,8 @@
                                                                   dateStyle:NSDateFormatterNoStyle
                                                                   timeStyle:NSDateFormatterShortStyle];
 }
+
+
 
 @end
 

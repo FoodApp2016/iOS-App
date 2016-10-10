@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *restaurantNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 
 @property (nonatomic) BOOL shouldDisplayDatePicker;
 
@@ -27,6 +28,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.signUpButton.layer.borderWidth = 1;
+    self.signUpButton.layer.borderColor = [[UIColor blackColor] CGColor];
+    self.signUpButton.layer.cornerRadius = 3.5;
+    self.signUpButton.contentEdgeInsets = UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f);
+    [self.signUpButton sizeToFit];
     
     self.navigationController.navigationBar.hidden = NO;
     

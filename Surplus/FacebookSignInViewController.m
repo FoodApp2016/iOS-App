@@ -67,7 +67,7 @@
     self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     
     float x = self.view.center.x - self.loginButton.frame.size.width / 2;
-    float y = self.view.frame.size.height - self.loginButton.frame.size.height - 100;
+    float y = self.view.frame.size.height - self.loginButton.frame.size.height - 325;
     [self.loginButton setFrame:CGRectMake(x,
                                           y,
                                           self.loginButton.frame.size.width,
@@ -95,8 +95,21 @@
 }
 
 - (void)configureBusinessButtons {
+    self.businessLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.businessLoginButton setTitle:@"Business Login" forState:UIControlStateNormal];
+    [self.businessLoginButton addTarget:nil
+                                 action:@selector(segueToRestaurantLoginViewController)
+                       forControlEvents:UIControlEventTouchUpInside];
+    [self configureBusinessButton:self.businessLoginButton];
     
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    float x = self.view.center.x - self.loginButton.frame.size.width / 2;
+    float y = self.loginButton.frame.origin.y + self.loginButton.frame.size.height + 240;
+    [self.businessLoginButton setFrame:CGRectMake(x,
+                                                  y,
+                                                  self.loginButton.frame.size.width,
+                                                  self.loginButton.frame.size.height)];
+    [self.view addSubview:self.businessLoginButton];
+    
     
     self.businessSignUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.businessSignUpButton setTitle:@"Business Sign Up" forState:UIControlStateNormal];
@@ -105,28 +118,14 @@
                         forControlEvents:UIControlEventTouchUpInside];
     [self configureBusinessButton:self.businessSignUpButton];
     
-    float x = self.view.center.x - self.loginButton.frame.size.width / 2;
-    float y = self.loginButton.frame.origin.y + self.loginButton.frame.size.height + 8;
+    x = self.view.center.x - self.loginButton.frame.size.width / 2;
+    y = self.businessLoginButton.frame.origin.y + self.businessLoginButton.frame.size.height + 8;
     [self.businessSignUpButton setFrame:CGRectMake(x,
                                                    y,
                                                    self.loginButton.frame.size.width,
                                                    self.loginButton.frame.size.height)];
     [self.view addSubview:self.businessSignUpButton];
     
-    self.businessLoginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.businessLoginButton setTitle:@"Business Login" forState:UIControlStateNormal];
-    [self.businessLoginButton addTarget:nil
-                                  action:@selector(segueToRestaurantLoginViewController)
-                        forControlEvents:UIControlEventTouchUpInside];
-    [self configureBusinessButton:self.businessLoginButton];
-    
-    x = self.view.center.x - self.loginButton.frame.size.width / 2;
-    y = self.businessSignUpButton.frame.origin.y + self.businessSignUpButton.frame.size.height + 8;
-    [self.businessLoginButton setFrame:CGRectMake(x,
-                                                  y,
-                                                  self.loginButton.frame.size.width,
-                                                  self.loginButton.frame.size.height)];
-    [self.view addSubview:self.businessLoginButton];
     
 }
 

@@ -22,6 +22,7 @@ NSString * const kInvalidCredentialsHeaderText = @"INVALID CREDENTIALS.";
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -29,6 +30,11 @@ NSString * const kInvalidCredentialsHeaderText = @"INVALID CREDENTIALS.";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.loginButton.layer.borderWidth = 1;
+    self.loginButton.layer.borderColor = [[UIColor blackColor] CGColor];
+    self.loginButton.layer.cornerRadius = 3.5;
+    self.loginButton.contentEdgeInsets = UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f);
+    [self.loginButton sizeToFit];
     
     self.textFields = @[self.usernameTextField, self.passwordTextField];
 }
@@ -45,7 +51,7 @@ NSString * const kInvalidCredentialsHeaderText = @"INVALID CREDENTIALS.";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
