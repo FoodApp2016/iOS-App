@@ -201,8 +201,6 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@%@", kSurplusRestlessBaseUrl, kSurplusRestaurantPath, queryString];
     request.URL = [NSURL URLWithString:urlString];
     
-    NSLog(@"%@", urlString);
-    
     [request setValue:restaurantCredentials[@"username"] forHTTPHeaderField:@"username"];
     [request setValue:restaurantCredentials[@"password"] forHTTPHeaderField:@"password"];
     
