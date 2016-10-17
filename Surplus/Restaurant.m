@@ -38,20 +38,20 @@
     if (self) {
         self.id_ = [json[@"id"] intValue];
         self.name = json[@"name"];
-        self.stripeId = json[@"stripeId"];
+        self.stripeId = json[@"stripeId"] ?: @"";
         self.username = json[@"username"];
         self.password = json[@"password"];
-        self.description_ = json[@"description"];
-        self.leftoversItem = json[@"leftoversItem"];
-        self.price = [json[@"price"] intValue];
-        self.pickupStartTime = json[@"pickupStartTime"];
-        self.pickupEndTime = json[@"pickupEndTime"];
+        self.description_ = json[@"description"]  == [NSNull null] ? @"" : json[@"description"];
+        self.leftoversItem = json[@"leftoversItem"]  == [NSNull null] ? @"" : json[@"leftoversItem"];
+        self.price = json[@"price"] == [NSNull null] ? 0 : [json[@"price"] intValue];
+        self.pickupStartTime = json[@"pickupStartTime"] ?: @"";
+        self.pickupEndTime = json[@"pickupEndTime"] ?: @"";
         self.isActivated = [json[@"isActivated"] boolValue];
         self.phoneNumber = json[@"phoneNumber"];
-        self.address = json[@"addressLine1"];
-        self.representativeName = json[@"representativeName"];
+        self.address = json[@"addressLine1"] ?: @"";
+        self.representativeName = json[@"representativeName"] ?: @"";
         self.representativeDateOfBirth = [NSDate date];
-        self.quantityAvailable = [json[@"quantityAvailable"] intValue];
+        self.quantityAvailable = json[@"quantityAvailable"] == [NSNull null] ? 0 : [json[@"quantityAvailable"] intValue];
     }
     
     return self;

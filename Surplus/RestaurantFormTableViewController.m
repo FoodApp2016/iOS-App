@@ -78,7 +78,7 @@
 
 - (void)displayCompleteAllFieldsHeader {
     
-    self.headerText = @"Please complete all fields.";
+    self.headerText = @"PLEASE COMPLETE ALL FIELDS.";
     [self displayHeader];
 }
 

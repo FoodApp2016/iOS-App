@@ -70,6 +70,7 @@ NSString * const kInvalidCredentialsHeaderText = @"INVALID CREDENTIALS.";
                              
         if (error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+            return;
         }
 
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
@@ -85,11 +86,13 @@ NSString * const kInvalidCredentialsHeaderText = @"INVALID CREDENTIALS.";
             }
         }
                              
-        NSLog(@"%@", json);
-     
-        if ([json[@"isActivated"] intValue]) {
+        NSDictionary *restaurantDict = json[@"objects"][0];
+                             
+                             NSLog(@"%@", restaurantDict);
+                             
+        if ([restaurantDict[@"isActivated"] intValue]) {
          
-            Restaurant *restaurant = [[Restaurant alloc] initWithJson:json];
+            Restaurant *restaurant = [[Restaurant alloc] initWithJson:restaurantDict];
             [[NSUserDefaults standardUserDefaults] saveRestaurant:restaurant
                                                            key:kNSUserDefaultsRestaurantKey];
 

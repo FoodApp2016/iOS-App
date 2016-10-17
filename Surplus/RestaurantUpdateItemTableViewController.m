@@ -61,8 +61,6 @@
                                                                 action:@selector(handleTap:)];
     self.tapGestureRecognizer.delegate = self;
     [self.tableView addGestureRecognizer:self.tapGestureRecognizer];
-    
-    [self updateUIWithRestaurant:restaurant];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,14 +68,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateItemAlert{
+- (void)updateItemAlert {
     UIAlertController *alertController =
     [UIAlertController alertControllerWithTitle:@"Thank you!"
                                         message:@"Your item has been updated!"
                                  preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
-                                                        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+                                                        style:UIAlertActionStyleCancel
+                                                      handler:^(UIAlertAction * _Nonnull action) {}]];
     
     dispatch_async( dispatch_get_main_queue(), ^{
         [self presentViewController:alertController animated:YES completion:nil];
@@ -125,12 +124,12 @@
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    self.leftoversItemTextField.text = restaurant.leftoversItem ? restaurant.leftoversItem : @"";
-    self.price = restaurant.price;
+    self.leftoversItemTextField.text = restaurant.leftoversItem ?: @"";
+    self.price = restaurant.price ?: 0;
     self.priceTextField.text = [self priceToFrontEndPrice:restaurant.price];
-    self.quantityAvailableTextField.text = [NSString stringWithFormat:@"%d", restaurant.quantityAvailable];
-    self.pickupStartTimeLabel.text = restaurant.pickupStartTime;
-    self.pickupEndTimeLabel.text = restaurant.pickupEndTime;
+    self.quantityAvailableTextField.text = restaurant.quantityAvailable ? [NSString stringWithFormat:@"%d", restaurant.quantityAvailable] : @"";
+    self.pickupStartTimeLabel.text = restaurant.pickupStartTime ?: @"";
+    self.pickupEndTimeLabel.text = restaurant.pickupEndTime ?: @"";
 }
 
 #pragma mark - Table view data source
@@ -203,17 +202,15 @@
                                        @"price": [NSString stringWithFormat:@"%d", [self frontEndPriceToPrice]],
                                        @"quantityAvailable": self.quantityAvailableTextField.text,
                                        @"pickupStartTime": self.pickupStartTimeLabel.text,
-                                       @"pickupEndTime": self.pickupEndTimeLabel.text,
-                                       @"username": restaurant.username,
-                                       @"password": restaurant.password}
+                                       @"pickupEndTime": self.pickupEndTimeLabel.text}
+                       forRestaurant:restaurant.id_
                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                        
        if (error) {
            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
            return;
        }
-    }
-    ];
+    }];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateItemAlert];
@@ -238,12 +235,6 @@
         [self hideKeyboardAndPicker];
     }
 }
-
-
-
-
-
-
 
 - (void)hideKeyboardAndPicker {
     

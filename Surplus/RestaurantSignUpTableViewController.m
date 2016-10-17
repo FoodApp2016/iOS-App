@@ -80,7 +80,9 @@
             return;
         }
                                             
-        [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                                            
+        NSLog(@"%@", json);
         
         if (error) {
             NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);

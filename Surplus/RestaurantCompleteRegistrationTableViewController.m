@@ -133,12 +133,13 @@
 
 - (IBAction)nextButtonPressed:(id)sender {
     
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
     [super displayOrHideCompleteAllFieldsHeaderIfRequired];
     
     if (![self allFieldsAreComplete]) {
         return;
     }
-    
     
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
     
@@ -146,9 +147,16 @@
                                                            @"profileImage": UIImageJPEGRepresentation(self.profileImageView.image, 0.2f),
                                                            @"username": restaurant.username,
                                                            @"password": restaurant.password}
+                                            forRestaurant:restaurant.id_
                                        completionHandler:^(NSData *data,
                                                            NSURLResponse *response,
                                                            NSError *error) {
+                                           
+                                           NSLog(@"%@", [NSJSONSerialization JSONObjectWithData:data
+                                                                                                options:0
+                                                                                                  error:&error]);
+
+                                           
                                            
         if (error) {
            NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
