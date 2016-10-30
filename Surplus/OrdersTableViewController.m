@@ -55,6 +55,8 @@
     
     NSArray *ordersJson = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     
+    NSLog(@"%@", ordersJson);
+    
     if (error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
         return;
@@ -107,6 +109,9 @@
     cell.timestampLabel.text = order.timestamp;
     
     cell.tokenLabel.text = order.randToken;
+    
+    NSLog(@"%@", order);
+    
     if (order.isCompleted) {
         cell.tokenLabel.textColor = [UIColor lightGrayColor];
     }

@@ -19,24 +19,25 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
     Customer *customer = [[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey];
-    
-    [[RequestHandler new] getStripeCustomer:customer.stripeId
-                          completionHandler:^(NSError *error,
-                                              NSURLResponse *response,
-                                              NSData *customerData) {
-                              
+
+    [[RequestHandler new] makeGetRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusRetrieveCustomerSourcesPath]
+                                              headers:@{@"customerID": @(customer.id_)}
+                                    completionHandler:^(NSData *data,
+                                                        NSURLResponse *response,
+                                                        NSError *error) {
+
         dispatch_async(dispatch_get_main_queue(), ^{
-         
-          STPCustomerDeserializer *deserializer = [[STPCustomerDeserializer alloc]
-                                                   initWithData:customerData
-                                                   urlResponse:response error:error];
-        
-          if (error != nil) {
-              completion(nil, error);
-              return;
-          }
+
+            if (error != nil) {
+                completion(nil, error);
+                return;
+            }
+            
+            STPCustomerDeserializer *deserializer = [[STPCustomerDeserializer alloc]
+                                                     initWithData:data
+                                                     urlResponse:response error:error];
           
-          completion(deserializer.customer, nil);
+            completion(deserializer.customer, nil);
         });
     }];
 }
@@ -45,11 +46,11 @@
     
     Customer *customer = [[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey];
     
-    [[RequestHandler new] attachNewPaymentMethodToCustomer:customer.stripeId
-                                                    source:source.stripeID
-                                                completion:^(NSError *error,
-                                                             NSURLResponse *response,
-                                                             NSData *data) {
+    [[RequestHandler new] makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusAddNewCustomerPaymentSourcePath]
+                                                params:@{@"customerID": @(customer.id_), @"source": source.stripeID}
+                                     completionHandler:^(NSData *data,
+                                                         NSURLResponse *response,
+                                                         NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             completion(error);
         });

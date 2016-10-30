@@ -19,7 +19,9 @@
     }
     
     for (NSString *key in [dict allKeys]) {
-        [self setValue:dict[key] forKey:key];
+        if ([self respondsToSelector:NSSelectorFromString(key)]) {
+            [self setValue:dict[key] forKey:key];
+        }
     }
 
     return self;
@@ -35,7 +37,7 @@
     
     self.id_ = (int)[coder decodeIntegerForKey:@"id_"];
     self.name = [coder decodeObjectForKey:@"name"];
-    self.facebookId = [coder decodeObjectForKey:@"facebookId"];
+    self.facebookID = [coder decodeObjectForKey:@"facebookID"];
     self.phoneNumber = [coder decodeObjectForKey:@"phoneNumber"];
     self.stripeId = [coder decodeObjectForKey:@"stripeId"];
     
@@ -46,7 +48,7 @@
     
     [coder encodeInteger:self.id_ forKey:@"id_"];
     [coder encodeObject:self.name forKey:@"name"];
-    [coder encodeObject:self.facebookId forKey:@"facebookId"];
+    [coder encodeObject:self.facebookID forKey:@"facebookID"];
     [coder encodeObject:self.phoneNumber forKey:@"phoneNumber"];
     [coder encodeObject:self.stripeId forKey:@"stripeId"];
 }

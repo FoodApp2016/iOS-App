@@ -225,17 +225,31 @@
                                                       NSError *error) {
         
         NSString *name = result[@"name"];
-        NSString *facebookId = result[@"id"];
+        NSString *facebookID = result[@"id"];
         
-        [[RequestHandler new] getOrCreateCustomer:@{@"name": name, @"facebookId": facebookId}
+        NSLog(@"%@", result);
+        
+        [[RequestHandler new] getOrCreateCustomer:@{@"name": name, @"facebookID": facebookID}
                                 completionHandler:^(NSData *data,
                                                     NSURLResponse *response,
                                                     NSError *error) {
+                                    
+            if (error) {
+                NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+                return;
+            }
                                     
             NSDictionary *customerDict = [NSJSONSerialization JSONObjectWithData:data
                                                                          options:0
                                                                            error:nil];
             
+            if (error) {
+                NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+                return;
+            }
+                                    
+            customerDict = customerDict[@"objects"][0];
+                                    
             NSMutableDictionary *temp = [customerDict mutableCopy];
             temp[@"id_"] = temp[@"id"];
             [temp removeObjectForKey:@"id"];

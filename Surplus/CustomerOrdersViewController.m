@@ -70,6 +70,7 @@
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
                                                            options:0
                                                              error:&error];
+                                                    
         Restaurant *restaurant = [[Restaurant alloc] initWithJson:json];
 
         if (error) {

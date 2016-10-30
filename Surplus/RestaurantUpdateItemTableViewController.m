@@ -43,6 +43,7 @@
     self.pickupEndTimePickerActive = NO;
     
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults] loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
+    [self updateUIWithRestaurant:restaurant];
     
     self.textFields = @[self.leftoversItemTextField,
                         self.priceTextField,
@@ -105,6 +106,8 @@
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
                                                              options:0
                                                                error:&error];
+                          
+                          NSLog(@"%@", json);
                           
         if (error) {
           NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);

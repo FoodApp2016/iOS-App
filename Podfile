@@ -7,4 +7,5 @@ target 'Surplus' do
 
   # Pods for Surplus
   pod 'RegExCategories', '~> 1.0'
+  pod 'Stripe'
 end

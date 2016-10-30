@@ -13,6 +13,18 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
 
 @interface RequestHandler : NSObject
 
+- (void)makeGetRequestWithUrlString:(NSString *)urlString
+                            headers:(NSDictionary *)headers
+                  completionHandler:(completionHandler)completionHandler;
+
+- (void)makePostRequestWithUrlString:(NSString *)urlString
+                              params:(NSDictionary *)params
+                   completionHandler:(completionHandler)completionHandler;
+
+- (void)makePatchRequestWithUrlString:(NSString *)urlString
+                               params:(NSDictionary *)params
+                    completionHandler:(completionHandler)completionHandler;
+
 - (void)getAllRestaurants:(completionHandler)completionHandler;
 
 - (void)getRestaurant:(unsigned int)restaurantId
@@ -20,9 +32,6 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
 
 - (void)getOrCreateCustomer:(NSDictionary *)params
           completionHandler:(completionHandler)completionHandler;
-
-- (void)getStripeCustomer:(NSString *)customer
-        completionHandler:(void(^)(NSError *, NSURLResponse *, NSData *))completionHandler;
 
 - (void)attachNewPaymentMethodToCustomer:(NSString *)stripeId
                                   source:(NSString *)source

@@ -169,10 +169,22 @@ didFailToLoadWithError:(nonnull NSError *)error {
                                                         NSURLResponse *response,
                                                         NSError *error) {
                                         
+            if (error) {
+                NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+                return;
+            }
+                                        
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                        
+            if (httpResponse.statusCode != 201) {
+                NSLog(@"%s Status code: %d", __PRETTY_FUNCTION__, (int)httpResponse.statusCode);
+                return;
+            }
+                                        
             dispatch_async(dispatch_get_main_queue(), ^{
                 UINavigationController *navigationController = [self.tabBarController.viewControllers objectAtIndex:1];
                 CustomerOrdersViewController *customerOrdersViewController =
-                navigationController.topViewController;
+                (CustomerOrdersViewController *) navigationController.topViewController;
                 customerOrdersViewController.orderWasPlaced = YES;
                 self.tabBarController.selectedViewController = navigationController;
             });

@@ -12,7 +12,7 @@
 
 @property (nonatomic) unsigned int id_;
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *facebookId;
+@property (strong, nonatomic) NSString *facebookID;
 @property (strong, nonatomic) NSString *stripeId;
 @property (strong, nonatomic) NSString *phoneNumber;
 

@@ -89,7 +89,7 @@
           return;
         }
 
-        if (!json[@"success"]) {
+        if (!json[@"isCompleted"]) {
           NSLog(@"%s %@", __PRETTY_FUNCTION__, json);
           return;
         }

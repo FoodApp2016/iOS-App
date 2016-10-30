@@ -58,10 +58,9 @@
             return;
         }
         
-        NSArray *restaurantsJson = [NSJSONSerialization JSONObjectWithData:data
+        NSDictionary *restaurantsJson = [NSJSONSerialization JSONObjectWithData:data
                                                                    options:NSJSONReadingMutableContainers error:nil];
-        
-        NSLog(@"%@", restaurantsJson);
+        restaurantsJson = restaurantsJson[@"objects"];
         
         NSMutableArray *restaurants = [NSMutableArray new];
         
@@ -69,7 +68,7 @@
             Restaurant *restaurant = [[Restaurant alloc] initWithJson:restaurantJson];
             [restaurants addObject:restaurant];
         }
-        
+            
         self.restaurantList = [restaurants copy];
         
         dispatch_async(dispatch_get_main_queue(), ^{

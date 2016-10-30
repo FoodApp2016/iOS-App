@@ -19,9 +19,8 @@
 @property (strong, nonatomic) NSString *itemName;
 @property (nonatomic) unsigned int quantity;
 @property (nonatomic) unsigned int unitPrice;
-@property (nonatomic) unsigned int amount;
+@property (nonatomic, readonly) unsigned int amount;
 @property (strong, nonatomic) NSString *timestamp;
-@property (strong, nonatomic) NSString *pickupTime;
 @property (strong, nonatomic) NSString *randToken;
 @property (nonatomic) BOOL isCompleted;
 
@@ -31,5 +30,7 @@
 - (id)initWithJson:(NSDictionary *)json;
 
 - (NSDictionary *)json;
+
+- (unsigned int) amount;
 
 @end

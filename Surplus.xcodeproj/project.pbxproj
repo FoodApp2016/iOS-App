@@ -38,8 +38,6 @@
 		EBEA8BBF1D6E50F100757205 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BBE1D6E50F100757205 /* FBSDKLoginKit.framework */; };
 		EBEA8BC11D6E510A00757205 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BC01D6E510A00757205 /* FBSDKShareKit.framework */; };
 		EBEA8BC41D6E8D2F00757205 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */; };
-		EBEA8BCB1D70B95300757205 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBEA8BCA1D70B95300757205 /* Stripe.framework */; };
-		EBEA8BCD1D70B96900757205 /* Stripe.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EBEA8BCC1D70B96900757205 /* Stripe.bundle */; };
 		EBEA8BD01D70F29C00757205 /* StripeAPIAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BCF1D70F29C00757205 /* StripeAPIAdapter.m */; };
 		EBEA8BD31D70F34000757205 /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BD21D70F34000757205 /* Customer.m */; };
 		EBEA8BDB1D74C41200757205 /* FacebookSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEA8BDA1D74C41200757205 /* FacebookSignInViewController.m */; };
@@ -109,14 +107,14 @@
 		EBEA8BBE1D6E50F100757205 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "FacebookSDKs-iOS-4.14.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		EBEA8BC01D6E510A00757205 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "FacebookSDKs-iOS-4.14.0/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		EBEA8BC21D6E8D2F00757205 /* RequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestHandler.h; sourceTree = "<group>"; };
-		EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHandler.m; sourceTree = "<group>"; };
+		EBEA8BC31D6E8D2F00757205 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RequestHandler.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EBEA8BCA1D70B95300757205 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = "<group>"; };
 		EBEA8BCC1D70B96900757205 /* Stripe.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Stripe.bundle; path = Stripe.framework/Stripe.bundle; sourceTree = "<group>"; };
 		EBEA8BCE1D70F29C00757205 /* StripeAPIAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAPIAdapter.h; sourceTree = "<group>"; };
 		EBEA8BCF1D70F29C00757205 /* StripeAPIAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAPIAdapter.m; sourceTree = "<group>"; };
-		EBEA8BD11D70F34000757205 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
-		EBEA8BD21D70F34000757205 /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
-		EBEA8BDA1D74C41200757205 /* FacebookSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSignInViewController.m; sourceTree = "<group>"; };
+		EBEA8BD11D70F34000757205 /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Customer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EBEA8BD21D70F34000757205 /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Customer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EBEA8BDA1D74C41200757205 /* FacebookSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FacebookSignInViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EBEA8BDC1D74C43200757205 /* FacebookSignInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookSignInViewController.h; sourceTree = "<group>"; };
 		EBEA8BDD1D74C5AF00757205 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBEA8BE21D75455F00757205 /* NSUserDefaults+CustomObjectStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+CustomObjectStorage.h"; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				EBEA8BBF1D6E50F100757205 /* FBSDKLoginKit.framework in Frameworks */,
 				EBEA8BBD1D6E50E600757205 /* FBSDKCoreKit.framework in Frameworks */,
 				EBEA8BC11D6E510A00757205 /* FBSDKShareKit.framework in Frameworks */,
-				EBEA8BCB1D70B95300757205 /* Stripe.framework in Frameworks */,
 				F9DA34BC10509AC052D29AB8 /* libPods-Surplus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,7 +363,6 @@
 				EBA77D321D66443E00BA8CDB /* RestaurantListTableViewCell.xib in Resources */,
 				EBA77D1A1D63FE8800BA8CDB /* LaunchScreen.storyboard in Resources */,
 				EBEA8BDE1D74C5AF00757205 /* Info.plist in Resources */,
-				EBEA8BCD1D70B96900757205 /* Stripe.bundle in Resources */,
 				EBA77D171D63FE8800BA8CDB /* Assets.xcassets in Resources */,
 				EB1ACF091D7DE6A7004B5E19 /* ReceiptListTableViewCell.xib in Resources */,
 				EBA77D151D63FE8800BA8CDB /* Main.storyboard in Resources */,

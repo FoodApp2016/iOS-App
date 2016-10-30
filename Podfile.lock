@@ -1,12 +1,15 @@
 PODS:
   - RegExCategories (1.0)
+  - Stripe (9.0.0)
 
 DEPENDENCIES:
   - RegExCategories (~> 1.0)
+  - Stripe
 
 SPEC CHECKSUMS:
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
+  Stripe: 935c6deb5e96cbd29d247074bf3aa98a8438e22c
 
-PODFILE CHECKSUM: e41fedc59b57853c4ec6905d8d553c276b084458
+PODFILE CHECKSUM: 2a72277a43bb80e54497cc770926ed29903d6942
 
 COCOAPODS: 1.1.0.rc.2
