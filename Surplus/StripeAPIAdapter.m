@@ -21,7 +21,7 @@
     Customer *customer = [[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey];
 
     [[RequestHandler new] makeGetRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusRetrieveCustomerSourcesPath]
-                                              headers:@{@"customerID": @(customer.id_)}
+                                              headers:@{@"customerID": [NSString stringWithFormat:@"%d", customer.id_]}
                                     completionHandler:^(NSData *data,
                                                         NSURLResponse *response,
                                                         NSError *error) {
@@ -47,7 +47,8 @@
     Customer *customer = [[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey];
     
     [[RequestHandler new] makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusAddNewCustomerPaymentSourcePath]
-                                                params:@{@"customerID": @(customer.id_), @"source": source.stripeID}
+                                                params:@{@"customerID": [NSString stringWithFormat:@"%d", customer.id_],
+                                                         @"source": source.stripeID}
                                      completionHandler:^(NSData *data,
                                                          NSURLResponse *response,
                                                          NSError *error) {
@@ -61,12 +62,15 @@
     
     Customer *customer = [[NSUserDefaults standardUserDefaults] loadCustomerWithKey:kNSUserDefaultsCustomerKey];
     
-    [[RequestHandler new] selectDefaultCustomerSource:customer.stripeId
-                                               source:source.stripeID
-                                           completion:^(NSError *error) {
-       dispatch_async(dispatch_get_main_queue(), ^{
-           completion(error);
-       });
+    [[RequestHandler new] makePostRequestWithUrlString:[kSurplusBaseUrl stringByAppendingString:kSurplusSelectNewDefaultCustomerSourcePath]
+                                                params:@{@"customerID": [NSString stringWithFormat:@"%d", customer.id_],
+                                                         @"source": source.stripeID}
+                                     completionHandler:^(NSData *data,
+                                                         NSURLResponse *response,
+                                                         NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+         completion(error);
+        });
     }];
 }
 

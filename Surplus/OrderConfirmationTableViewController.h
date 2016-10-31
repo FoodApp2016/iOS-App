@@ -11,7 +11,7 @@
 
 @import Stripe;
 
-@interface OrderConfirmationTableViewController: UITableViewController /*<STPPaymentContextDelegate>*/
+@interface OrderConfirmationTableViewController: UITableViewController <STPPaymentContextDelegate>
 
 @property (strong, nonatomic) Order *order;
 

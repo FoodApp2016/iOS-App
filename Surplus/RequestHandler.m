@@ -394,8 +394,8 @@
 
 - (NSURL *)displayImageUrlForRestaurantId:(unsigned int)restaurantId {
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@%d.jpg",
-                           kSurplusRestlessBaseUrl,
+    NSString *urlString = [NSString stringWithFormat:@"%@%@%d",
+                           kSurplusBaseUrl,
                            kSurplusGetRestaurantImagePath,
                            restaurantId];
     

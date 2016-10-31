@@ -7,6 +7,7 @@
 //
 
 #import "OrderConfirmationTableViewController.h"
+#import "Constants.h"
 #import "StripeApiAdapter.h"
 #import "RequestHandler.h"
 #import "CustomerOrdersViewController.h"
@@ -42,6 +43,8 @@
     self.tax.text = @"$0.00";
     self.total.text = self.subtotal.text;
     
+    [self initializeWithPaymentAmount:self.order.quantity * self.order.unitPrice];
+    
     self.orderCell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
@@ -52,11 +55,11 @@
 
 - (void)initializeWithPaymentAmount:(int)subtotal {
     
-//    StripeApiAdapter *apiAdapter = [StripeApiAdapter new];
-//    self.paymentContext = [[STPPaymentContext alloc] initWithAPIAdapter:apiAdapter];
-//    self.paymentContext.delegate = self;
-//    self.paymentContext.hostViewController = self;
-//    self.paymentContext.paymentAmount = subtotal;
+    StripeApiAdapter *apiAdapter = [StripeApiAdapter new];
+    self.paymentContext = [[STPPaymentContext alloc] initWithAPIAdapter:apiAdapter];
+    self.paymentContext.delegate = self;
+    self.paymentContext.hostViewController = self;
+    self.paymentContext.paymentAmount = subtotal;
 }
 
 - (double)subtotalInDollars {
@@ -78,7 +81,7 @@
         return 3;
     }
     if (section == 2) {
-        return 0;
+        return 1;
     }
     if (section == 3) {
         return 1;
@@ -108,10 +111,11 @@
 didCreatePaymentResult:(nonnull STPPaymentResult *)paymentResult
             completion:(nonnull STPErrorBlock)completion {
     
-    [[RequestHandler new] chargeCustomerWithOrder:self.order
-                                           source:paymentResult.source.stripeID
-                                completionHandler:^(NSError *error,
-                                                    NSData *data) {
+    [[RequestHandler new] makePostRequestWithUrlString:[kSurplusRestlessBaseUrl stringByAppendingString: kSurplusOrderPath]
+                                                params:[self.order json]
+                                     completionHandler:^(NSData *data, NSURLResponse
+                                                         *response,
+                                                         NSError *error) {
         completion(error);
     }];
 }
@@ -140,7 +144,7 @@ didCreatePaymentResult:(nonnull STPPaymentResult *)paymentResult
     dispatch_async(dispatch_get_main_queue(), ^{
         UINavigationController *navigationController = [self.tabBarController.viewControllers objectAtIndex:1];
         CustomerOrdersViewController *customerOrdersViewController =
-            navigationController.topViewController;
+            (CustomerOrdersViewController *)navigationController.topViewController;
         customerOrdersViewController.orderWasPlaced = YES;
         self.tabBarController.selectedViewController = navigationController;
     });
@@ -155,7 +159,6 @@ didFailToLoadWithError:(nonnull NSError *)error {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 2) {
@@ -163,32 +166,7 @@ didFailToLoadWithError:(nonnull NSError *)error {
     }
     
     if (indexPath.section == 3) {
-        
-        [[RequestHandler new] chargeCustomerWithOrder:self.order
-                                    completionHandler:^(NSData *data,
-                                                        NSURLResponse *response,
-                                                        NSError *error) {
-                                        
-            if (error) {
-                NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
-                return;
-            }
-                                        
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                        
-            if (httpResponse.statusCode != 201) {
-                NSLog(@"%s Status code: %d", __PRETTY_FUNCTION__, (int)httpResponse.statusCode);
-                return;
-            }
-                                        
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UINavigationController *navigationController = [self.tabBarController.viewControllers objectAtIndex:1];
-                CustomerOrdersViewController *customerOrdersViewController =
-                (CustomerOrdersViewController *) navigationController.topViewController;
-                customerOrdersViewController.orderWasPlaced = YES;
-                self.tabBarController.selectedViewController = navigationController;
-            });
-        }];
+        [self.paymentContext requestPayment];
     }
 }
 
@@ -211,59 +189,5 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
