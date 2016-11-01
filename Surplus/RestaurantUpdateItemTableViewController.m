@@ -8,6 +8,7 @@
 
 #import "RestaurantUpdateItemTableViewController.h"
 #import "Restaurant.h"
+#import "NSString+FormattedDateString.h"
 #import "NSUserDefaults+CustomObjectStorage.h"
 #import "Constants.h"
 #import "RequestHandler.h"

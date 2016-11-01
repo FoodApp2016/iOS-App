@@ -8,6 +8,8 @@
 
 #import "Restaurant.h"
 
+#import "NSString+FormattedDateString.h"
+
 @implementation Restaurant
 
 - (id)initWithDict:(NSDictionary *)dict {
@@ -44,8 +46,8 @@
         self.description_ = json[@"description"]  == [NSNull null] ? @"" : json[@"description"];
         self.leftoversItem = json[@"leftoversItem"]  == [NSNull null] ? @"" : json[@"leftoversItem"];
         self.price = json[@"price"] == [NSNull null] ? 0 : [json[@"price"] intValue];
-        self.pickupStartTime = json[@"pickupStartTime"] == [NSNull null] ? @"" : json[@"pickupStartTime"];
-        self.pickupEndTime = json[@"pickupEndTime"] == [NSNull null] ? @"" : json[@"pickupEndTime"];
+        self.pickupStartTime = json[@"pickupStartTime"] == [NSNull null] ? @"" : [json[@"pickupStartTime"] formattedDateString];
+        self.pickupEndTime = json[@"pickupEndTime"] == [NSNull null] ? @"" : [json[@"pickupEndTime"] formattedDateString];
         self.isActivated = [json[@"isActivated"] boolValue];
         self.phoneNumber = json[@"phoneNumber"];
         self.address = json[@"addressLine1"] ?: @"";

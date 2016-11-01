@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB07E3761DC83883001C31CA /* NSString+FormattedDateString.m in Sources */ = {isa = PBXBuildFile; fileRef = EB07E3751DC83883001C31CA /* NSString+FormattedDateString.m */; };
 		EB1417D31D8BA85F00DAE042 /* OrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1417D21D8BA85F00DAE042 /* OrdersTableViewController.m */; };
 		EB1417D61D8BAB5400DAE042 /* CustomerOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1417D51D8BAB5400DAE042 /* CustomerOrdersViewController.m */; };
 		EB1417DC1D8E2CDA00DAE042 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1417DB1D8E2CDA00DAE042 /* ListTableViewCell.m */; };
@@ -53,6 +54,8 @@
 		2C51FC171EB762F77B78683E /* Pods-Surplus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.debug.xcconfig"; sourceTree = "<group>"; };
 		DB9E43E7FB13B9E78BB60330 /* libPods-Surplus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Surplus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3D831485E771E065F44A16 /* Pods-Surplus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surplus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surplus/Pods-Surplus.release.xcconfig"; sourceTree = "<group>"; };
+		EB07E3741DC83883001C31CA /* NSString+FormattedDateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FormattedDateString.h"; sourceTree = "<group>"; };
+		EB07E3751DC83883001C31CA /* NSString+FormattedDateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FormattedDateString.m"; sourceTree = "<group>"; };
 		EB1417D11D8BA85F00DAE042 /* OrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersTableViewController.h; sourceTree = "<group>"; };
 		EB1417D21D8BA85F00DAE042 /* OrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersTableViewController.m; sourceTree = "<group>"; };
 		EB1417D41D8BAB5400DAE042 /* CustomerOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerOrdersViewController.h; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 				EBEA8BCF1D70F29C00757205 /* StripeAPIAdapter.m */,
 				EBEA8BE21D75455F00757205 /* NSUserDefaults+CustomObjectStorage.h */,
 				EBEA8BE31D75455F00757205 /* NSUserDefaults+CustomObjectStorage.m */,
+				EB07E3741DC83883001C31CA /* NSString+FormattedDateString.h */,
+				EB07E3751DC83883001C31CA /* NSString+FormattedDateString.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 				EB311A3E1D7FD97F00901AB3 /* RestaurantLoginTableViewController.m in Sources */,
 				EBEA8BC41D6E8D2F00757205 /* RequestHandler.m in Sources */,
 				EBD5E1C81D82947600B7BCCF /* CustomerSettingsTableViewController.m in Sources */,
+				EB07E3761DC83883001C31CA /* NSString+FormattedDateString.m in Sources */,
 				EBEA8BB41D67C59E00757205 /* OrderConfirmationTableViewController.m in Sources */,
 				EB311A441D7FECAD00901AB3 /* RestaurantCompleteRegistrationTableViewController.m in Sources */,
 				EBA77D0C1D63FE8800BA8CDB /* main.m in Sources */,

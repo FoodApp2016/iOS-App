@@ -9,6 +9,7 @@
 #import "Order.h"
 #import "Customer.h"
 #import "Constants.h"
+
 #import "NSUserDefaults+CustomObjectStorage.h"
 
 @implementation Order
@@ -49,11 +50,6 @@
     self.itemName = json[@"itemName"];
     self.quantity = (int)[json[@"quantity"] integerValue];
     self.unitPrice = (int)[json[@"unitPrice"] integerValue];
-    
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    self.timestamp = json[@"time_stamp"];
-    
     self.randToken = json[@"randToken"];
     self.isCompleted = [json[@"isCompleted"] boolValue];
     
