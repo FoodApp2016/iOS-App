@@ -17,6 +17,7 @@
 #import "Restaurant.h"
 #import "NSUserDefaults+CustomObjectStorage.h"
 #import "RestaurantUpdateItemTableViewController.h"
+#import "Constants.h"
 
 @interface FacebookSignInViewController ()
 
@@ -42,6 +43,10 @@
     [self configureBusinessButtons];
 
     self.backgroundImageView.image = [UIImage imageNamed:@"beef-fried-rice-2-edited.jpg"];
+    
+    if ([self restaurantExists]) {
+        [self segueToRestaurantDashboard];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -157,13 +162,7 @@
     [super viewDidAppear:animated];
     
     if ([FBSDKAccessToken currentAccessToken]) {
-        [self getOrCreateCustomer];
         [self performSegueWithIdentifier:kFacebookSignInButtonSegueIdentifier sender:nil];
-        return;
-    }
-    
-    if ([self restaurantExists]) {
-        [self segueToRestaurantDashboard];
     }
 }
 
@@ -185,8 +184,6 @@
     
     Restaurant *restaurant = [[NSUserDefaults standardUserDefaults]
                               loadRestaurantWithKey:kNSUserDefaultsRestaurantKey];
-    
-    NSLog(@"%@ %@ %@ %@", restaurant.name, restaurant.username, restaurant.password, restaurant.phoneNumber);
     
     return restaurant != nil;
 }
@@ -213,6 +210,19 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+- (void)createCustomerObjectAndSaveToNSUserDefaults:(NSDictionary *)customerDict {
+    
+    NSMutableDictionary *temp = [customerDict mutableCopy];
+    temp[@"id_"] = temp[@"id"];
+    [temp removeObjectForKey:@"id"];
+    temp[@"stripeId"] = temp[@"stripeID"];
+    [temp removeObjectForKey:@"stripeID"];
+    
+    Customer *customer = [[Customer alloc] initWithDict:[temp copy]];
+    [[NSUserDefaults standardUserDefaults] saveCustomer:customer
+                                                    key:kNSUserDefaultsCustomerKey];
+}
+
 - (void)getOrCreateCustomer {
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
@@ -224,22 +234,18 @@
                                                       NSDictionary *result,
                                                       NSError *error) {
         
-        NSString *name = result[@"name"];
-        NSString *facebookID = result[@"id"];
+        NSDictionary *params = @{@"name": result[@"name"],
+                                 @"facebookID": result[@"id"]};
         
-        NSLog(@"%@", result);
-        
-        [[RequestHandler new] getOrCreateCustomer:@{@"name": name, @"facebookID": facebookID}
-                                completionHandler:^(NSData *data,
-                                                    NSURLResponse *response,
-                                                    NSError *error) {
-                                    
+        [[RequestHandler new] getCustomer:params completionHandler:^(NSData *data,
+                                                                     NSURLResponse *response,
+                                                                     NSError *error) {
             if (error) {
                 NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
                 return;
             }
-                                    
-            NSDictionary *customerDict = [NSJSONSerialization JSONObjectWithData:data
+            
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                                          options:0
                                                                            error:nil];
             
@@ -247,18 +253,38 @@
                 NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
                 return;
             }
-                                    
-            customerDict = customerDict[@"objects"][0];
-                                    
-            NSMutableDictionary *temp = [customerDict mutableCopy];
-            temp[@"id_"] = temp[@"id"];
-            [temp removeObjectForKey:@"id"];
-            customerDict = [temp copy];
             
-            Customer *customer = [[Customer alloc] initWithDict:customerDict];
-            [[NSUserDefaults standardUserDefaults] saveCustomer:customer
-                                                            key:kNSUserDefaultsCustomerKey];
-            [self performSegueWithIdentifier:kFacebookSignInButtonSegueIdentifier sender:nil];
+            if ([dict[@"objects"] count] == 0) {
+                
+                NSString *urlString = [kSurplusRestlessBaseUrl stringByAppendingString:kSurplusCustomerPath];
+                
+                [[RequestHandler new] makePostRequestWithUrlString:urlString
+                                            params:params
+                                            completionHandler:^(NSData *data,
+                                                                NSURLResponse *response,
+                                                                NSError *error) {
+                    if (error) {
+                        NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+                        return;
+                    }
+                    
+                    NSDictionary *customerDict = [NSJSONSerialization JSONObjectWithData:data
+                                                                                 options:0
+                                                                                   error:nil];
+                    
+                    if (error) {
+                        NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+                        return;
+                    }
+        
+                    [self createCustomerObjectAndSaveToNSUserDefaults:customerDict];
+                }];
+                
+                return;
+            }
+            
+            NSDictionary *customerDict = dict[@"objects"][0];
+            [self createCustomerObjectAndSaveToNSUserDefaults:customerDict];
         }];
     }];
 }

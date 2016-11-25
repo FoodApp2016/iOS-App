@@ -30,6 +30,9 @@ typedef void(^completionHandler)(NSData *, NSURLResponse *, NSError *);
 - (void)getRestaurant:(unsigned int)restaurantId
     completionHandler:(completionHandler)completionHandler;
 
+- (void)getCustomer:(NSDictionary *)params
+  completionHandler:(completionHandler)completionHandler;
+
 - (void)getOrCreateCustomer:(NSDictionary *)params
           completionHandler:(completionHandler)completionHandler;
 

@@ -46,6 +46,7 @@ extern NSString *const kSurplusGetAllOrdersByCustomerIdPath;
 extern NSString *const kSurplusUpdateItemPath;
 extern NSString *const kSurplusCompleteOrderPath;
 extern NSString *const kSurplusGetRestaurantImagePath;
+
 extern NSString *const kStripePublishableKey;
 
 extern NSString *const kNSUserDefaultsCustomerKey;
@@ -57,5 +58,7 @@ extern NSString *const kFontAwesomeStar;
 extern NSString *const kFontAwesomePlusSquare;
 
 extern NSString *const kFeedbackEmailId;
+
+extern NSString *const kNoStripeSourcesPlaceholderText;
 
 #endif /* Constants_h */

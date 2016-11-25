@@ -11,6 +11,7 @@
 #import "StripeApiAdapter.h"
 #import "RequestHandler.h"
 #import "CustomerOrdersViewController.h"
+#import "Constants.h"
 
 @interface OrderConfirmationTableViewController ()
 
@@ -89,6 +90,15 @@
     return 0;
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 3 && indexPath.row == 0 && [self.paymentMethod.text isEqual:kNoStripeSourcesPlaceholderText]) {
+        return nil;
+    }
+    
+    return indexPath;
+}
+
 #pragma mark - STPPaymentContext delegate methods
 
 - (void)paymentContextDidChange:(STPPaymentContext *)paymentContext {
@@ -103,7 +113,7 @@
             return;
         }
         
-        self.paymentMethod.text = @"Select Method";
+        self.paymentMethod.text = kNoStripeSourcesPlaceholderText;
     });
 }
 
@@ -144,7 +154,7 @@ didCreatePaymentResult:(nonnull STPPaymentResult *)paymentResult
     dispatch_async(dispatch_get_main_queue(), ^{
         UINavigationController *navigationController = [self.tabBarController.viewControllers objectAtIndex:1];
         CustomerOrdersViewController *customerOrdersViewController =
-            (CustomerOrdersViewController *)navigationController.topViewController;
+            (CustomerOrdersViewController *)(navigationController.topViewController);
         customerOrdersViewController.orderWasPlaced = YES;
         self.tabBarController.selectedViewController = navigationController;
     });

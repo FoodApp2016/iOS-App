@@ -1,4 +1,4 @@
-//
+    //
 //  RequestHandler.m
 //  Surplus
 //
@@ -18,6 +18,7 @@
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
     NSLog(@"%@", urlString);
+    NSLog(@"%@", headers);
     
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
@@ -85,6 +86,8 @@
     NSString *requestString = [NSString stringWithFormat:@"%@%@%@", kSurplusRestlessBaseUrl, kSurplusRestaurantPath, queryString];
     request.URL = [NSURL URLWithString:requestString];
     
+    NSLog(@"%@", requestString);
+    
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:completionHandler] resume];
 }
 
@@ -101,6 +104,34 @@
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:completionHandler] resume];
 }
 
+- (void)getCustomer:(NSDictionary *)params
+  completionHandler:(completionHandler)completionHandler {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"GET";
+    
+    NSString *queryString = @"?q={\"filters\":[{\"name\":\"facebookID\",\"op\":\"==\",\"val\":\"%@\"}]}";
+    queryString = [NSString stringWithFormat:queryString, params[@"facebookID"]];
+    NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
+    
+    NSString *requestString = [NSString stringWithFormat:@"%@%@%@", kSurplusRestlessBaseUrl, kSurplusCustomerPath, queryString];
+    request.URL = [NSURL URLWithString:requestString];
+    NSLog(@"%@", requestString);
+    
+    queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:set];
+    
+    requestString = [NSString stringWithFormat:@"%@%@%@", kSurplusRestlessBaseUrl, kSurplusCustomerPath, queryString];
+    request.URL = [NSURL URLWithString:requestString];
+    
+    [request setValue:params[@"name"] forHTTPHeaderField:@"name"];
+    [request setValue:params[@"facebookID"] forHTTPHeaderField:@"facebookID"];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+                                     completionHandler:completionHandler] resume];
+}
+
 - (void)getOrCreateCustomer:(NSDictionary *)params
           completionHandler:(completionHandler)completionHandler {
     
@@ -112,17 +143,48 @@
     NSString *queryString = @"?q={\"filters\":[{\"name\":\"facebookID\",\"op\":\"==\",\"val\":\"%@\"}]}";
     queryString = [NSString stringWithFormat:queryString, params[@"facebookID"]];
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
-    queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:set];
     
     NSString *requestString = [NSString stringWithFormat:@"%@%@%@", kSurplusRestlessBaseUrl, kSurplusCustomerPath, queryString];
+    request.URL = [NSURL URLWithString:requestString];
+        NSLog(@"%@", requestString);
+    
+    queryString = [queryString stringByAddingPercentEncodingWithAllowedCharacters:set];
+    
+    requestString = [NSString stringWithFormat:@"%@%@%@", kSurplusRestlessBaseUrl, kSurplusCustomerPath, queryString];
     request.URL = [NSURL URLWithString:requestString];
     
     [request setValue:params[@"name"] forHTTPHeaderField:@"name"];
     [request setValue:params[@"facebookID"] forHTTPHeaderField:@"facebookID"];
     
-    NSLog(@"%@", request.allHTTPHeaderFields);
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:
+      ^(NSData * _Nullable data,
+        NSURLResponse * _Nullable response,
+        NSError * _Nullable error) {
     
-    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:completionHandler] resume];
+          if (error) {
+              NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+              return;
+          }
+          
+          NSDictionary *customer = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+          
+          if (error) {
+              NSLog(@"%s %@", __PRETTY_FUNCTION__, error.localizedDescription);
+              return;
+          }
+          
+          NSLog(@"%@", customer);
+          
+          if ([customer[@"objects"] count] == 0) {
+              [self makePostRequestWithUrlString:[kSurplusRestlessBaseUrl stringByAppendingString:kSurplusCustomerPath]
+                                          params:params
+                               completionHandler:completionHandler];
+          }
+          else {
+              completionHandler(data, response, error);
+          }
+          
+    }] resume];
 }
 
 - (void)attachNewPaymentMethodToCustomer:(NSString *)stripeId

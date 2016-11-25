@@ -47,7 +47,7 @@ NSString *const kSurplusUpdateItemPath = @"/restaurants/update_item";
 NSString *const kSurplusCompleteOrderPath = @"/ordes/order_completed";
 NSString *const kSurplusGetRestaurantImagePath = @"/uploads/displayImage";
 
-NSString *const kStripePublishableKey = @"pk_test_RdUICzbaXW1zi7zQOWskheqD";
+NSString *const kStripePublishableKey = @"pk_live_sMlwPAHrUMKAIjeuLvXpSh1l";
 
 NSString *const kNSUserDefaultsCustomerKey = @"NSUserDefaultsCustomerKey";
 NSString *const kNSUserDefaultsRestaurantKey = @"NSUserDefaultsRestaurantKey";
@@ -58,3 +58,6 @@ NSString *const kFontAwesomeStar = @"";
 NSString *const kFontAwesomePlusSquare = @"";
 
 NSString *const kFeedbackEmailId = @"jsunga16@students.claremontmckenna.edu";
+
+NSString *const kNoStripeSourcesPlaceholderText = @"Select Method";
+
